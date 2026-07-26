@@ -1,4 +1,4 @@
-﻿Write-Host ""
+Write-Host ""
 Write-Host " =============================================================" -ForegroundColor Cyan
 Write-Host "   โก WINPULSE OPTIMIZER PRO v2.5 [PROTECTED CORE ENGINE] โก" -ForegroundColor Blue
 Write-Host " =============================================================" -ForegroundColor Cyan

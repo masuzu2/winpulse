@@ -1,5 +1,7 @@
-$srcPath = "C:\Users\Administrator\Custom-Windows-GUI-Preset\gui_preset_src.ps1"
-$distPath = "C:\Users\Administrator\Custom-Windows-GUI-Preset\gui_preset.ps1"
+$srcPath = Join-Path $PSScriptRoot "gui_preset_src.ps1"
+if (-not (Test-Path $srcPath)) { $srcPath = "C:\Users\Administrator\Custom-Windows-GUI-Preset\gui_preset_src.ps1" }
+$distPath = Join-Path $PSScriptRoot "gui_preset.ps1"
+if (-not (Test-Path $distPath)) { $distPath = "C:\Users\Administrator\Custom-Windows-GUI-Preset\gui_preset.ps1" }
 
 $rawCode = [System.IO.File]::ReadAllText($srcPath, [System.Text.Encoding]::UTF8)
 $base64 = [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($rawCode))
@@ -21,5 +23,7 @@ Write-Host ""
 Invoke-Expression `$decodedScript
 "@
 
-[System.IO.File]::WriteAllText($distPath, $protectedContent, [System.Text.Encoding]::UTF8)
-Write-Host "Encoder complete!"
+# Write clean UTF-8 WITHOUT BOM to prevent ?Write-Host BOM byte issue in IEX
+$utf8NoBOM = New-Object System.Text.UTF8Encoding($false)
+[System.IO.File]::WriteAllText($distPath, $protectedContent, $utf8NoBOM)
+Write-Host "Encoder complete (Clean UTF-8 No-BOM)!"
