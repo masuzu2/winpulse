@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    WinPulse PRO - Real Command Output Logging Edition
+    WinPulse PRO - Real Command Output Logging Edition (Zero-Error Edition)
 .DESCRIPTION
     Captures live Real-Time Stdout/Stderr, Timestamps, and Command Outputs from winget,
     netsh, bcdedit, powercfg, and reg commands, with persistent file logging to %TEMP%\WinPulse_Execution.log.
@@ -18,19 +18,18 @@ using System.Runtime.InteropServices;
 
 [ComVisible(true)]
 public class WinPulseBridge {
-    public delegate void ActionString(string arg);
-    public event ActionString OnRun;
-    public event Action OnCloseWindow;
-    public event Action OnMinimizeWindow;
+    public Action<string> OnRunAction { get; set; }
+    public Action OnCloseAction { get; set; }
+    public Action OnMinimizeAction { get; set; }
 
     public void Run(string json) {
-        if (OnRun != null) OnRun(json);
+        if (OnRunAction != null) OnRunAction(json);
     }
     public void CloseWin() {
-        if (OnCloseWindow != null) OnCloseWindow();
+        if (OnCloseAction != null) OnCloseAction();
     }
     public void MiniWin() {
-        if (OnMinimizeWindow != null) OnMinimizeWindow();
+        if (OnMinimizeAction != null) OnMinimizeAction();
     }
 }
 "@
@@ -416,7 +415,7 @@ public class WinPulseBridge {
     <div class="title-bar">
         <div class="title-brand">
             <svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-            WINPULSE OPTIMIZER PRO [REAL LOGS ENGINE]
+            WINPULSE OPTIMIZER PRO [ZERO-ERROR REAL ENGINE]
         </div>
         <div class="title-controls">
             <button class="control-btn" onclick="window.external.MiniWin()">—</button>
@@ -584,11 +583,11 @@ public class WinPulseBridge {
     $webBrowser = New-Object System.Windows.Controls.WebBrowser
     $window.Content = $webBrowser
 
-    # Wire Bridge Events
-    $bridge.OnCloseWindow += { $window.Close() }
-    $bridge.OnMinimizeWindow += { $window.WindowState = [System.Windows.WindowState]::Minimized }
+    # Wire Bridge Actions cleanly
+    $bridge.OnCloseAction = [Action]{ $window.Close() }
+    $bridge.OnMinimizeAction = [Action]{ $window.WindowState = [System.Windows.WindowState]::Minimized }
 
-    $bridge.OnRun += {
+    $bridge.OnRunAction = [Action[string]]{
         param($json)
         $options = ConvertFrom-Json $json
 
