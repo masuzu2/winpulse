@@ -26,7 +26,7 @@ public class WinPulseNative {
 [xml]$xaml = @"
 <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="WinPulse PRO Master Suite v3.0 [Apex Cyberpunk Edition]" Height="850" Width="1160"
+        Title="WinPulse PRO Master Suite v3.0 [Apex Cyberpunk Edition]" Height="860" Width="1160"
         WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True"
         Background="#080816" Foreground="#E2E8F0" FontFamily="Segoe UI">
 
@@ -179,6 +179,7 @@ public class WinPulseNative {
                             <CheckBox x:Name="chkCloudflareDNS" Content="Cloudflare DNS (1.1.1.1)" IsChecked="True"/>
                             <CheckBox x:Name="chkOptimalMTU" Content="Set Optimal MTU (1500)" IsChecked="True"/>
                             <CheckBox x:Name="chkAdvancedTCPUDP" Content="Disable Checksum Offload" IsChecked="True"/>
+                            <CheckBox x:Name="chkDisableDeliveryOpt" Content="Disable Delivery Optimization" IsChecked="True"/>
                         </StackPanel>
                     </ScrollViewer>
                 </Border>
@@ -190,6 +191,8 @@ public class WinPulseNative {
                             <TextBlock Text="🧹 DEBLOAT &amp; PURGE" Foreground="#F43F5E" FontWeight="ExtraBold" FontSize="12" Margin="0,0,0,8"/>
                             <CheckBox x:Name="chkRemoveOneDrive" Content="Uninstall OneDrive &amp; Bloat" IsChecked="True"/>
                             <CheckBox x:Name="chkDebloat" Content="Disable Telemetry &amp; DVR" IsChecked="True"/>
+                            <CheckBox x:Name="chkDisableReservedStorage" Content="Disable Reserved Storage (Free 7GB)" IsChecked="True" Foreground="#F43F5E" FontWeight="Bold"/>
+                            <CheckBox x:Name="chkDisableCopilot" Content="Disable Windows Copilot &amp; AI" IsChecked="True"/>
                             <CheckBox x:Name="chkDisableHibernation" Content="Disable Hibernation (Free Disk)" IsChecked="True"/>
                             <CheckBox x:Name="chkDisableLocation" Content="Disable Geolocation &amp; Maps" IsChecked="True"/>
                             <CheckBox x:Name="chkClean" Content="Purge Temp &amp; System Cache" IsChecked="True"/>
@@ -210,6 +213,8 @@ public class WinPulseNative {
                             <CheckBox x:Name="chkDiscord" Content="Discord" IsChecked="True"/>
                             <Separator Background="#2A2A4A" Margin="0,6"/>
                             <CheckBox x:Name="chkShowExt" Content="Show Extensions &amp; Hidden" IsChecked="True"/>
+                            <CheckBox x:Name="chkEnableLongPaths" Content="Enable Long Paths (&gt;260 Chars)" IsChecked="True"/>
+                            <CheckBox x:Name="chkTaskbarEndTask" Content="Enable Taskbar Right-Click End Task" IsChecked="True"/>
                             <CheckBox x:Name="chkDarkMode" Content="Enable Dark Mode Theme" IsChecked="True"/>
                             <CheckBox x:Name="chkClassicMenu" Content="Restore Win 10 Classic Menu" IsChecked="True"/>
                             <CheckBox x:Name="chkDisableBingSearch" Content="Disable Bing Search &amp; Cortana" IsChecked="True"/>
@@ -260,11 +265,11 @@ $txtLog = $window.FindName("txtLog")
 $checkBoxNames = @(
     "chkRestorePoint", "chkApexTimerTdr", "chkApexDNSBgApps",
     "chkApexKeyboard", "chkApexMouse", "chkApexKernelPriority",
-    "chkApexZeroDelayTCP", "chkNetwork", "chkCloudflareDNS", "chkOptimalMTU", "chkAdvancedTCPUDP",
+    "chkApexZeroDelayTCP", "chkNetwork", "chkCloudflareDNS", "chkOptimalMTU", "chkAdvancedTCPUDP", "chkDisableDeliveryOpt",
     "chkHAGS", "chkMouse", "chkStickyKeys", "chkInputLag", "chkPower", "chkMemory",
-    "chkRemoveOneDrive", "chkDebloat", "chkDisableHibernation", "chkDisableLocation", "chkClean", "chkWinUpdate",
+    "chkRemoveOneDrive", "chkDebloat", "chkDisableReservedStorage", "chkDisableCopilot", "chkDisableHibernation", "chkDisableLocation", "chkClean", "chkWinUpdate",
     "chkChrome", "chk7Zip", "chkVSCode", "chkGit", "chkDiscord",
-    "chkShowExt", "chkDarkMode", "chkClassicMenu", "chkDisableBingSearch"
+    "chkShowExt", "chkEnableLongPaths", "chkTaskbarEndTask", "chkDarkMode", "chkClassicMenu", "chkDisableBingSearch"
 )
 
 # Helper Functions
@@ -328,7 +333,7 @@ $BtnPresetGaming.Add_Click({
 
 $BtnPresetEssentials.Add_Click({
     Set-AllCheckboxes $false
-    @("chkRestorePoint", "chkRemoveOneDrive", "chkDebloat", "chkDisableHibernation", "chkDisableLocation", "chkClean", "chkWinUpdate", "chkStickyKeys", "chkShowExt", "chkDarkMode", "chkClassicMenu", "chkDisableBingSearch") | ForEach-Object {
+    @("chkRestorePoint", "chkRemoveOneDrive", "chkDebloat", "chkDisableReservedStorage", "chkDisableCopilot", "chkDisableHibernation", "chkDisableLocation", "chkClean", "chkWinUpdate", "chkStickyKeys", "chkShowExt", "chkEnableLongPaths", "chkTaskbarEndTask", "chkDarkMode", "chkClassicMenu", "chkDisableBingSearch") | ForEach-Object {
         $cb = $window.FindName($_)
         if ($cb) { $cb.IsChecked = $true }
     }
@@ -337,7 +342,7 @@ $BtnPresetEssentials.Add_Click({
 
 $BtnPresetClean.Add_Click({
     Set-AllCheckboxes $false
-    @("chkRestorePoint", "chkRemoveOneDrive", "chkDebloat", "chkDisableHibernation", "chkDisableLocation", "chkClean", "chkWinUpdate") | ForEach-Object {
+    @("chkRestorePoint", "chkRemoveOneDrive", "chkDebloat", "chkDisableReservedStorage", "chkDisableCopilot", "chkDisableHibernation", "chkDisableLocation", "chkClean", "chkWinUpdate") | ForEach-Object {
         $cb = $window.FindName($_)
         if ($cb) { $cb.IsChecked = $true }
     }
@@ -399,6 +404,7 @@ $BtnLaunch.Add_Click({
     $chkCloudflareDNSVal = ($window.FindName("chkCloudflareDNS")).IsChecked
     $chkOptimalMTUVal = ($window.FindName("chkOptimalMTU")).IsChecked
     $chkAdvancedTCPUDPVal = ($window.FindName("chkAdvancedTCPUDP")).IsChecked
+    $chkDisableDeliveryOptVal = ($window.FindName("chkDisableDeliveryOpt")).IsChecked
 
     $chkHAGSVal = ($window.FindName("chkHAGS")).IsChecked
     $chkMouseVal = ($window.FindName("chkMouse")).IsChecked
@@ -409,6 +415,8 @@ $BtnLaunch.Add_Click({
 
     $chkRemoveOneDriveVal = ($window.FindName("chkRemoveOneDrive")).IsChecked
     $chkDebloatVal = ($window.FindName("chkDebloat")).IsChecked
+    $chkDisableReservedStorageVal = ($window.FindName("chkDisableReservedStorage")).IsChecked
+    $chkDisableCopilotVal = ($window.FindName("chkDisableCopilot")).IsChecked
     $chkDisableHibernationVal = ($window.FindName("chkDisableHibernation")).IsChecked
     $chkDisableLocationVal = ($window.FindName("chkDisableLocation")).IsChecked
     $chkCleanVal = ($window.FindName("chkClean")).IsChecked
@@ -421,6 +429,8 @@ $BtnLaunch.Add_Click({
     $chkDiscordVal = ($window.FindName("chkDiscord")).IsChecked
 
     $chkShowExtVal = ($window.FindName("chkShowExt")).IsChecked
+    $chkEnableLongPathsVal = ($window.FindName("chkEnableLongPaths")).IsChecked
+    $chkTaskbarEndTaskVal = ($window.FindName("chkTaskbarEndTask")).IsChecked
     $chkDarkModeVal = ($window.FindName("chkDarkMode")).IsChecked
     $chkClassicMenuVal = ($window.FindName("chkClassicMenu")).IsChecked
     $chkDisableBingSearchVal = ($window.FindName("chkDisableBingSearch")).IsChecked
@@ -655,9 +665,15 @@ $BtnLaunch.Add_Click({
             Disable-NetAdapterLso -Name "*" -Confirm:$false -ErrorAction SilentlyContinue
         }
     }
+    if ($chkDisableDeliveryOptVal) {
+        Exec-Command "Disable Windows Delivery Optimization" {
+            Set-Service -Name "dosvc" -StartupType Disabled -ErrorAction SilentlyContinue
+            Stop-Service -Name "dosvc" -Force -ErrorAction SilentlyContinue
+        }
+    }
     Set-WpfProgress 75
 
-    # 7. Debloat & Purge
+    # 7. Debloat & Purge (WinUtil Dev Suite)
     if ($chkRemoveOneDriveVal) {
         Exec-Command "Uninstall OneDrive & Bloat" {
             Stop-Process -Name "OneDrive" -Force -ErrorAction SilentlyContinue
@@ -679,6 +695,19 @@ $BtnLaunch.Add_Click({
             Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -Name "AllowTelemetry" -Value 0 -Type DWORD -Force
             if (-not (Test-Path "HKCU:\System\GameConfigStore")) { New-Item -Path "HKCU:\System\GameConfigStore" -Force | Out-Null }
             Set-ItemProperty -Path "HKCU:\System\GameConfigStore" -Name "GameDVR_Enabled" -Value 0 -Type DWORD -Force
+        }
+    }
+    if ($chkDisableReservedStorageVal) {
+        Exec-Command "Disable Reserved Storage (Frees 7GB SSD)" {
+            DISM /Online /Set-ReservedStorageState /State:Disabled /Quiet
+        }
+    }
+    if ($chkDisableCopilotVal) {
+        Exec-Command "Disable Windows Copilot & AI Integration" {
+            if (-not (Test-Path "HKCU:\Software\Policies\Microsoft\Windows\WindowsCopilot")) { New-Item -Path "HKCU:\Software\Policies\Microsoft\Windows\WindowsCopilot" -Force | Out-Null }
+            Set-ItemProperty -Path "HKCU:\Software\Policies\Microsoft\Windows\WindowsCopilot" -Name "TurnOffWindowsCopilot" -Value 1 -Type DWORD -Force
+            if (-not (Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsCopilot")) { New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsCopilot" -Force | Out-Null }
+            Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsCopilot" -Name "TurnOffWindowsCopilot" -Value 1 -Type DWORD -Force
         }
     }
     if ($chkDisableHibernationVal) {
@@ -726,11 +755,23 @@ $BtnLaunch.Add_Click({
         }
     }
 
-    # 9. UI Tweaks
+    # 9. UI & Windows Preferences Tweaks
     if ($chkShowExtVal) {
         Exec-Command "Show File Extensions & Hidden Files" {
             Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Value 0 -Type DWORD -Force
             Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "Hidden" -Value 1 -Type DWORD -Force
+        }
+    }
+    if ($chkEnableLongPathsVal) {
+        Exec-Command "Enable Long Paths (>260 Characters)" {
+            if (-not (Test-Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem")) { New-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Force | Out-Null }
+            Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -Type DWORD -Force
+        }
+    }
+    if ($chkTaskbarEndTaskVal) {
+        Exec-Command "Enable Taskbar Right-Click End Task Option" {
+            if (-not (Test-Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced")) { New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Force | Out-Null }
+            Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarEndTask" -Value 1 -Type DWORD -Force
         }
     }
     if ($chkDarkModeVal) {
