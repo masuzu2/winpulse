@@ -1,4 +1,8 @@
 Clear-Host
+$osName = (Get-CimInstance Win32_OperatingSystem -ErrorAction SilentlyContinue).Caption
+if (-not $osName) { $osName = "Windows Operating System" }
+$compName = $env:COMPUTERNAME
+
 Write-Host ""
 Write-Host "   โ–โ–โ•—  โ–โ–โ•—โ–โ–โ•—โ–โ–โ–โ•—   โ–โ–โ•—โ–โ–โ–โ–โ–โ–โ•— โ–โ–โ•—   โ–โ–โ•—โ–โ–โ•—     โ–โ–โ–โ–โ–โ–โ–โ•—โ–โ–โ–โ–โ–โ–โ–โ•—" -ForegroundColor Cyan
 Write-Host "   โ–โ–โ•‘  โ–โ–โ•‘โ–โ–โ•‘โ–โ–โ–โ–โ•—  โ–โ–โ•‘โ–โ–โ•”โ•โ•โ–โ–โ•—โ–โ–โ•‘   โ–โ–โ•‘โ–โ–โ•‘     โ–โ–โ•”โ•โ•โ•โ•โ•โ–โ–โ•”โ•โ•โ•โ•โ•" -ForegroundColor Cyan
@@ -7,12 +11,13 @@ Write-Host "   โ–โ–โ•”โ•โ•โ–โ–โ•�
 Write-Host "   โ–โ–โ•‘  โ–โ–โ•‘โ–โ–โ•‘โ–โ–โ•‘ โ•โ–โ–โ–โ–โ•‘โ–โ–โ•‘     โ•โ–โ–โ–โ–โ–โ–โ•”โ•โ–โ–โ–โ–โ–โ–โ–โ•—โ–โ–โ–โ–โ–โ–โ–โ•‘โ–โ–โ–โ–โ–โ–โ–โ•—" -ForegroundColor Blue
 Write-Host "   โ•โ•โ•  โ•โ•โ•โ•โ•โ•โ•โ•โ•  โ•โ•โ•โ•โ•โ•โ•โ•      โ•โ•โ•โ•โ•โ•โ• โ•โ•โ•โ•โ•โ•โ•โ•โ•โ•โ•โ•โ•โ•โ•โ•โ•โ•โ•โ•โ•โ•โ•โ•" -ForegroundColor DarkCyan
 Write-Host " ===================================================================" -ForegroundColor DarkGray
-Write-Host "   โก WINPULSE PRO v3.0 [HACKER HUD & ULTRA LOW-LATENCY ENGINE] โก" -ForegroundColor Yellow
+Write-Host "   โก WINPULSE PRO v3.0 [OFFICIAL MASTER EDITION] โก" -ForegroundColor Yellow
 Write-Host " ===================================================================" -ForegroundColor DarkGray
-Write-Host "   [โ”] System Privilege Level: ADMINISTRATOR [GRANTED]" -ForegroundColor Green
-Write-Host "   [โ”] High-Precision Timer Resolution: UNLOCKED" -ForegroundColor DarkYellow
-Write-Host "   [โ”] GPU HAGS & Game Mode Tweak Engine: ONLINE" -ForegroundColor Cyan
-Write-Host "   [โ”] Decrypting Memory Payload & Launching Glassmorphism HUD..." -ForegroundColor Magenta
+Write-Host "   [+] Target Machine     : $compName ($osName)" -ForegroundColor Gray
+Write-Host "   [โ”] Privilege Status   : ADMINISTRATOR [GRANTED]" -ForegroundColor Green
+Write-Host "   [โ”] High-Res Timer     : UNLOCKED (0.5ms)" -ForegroundColor DarkYellow
+Write-Host "   [โ”] GPU HAGS & GameMode : ONLINE" -ForegroundColor Cyan
+Write-Host "   [โ”] Decrypting Cyberpunk Glassmorphism HUD..." -ForegroundColor Magenta
 Write-Host " ===================================================================" -ForegroundColor DarkGray
 Write-Host ""
 
