@@ -3,9 +3,13 @@
     WinPulse PRO v3.0 - Ultimate Cyberpunk System & Gaming Optimizer (Pure WPF XAML Engine)
 .DESCRIPTION
     Chris Titus WinUtil Style Native WPF Architecture with 100% Verified Production Commands.
-    Features: HAGS, Game Mode, Mouse Accel Off, Win32Priority 38, BCD Timers, TCP/IP CTCP, Cloudflare DNS,
-    MTU 1500, Checksum Offload Off, OneDrive Uninstall, Telemetry & DVR Off, Temp/Prefetch Purge,
-    WinUpdate Driver Block, Winget App Installers, Dark Mode, File Extensions, Classic Win10 Menu.
+    Includes Full Setting Kin Over v2 Optimization Engine:
+    - Kin Over v2 Keyboard Speed (KeyboardSpeed=150, KeyboardDelay=1, KeyboardDataQueueSize=20)
+    - Kin Over v2 Mouse 1:1 MarkC Curve & Zero Hover Delay (MouseHoverTime=0)
+    - Kin Over v2 Games SystemProfile Tweaks (GPU Priority=8, Priority=6, SystemResponsiveness=0, NetworkThrottlingIndex=0xFFFFFFFF)
+    - HAGS, Game Mode, Mouse Accel Off, Win32Priority 38, BCD Timers, TCP CTCP, Cloudflare DNS,
+    - MTU 1500, Checksum Offload Off, OneDrive Uninstall, Telemetry & DVR Off, Temp/Prefetch Purge,
+    - WinUpdate Driver Block, Winget App Installers, Dark Mode, File Extensions, Classic Win10 Menu.
 #>
 
 Add-Type -AssemblyName PresentationFramework
@@ -28,7 +32,7 @@ public class WinPulseNative {
 [xml]$xaml = @"
 <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="WinPulse PRO Master Suite v3.0" Height="780" Width="1080"
+        Title="WinPulse PRO Master Suite v3.0 [Kin Over v2 Edition]" Height="800" Width="1100"
         WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True"
         Background="#0B0B1A" Foreground="#E2E8F0" FontFamily="Segoe UI">
 
@@ -46,16 +50,16 @@ public class WinPulseNative {
             <Setter Property="Foreground" Value="#FFFFFF"/>
             <Setter Property="BorderBrush" Value="#3A2D64"/>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontSize" Value="11"/>
             <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Padding" Value="10,6"/>
+            <Setter Property="Padding" Value="8,5"/>
             <Setter Property="Cursor" Value="Hand"/>
         </Style>
 
         <Style TargetType="CheckBox">
             <Setter Property="Foreground" Value="#CBD5E1"/>
-            <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Margin" Value="0,4"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="Margin" Value="0,3"/>
             <Setter Property="Cursor" Value="Hand"/>
         </Style>
     </Window.Resources>
@@ -73,13 +77,13 @@ public class WinPulseNative {
             </Grid.RowDefinitions>
 
             <!-- 0. Title Bar -->
-            <Grid Grid.Row="0" Margin="0,0,0,12" x:Name="TitleBar" Background="#121224">
+            <Grid Grid.Row="0" Margin="0,0,0,10" x:Name="TitleBar" Background="#121224">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,6">
-                    <TextBlock Text="⚡ WINPULSE OPTIMIZER PRO v3.0 [100% REAL EXECUTION ENGINE]" Foreground="#A78BFA" FontWeight="Bold" FontSize="13"/>
+                    <TextBlock Text="⚡ WINPULSE OPTIMIZER PRO v3.0 [SETTING KIN OVER V2 ENGINE]" Foreground="#A78BFA" FontWeight="Bold" FontSize="13"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="6">
                     <Button x:Name="BtnMinimize" Content=" _ " Width="32" Height="26" Margin="0,0,4,0" Background="#1E1E38" Foreground="#94A3B8"/>
@@ -88,34 +92,35 @@ public class WinPulseNative {
             </Grid>
 
             <!-- 1. Header HUD -->
-            <Border Grid.Row="1" Background="#16162A" BorderBrush="#3A2D64" BorderThickness="1" CornerRadius="8" Padding="16,12" Margin="0,0,0,10">
+            <Border Grid.Row="1" Background="#16162A" BorderBrush="#3A2D64" BorderThickness="1" CornerRadius="8" Padding="14,10" Margin="0,0,0,10">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <StackPanel>
-                        <TextBlock Text="WINPULSE MASTER GAMING SUITE" FontSize="20" FontWeight="Bold" Foreground="#A78BFA"/>
-                        <TextBlock Text="Ultra Low-Latency Windows Tweaks &amp; Real Command Pipeline" FontSize="11" Foreground="#94A3B8" Margin="0,2,0,0"/>
+                        <TextBlock Text="WINPULSE MASTER GAMING SUITE + KIN OVER V2" FontSize="18" FontWeight="Bold" Foreground="#A78BFA"/>
+                        <TextBlock Text="Pro FPS Tweaks &amp; Low-Latency Keyboard/Mouse Tuning (Pure Native WPF Engine)" FontSize="11" Foreground="#94A3B8" Margin="0,2,0,0"/>
                     </StackPanel>
-                    <Border Grid.Column="1" Background="#10B981" CornerRadius="12" Padding="12,6" VerticalAlignment="Center">
+                    <Border Grid.Column="1" Background="#10B981" CornerRadius="12" Padding="12,5" VerticalAlignment="Center">
                         <TextBlock Text="SYSTEM READY" Foreground="#FFFFFF" FontWeight="Bold" FontSize="11"/>
                     </Border>
                 </Grid>
             </Border>
 
             <!-- 2. Restore Point Safety -->
-            <Border Grid.Row="2" Background="#16162A" BorderBrush="#10B981" BorderThickness="1" CornerRadius="6" Padding="12,8" Margin="0,0,0,10">
+            <Border Grid.Row="2" Background="#16162A" BorderBrush="#10B981" BorderThickness="1" CornerRadius="6" Padding="12,7" Margin="0,0,0,10">
                 <CheckBox x:Name="chkRestorePoint" Content="🛡️ Create System Restore Point before tweaking (100% Safety Guarantee)" IsChecked="True" Foreground="#34D399" FontWeight="Bold"/>
             </Border>
 
             <!-- 3. Quick Presets Toolbar -->
-            <Border Grid.Row="3" Background="#16162A" BorderBrush="#2A2A4A" BorderThickness="1" CornerRadius="6" Padding="10,8" Margin="0,0,0,10">
+            <Border Grid.Row="3" Background="#16162A" BorderBrush="#2A2A4A" BorderThickness="1" CornerRadius="6" Padding="10,6" Margin="0,0,0,10">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="QUICK PRESETS:" Foreground="#F59E0B" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,12,0" FontSize="11"/>
-                    <Button x:Name="BtnPresetMaster" Content="🌟 MASTER PRESET (ALL-IN-ONE)" Background="#10B981" Margin="0,0,8,0"/>
-                    <Button x:Name="BtnPresetGaming" Content="🎮 GAMING &amp; LOW LATENCY" Background="#7C3AED" Margin="0,0,8,0"/>
-                    <Button x:Name="BtnPresetClean" Content="🧹 CLEAN &amp; DEBLOAT" Background="#F43F5E" Margin="0,0,8,0"/>
+                    <TextBlock Text="PRESETS:" Foreground="#F59E0B" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,10,0" FontSize="11"/>
+                    <Button x:Name="BtnPresetMaster" Content="🌟 MASTER PRESET" Background="#10B981" Margin="0,0,6,0"/>
+                    <Button x:Name="BtnPresetKinOver" Content="⚡ KIN OVER V2 (PRO GAMER)" Background="#EC4899" Margin="0,0,6,0"/>
+                    <Button x:Name="BtnPresetGaming" Content="🎮 GAMING &amp; LATENCY" Background="#7C3AED" Margin="0,0,6,0"/>
+                    <Button x:Name="BtnPresetClean" Content="🧹 CLEAN &amp; DEBLOAT" Background="#F43F5E" Margin="0,0,6,0"/>
                     <Button x:Name="BtnClearAll" Content="❌ Clear All" Background="#3A3A5A"/>
                 </StackPanel>
             </Border>
@@ -123,28 +128,34 @@ public class WinPulseNative {
             <!-- 4. 4-Card Multi-Grid Layout -->
             <Grid Grid.Row="4" Margin="0,0,0,10">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1.1*"/>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
 
-                <!-- Card 1: Gaming & Input Lag -->
-                <Border Grid.Column="0" Background="#16162A" BorderBrush="#7C3AED" BorderThickness="1" CornerRadius="8" Padding="12" Margin="0,0,6,0">
-                    <StackPanel>
-                        <TextBlock Text="🎮 GAMING &amp; INPUT LAG" Foreground="#7C3AED" FontWeight="Bold" FontSize="12" Margin="0,0,0,8"/>
-                        <CheckBox x:Name="chkHAGS" Content="Enable GPU HAGS &amp; GameMode" IsChecked="True"/>
-                        <CheckBox x:Name="chkMouse" Content="Disable Mouse Acceleration" IsChecked="True"/>
-                        <CheckBox x:Name="chkInputLag" Content="Max Priority (Win32=38)" IsChecked="True"/>
-                        <CheckBox x:Name="chkPower" Content="Ultimate Performance Plan" IsChecked="True"/>
-                        <CheckBox x:Name="chkMemory" Content="Disable RAM Compression" IsChecked="True"/>
-                    </StackPanel>
+                <!-- Card 1: Gaming & Input Lag + Setting Kin Over v2 -->
+                <Border Grid.Column="0" Background="#16162A" BorderBrush="#7C3AED" BorderThickness="1" CornerRadius="8" Padding="10" Margin="0,0,5,0">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <StackPanel>
+                            <TextBlock Text="🎮 GAMING &amp; KIN OVER V2" Foreground="#7C3AED" FontWeight="Bold" FontSize="11" Margin="0,0,0,6"/>
+                            <CheckBox x:Name="chkKinOverV2Keyboard" Content="⚡ Kin Over v2 Keyboard Speed (150/1/20)" IsChecked="True" Foreground="#F472B6" FontWeight="Bold"/>
+                            <CheckBox x:Name="chkKinOverV2Mouse" Content="⚡ Kin Over v2 Mouse 1:1 MarkC &amp; Zero Hover" IsChecked="True" Foreground="#F472B6" FontWeight="Bold"/>
+                            <CheckBox x:Name="chkKinOverV2Games" Content="⚡ Kin Over v2 GPU Priority 8 &amp; CPU 6" IsChecked="True" Foreground="#F472B6" FontWeight="Bold"/>
+                            <Separator Background="#2A2A4A" Margin="0,4"/>
+                            <CheckBox x:Name="chkHAGS" Content="Enable GPU HAGS &amp; GameMode" IsChecked="True"/>
+                            <CheckBox x:Name="chkMouse" Content="Disable Mouse Acceleration" IsChecked="True"/>
+                            <CheckBox x:Name="chkInputLag" Content="Max Priority (Win32=38)" IsChecked="True"/>
+                            <CheckBox x:Name="chkPower" Content="Ultimate Performance Plan" IsChecked="True"/>
+                            <CheckBox x:Name="chkMemory" Content="Disable RAM Compression" IsChecked="True"/>
+                        </StackPanel>
+                    </ScrollViewer>
                 </Border>
 
                 <!-- Card 2: Network & Low Ping -->
-                <Border Grid.Column="1" Background="#16162A" BorderBrush="#38BDF8" BorderThickness="1" CornerRadius="8" Padding="12" Margin="3,0,3,0">
+                <Border Grid.Column="1" Background="#16162A" BorderBrush="#38BDF8" BorderThickness="1" CornerRadius="8" Padding="10" Margin="3,0,3,0">
                     <StackPanel>
-                        <TextBlock Text="🌐 NETWORK &amp; PING" Foreground="#38BDF8" FontWeight="Bold" FontSize="12" Margin="0,0,0,8"/>
+                        <TextBlock Text="🌐 NETWORK &amp; PING" Foreground="#38BDF8" FontWeight="Bold" FontSize="11" Margin="0,0,0,6"/>
                         <CheckBox x:Name="chkNetwork" Content="Optimize TCP/IP CTCP Stack" IsChecked="True"/>
                         <CheckBox x:Name="chkCloudflareDNS" Content="Cloudflare DNS (1.1.1.1)" IsChecked="True"/>
                         <CheckBox x:Name="chkOptimalMTU" Content="Set Optimal MTU (1500)" IsChecked="True"/>
@@ -153,9 +164,9 @@ public class WinPulseNative {
                 </Border>
 
                 <!-- Card 3: Debloat & Purge -->
-                <Border Grid.Column="2" Background="#16162A" BorderBrush="#F43F5E" BorderThickness="1" CornerRadius="8" Padding="12" Margin="3,0,3,0">
+                <Border Grid.Column="2" Background="#16162A" BorderBrush="#F43F5E" BorderThickness="1" CornerRadius="8" Padding="10" Margin="3,0,3,0">
                     <StackPanel>
-                        <TextBlock Text="🧹 DEBLOAT &amp; PURGE" Foreground="#F43F5E" FontWeight="Bold" FontSize="12" Margin="0,0,0,8"/>
+                        <TextBlock Text="🧹 DEBLOAT &amp; PURGE" Foreground="#F43F5E" FontWeight="Bold" FontSize="11" Margin="0,0,0,6"/>
                         <CheckBox x:Name="chkRemoveOneDrive" Content="Uninstall OneDrive &amp; Bloat" IsChecked="True"/>
                         <CheckBox x:Name="chkDebloat" Content="Disable Telemetry &amp; DVR" IsChecked="True"/>
                         <CheckBox x:Name="chkClean" Content="Purge Temp &amp; System Cache" IsChecked="True"/>
@@ -164,16 +175,16 @@ public class WinPulseNative {
                 </Border>
 
                 <!-- Card 4: Apps & UI Tweaks -->
-                <Border Grid.Column="3" Background="#16162A" BorderBrush="#F59E0B" BorderThickness="1" CornerRadius="8" Padding="12" Margin="6,0,0,0">
+                <Border Grid.Column="3" Background="#16162A" BorderBrush="#F59E0B" BorderThickness="1" CornerRadius="8" Padding="10" Margin="5,0,0,0">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel>
-                            <TextBlock Text="💻 SOFTWARE &amp; UI" Foreground="#F59E0B" FontWeight="Bold" FontSize="12" Margin="0,0,0,8"/>
+                            <TextBlock Text="💻 SOFTWARE &amp; UI" Foreground="#F59E0B" FontWeight="Bold" FontSize="11" Margin="0,0,0,6"/>
                             <CheckBox x:Name="chkChrome" Content="Google Chrome" IsChecked="True"/>
                             <CheckBox x:Name="chk7Zip" Content="7-Zip Archiver" IsChecked="True"/>
                             <CheckBox x:Name="chkVSCode" Content="VS Code" IsChecked="True"/>
                             <CheckBox x:Name="chkGit" Content="Git for Windows" IsChecked="True"/>
                             <CheckBox x:Name="chkDiscord" Content="Discord" IsChecked="True"/>
-                            <Separator Background="#2A2A4A" Margin="0,6"/>
+                            <Separator Background="#2A2A4A" Margin="0,4"/>
                             <CheckBox x:Name="chkShowExt" Content="Show Extensions &amp; Hidden" IsChecked="True"/>
                             <CheckBox x:Name="chkDarkMode" Content="Enable Dark Mode Theme" IsChecked="True"/>
                             <CheckBox x:Name="chkClassicMenu" Content="Restore Win 10 Classic Menu" IsChecked="True"/>
@@ -183,8 +194,8 @@ public class WinPulseNative {
             </Grid>
 
             <!-- 5. Launch Button -->
-            <Button Grid.Row="5" x:Name="BtnLaunch" Content="⚡ APPLY UNIFIED MASTER PRESET NOW ⚡"
-                    Height="44" Background="#7C3AED" Foreground="#FFFFFF" FontWeight="Bold" FontSize="14" Margin="0,0,0,10"/>
+            <Button Grid.Row="5" x:Name="BtnLaunch" Content="⚡ APPLY UNIFIED MASTER PRESET NOW (KIN OVER V2 INCLUDED) ⚡"
+                    Height="42" Background="#7C3AED" Foreground="#FFFFFF" FontWeight="Bold" FontSize="13" Margin="0,0,0,8"/>
 
             <!-- 6. Progress Bar & Output Console Log -->
             <Grid Grid.Row="6">
@@ -194,7 +205,7 @@ public class WinPulseNative {
                 </Grid.RowDefinitions>
                 <ProgressBar Grid.Row="0" x:Name="pbStatus" Height="6" Value="0" Minimum="0" Maximum="100" Foreground="#10B981" Background="#16162A" Margin="0,0,0,6"/>
                 <TextBox Grid.Row="1" x:Name="txtLog" IsReadOnly="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"
-                         Text="[SYSTEM] WinPulse Native WPF Engine Initialized. Click 'APPLY UNIFIED MASTER PRESET NOW'."/>
+                         Text="[SYSTEM] WinPulse Native WPF Engine (Kin Over v2 Integrated). Click 'APPLY UNIFIED MASTER PRESET NOW'."/>
             </Grid>
         </Grid>
     </Border>
@@ -210,6 +221,7 @@ $BtnMinimize = $window.FindName("BtnMinimize")
 $BtnClose = $window.FindName("BtnClose")
 
 $BtnPresetMaster = $window.FindName("BtnPresetMaster")
+$BtnPresetKinOver = $window.FindName("BtnPresetKinOver")
 $BtnPresetGaming = $window.FindName("BtnPresetGaming")
 $BtnPresetClean = $window.FindName("BtnPresetClean")
 $BtnClearAll = $window.FindName("BtnClearAll")
@@ -220,7 +232,8 @@ $txtLog = $window.FindName("txtLog")
 
 # Checkboxes List
 $checkBoxNames = @(
-    "chkRestorePoint", "chkHAGS", "chkMouse", "chkInputLag", "chkPower", "chkMemory",
+    "chkRestorePoint", "chkKinOverV2Keyboard", "chkKinOverV2Mouse", "chkKinOverV2Games",
+    "chkHAGS", "chkMouse", "chkInputLag", "chkPower", "chkMemory",
     "chkNetwork", "chkCloudflareDNS", "chkOptimalMTU", "chkAdvancedTCPUDP",
     "chkRemoveOneDrive", "chkDebloat", "chkClean", "chkWinUpdate",
     "chkChrome", "chk7Zip", "chkVSCode", "chkGit", "chkDiscord",
@@ -265,7 +278,16 @@ $BtnClose.Add_Click({
 # Preset Toolbar Events
 $BtnPresetMaster.Add_Click({
     Set-AllCheckboxes $true
-    Write-WpfLog "[PRESET] Unified Master Preset (All-in-One) selected."
+    Write-WpfLog "[PRESET] Unified Master Preset (All-in-One + Kin Over v2) selected."
+})
+
+$BtnPresetKinOver.Add_Click({
+    Set-AllCheckboxes $false
+    @("chkRestorePoint", "chkKinOverV2Keyboard", "chkKinOverV2Mouse", "chkKinOverV2Games", "chkHAGS", "chkMouse", "chkInputLag", "chkPower", "chkMemory", "chkNetwork", "chkCloudflareDNS", "chkDarkMode", "chkClassicMenu") | ForEach-Object {
+        $cb = $window.FindName($_)
+        if ($cb) { $cb.IsChecked = $true }
+    }
+    Write-WpfLog "[PRESET] Setting Kin Over v2 Pro Gamer Preset selected."
 })
 
 $BtnPresetGaming.Add_Click({
@@ -297,7 +319,7 @@ $BtnLaunch.Add_Click({
     $BtnLaunch.Content = "⏳ EXECUTING REAL POWERSHELL PIPELINE..."
     
     $logFilePath = Join-Path $env:TEMP "WinPulse_Execution.log"
-    "=== WinPulse PRO Native WPF Execution Log Started at $(Get-Date) ===" | Out-File -FilePath $logFilePath -Encoding utf8
+    "=== WinPulse PRO Native WPF Execution Log (Kin Over v2) Started at $(Get-Date) ===" | Out-File -FilePath $logFilePath -Encoding utf8
 
     function Exec-Command($desc, $scriptBlock) {
         Write-WpfLog "[EXEC] Executing: $desc"
@@ -329,6 +351,10 @@ $BtnLaunch.Add_Click({
 
     # Read Checkbox States
     $chkRestorePointVal = ($window.FindName("chkRestorePoint")).IsChecked
+    $chkKinOverV2KeyboardVal = ($window.FindName("chkKinOverV2Keyboard")).IsChecked
+    $chkKinOverV2MouseVal = ($window.FindName("chkKinOverV2Mouse")).IsChecked
+    $chkKinOverV2GamesVal = ($window.FindName("chkKinOverV2Games")).IsChecked
+
     $chkHAGSVal = ($window.FindName("chkHAGS")).IsChecked
     $chkMouseVal = ($window.FindName("chkMouse")).IsChecked
     $chkInputLagVal = ($window.FindName("chkInputLag")).IsChecked
@@ -362,9 +388,66 @@ $BtnLaunch.Add_Click({
             Checkpoint-Computer -Description "WinPulse Restore Point" -RestorePointType "MODIFY_SETTINGS"
         }
     }
-    Set-WpfProgress 20
+    Set-WpfProgress 15
 
-    # 1. HAGS & Game Mode & Mouse Accel
+    # 1. SETTING KIN OVER V2 SPECIAL TWEAKS
+    if ($chkKinOverV2KeyboardVal) {
+        Exec-Command "Setting Kin Over v2: Keyboard Delay & Queue Tuning (Speed=150, Delay=1, Queue=20)" {
+            if (-not (Test-Path "HKCU:\Control Panel\Keyboard")) { New-Item -Path "HKCU:\Control Panel\Keyboard" -Force | Out-Null }
+            Set-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "InitialKeyboardIndicators" -Value "0" -Type String -Force
+            Set-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "KeyboardDelay" -Value "1" -Type String -Force
+            Set-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "KeyboardSpeed" -Value "150" -Type String -Force
+
+            if (-not (Test-Path "HKLM:\SYSTEM\CurrentControlSet\Services\kbdclass\Parameters")) { New-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Services\kbdclass\Parameters" -Force | Out-Null }
+            Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\kbdclass\Parameters" -Name "KeyboardDataQueueSize" -Value 20 -Type DWORD -Force
+            Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\kbdclass\Parameters" -Name "ConnectMultiplePorts" -Value 0 -Type DWORD -Force
+            Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\kbdclass\Parameters" -Name "MaximumPortsServiced" -Value 3 -Type DWORD -Force
+            Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\kbdclass\Parameters" -Name "SendOutputToAllPorts" -Value 1 -Type DWORD -Force
+        }
+    }
+
+    if ($chkKinOverV2MouseVal) {
+        Exec-Command "Setting Kin Over v2: Mouse 1:1 Curves & MouseKeys Acceleration" {
+            if (-not (Test-Path "HKCU:\Control Panel\Mouse")) { New-Item -Path "HKCU:\Control Panel\Mouse" -Force | Out-Null }
+            Set-ItemProperty -Path "HKCU:\Control Panel\Mouse" -Name "MouseSensitivity" -Value "10" -Type String -Force
+            Set-ItemProperty -Path "HKCU:\Control Panel\Mouse" -Name "MouseHoverTime" -Value "0" -Type String -Force
+            Set-ItemProperty -Path "HKCU:\Control Panel\Mouse" -Name "ActiveWindowTracking" -Value 0 -Type DWORD -Force
+            Set-ItemProperty -Path "HKCU:\Control Panel\Mouse" -Name "MouseSpeed" -Value "0" -Type String -Force
+            Set-ItemProperty -Path "HKCU:\Control Panel\Mouse" -Name "MouseThreshold1" -Value "0" -Type String -Force
+            Set-ItemProperty -Path "HKCU:\Control Panel\Mouse" -Name "MouseThreshold2" -Value "0" -Type String -Force
+
+            $smoothX = [byte[]](0,0,0,0,0,0,0,0,0,0,16,0,0,0,0,0,0,0,32,0,0,0,0,0,0,0,48,0,0,0,0,0,0,0,64,0,0,0,0,0)
+            $smoothY = [byte[]](0,0,0,0,0,0,0,0,0,0,56,0,0,0,0,0,0,0,112,0,0,0,0,0,0,0,168,0,0,0,0,0,0,0,224,0,0,0,0,0)
+            Set-ItemProperty -Path "HKCU:\Control Panel\Mouse" -Name "SmoothMouseXCurve" -Value $smoothX -Type Binary -Force
+            Set-ItemProperty -Path "HKCU:\Control Panel\Mouse" -Name "SmoothMouseYCurve" -Value $smoothY -Type Binary -Force
+
+            if (-not (Test-Path "HKCU:\Control Panel\Accessibility\MouseKeys")) { New-Item -Path "HKCU:\Control Panel\Accessibility\MouseKeys" -Force | Out-Null }
+            Set-ItemProperty -Path "HKCU:\Control Panel\Accessibility\MouseKeys" -Name "Flags" -Value "100" -Type String -Force
+            Set-ItemProperty -Path "HKCU:\Control Panel\Accessibility\MouseKeys" -Name "MaximumSpeed" -Value "5000" -Type String -Force
+            Set-ItemProperty -Path "HKCU:\Control Panel\Accessibility\MouseKeys" -Name "TimeToMaximumSpeed" -Value "100" -Type String -Force
+
+            [WinPulseNative]::SystemParametersInfo(0x0071, 0, [System.IntPtr]::Zero, 0x0003) | Out-Null
+        }
+    }
+
+    if ($chkKinOverV2GamesVal) {
+        Exec-Command "Setting Kin Over v2: GPU Priority=8, Priority=6, SystemResponsiveness=0" {
+            $taskGamesPath = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games"
+            if (-not (Test-Path $taskGamesPath)) { New-Item -Path $taskGamesPath -Force | Out-Null }
+            Set-ItemProperty -Path $taskGamesPath -Name "GPU Priority" -Value 8 -Type DWORD -Force
+            Set-ItemProperty -Path $taskGamesPath -Name "Priority" -Value 6 -Type DWORD -Force
+            Set-ItemProperty -Path $taskGamesPath -Name "Scheduling Category" -Value "High" -Type String -Force
+            Set-ItemProperty -Path $taskGamesPath -Name "SFIO Priority" -Value "High" -Type String -Force
+
+            $sysProfilePath = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile"
+            if (-not (Test-Path $sysProfilePath)) { New-Item -Path $sysProfilePath -Force | Out-Null }
+            Set-ItemProperty -Path $sysProfilePath -Name "SystemResponsiveness" -Value 0 -Type DWORD -Force
+            Set-ItemProperty -Path $sysProfilePath -Name "NetworkThrottlingIndex" -Value 4294967295 -Type DWORD -Force
+        }
+    }
+    Set-WpfProgress 35
+
+    # 2. HAGS & Game Mode & Mouse Accel
     if ($chkHAGSVal) {
         Exec-Command "Enable GPU HAGS & Game Mode" {
             if (-not (Test-Path "HKLM:\SYSTEM\CurrentControlSet\Control\GraphicsDrivers")) { New-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" -Force | Out-Null }
@@ -402,9 +485,9 @@ $BtnLaunch.Add_Click({
             Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" -Name "ClearPageFileAtShutdown" -Value 0 -Type DWORD -Force
         }
     }
-    Set-WpfProgress 40
+    Set-WpfProgress 50
 
-    # 2. Network & Ping
+    # 3. Network & Ping
     if ($chkNetworkVal) {
         Exec-Command "Optimize TCP/IP CTCP Stack" {
             netsh int tcp set global congestionprovider=ctcp
@@ -435,9 +518,9 @@ $BtnLaunch.Add_Click({
             Disable-NetAdapterLso -Name "*" -Confirm:$false -ErrorAction SilentlyContinue
         }
     }
-    Set-WpfProgress 60
+    Set-WpfProgress 70
 
-    # 3. Debloat & Purge
+    # 4. Debloat & Purge
     if ($chkRemoveOneDriveVal) {
         Exec-Command "Uninstall OneDrive & Bloat" {
             Stop-Process -Name "OneDrive" -Force -ErrorAction SilentlyContinue
@@ -475,9 +558,9 @@ $BtnLaunch.Add_Click({
             Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DriverSearching" -Name "DriverUpdateWizardWuSearchEnabled" -Value 0 -Type DWORD -Force
         }
     }
-    Set-WpfProgress 80
+    Set-WpfProgress 85
 
-    # 4. Software via Winget
+    # 5. Software via Winget
     $apps = @(
         @{ Check = $chkChromeVal; ID = "Google.Chrome"; Name = "Google Chrome" },
         @{ Check = $chk7ZipVal; ID = "7zip.7zip"; Name = "7-Zip" },
@@ -493,7 +576,7 @@ $BtnLaunch.Add_Click({
         }
     }
 
-    # 5. UI Tweaks
+    # 6. UI Tweaks
     if ($chkShowExtVal) {
         Exec-Command "Show File Extensions & Hidden Files" {
             Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Value 0 -Type DWORD -Force
