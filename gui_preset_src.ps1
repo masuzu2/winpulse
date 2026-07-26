@@ -1,9 +1,8 @@
 <#
 .SYNOPSIS
-    WinPulse PRO - Glassmorphism Cyberpunk Web Suite (Bulletproof Zero Script Error Edition)
+    WinPulse PRO - Pure HTML5/CSS3 Web Suite (100% IE & Edge Parser Fix)
 .DESCRIPTION
-    Double-locked suppression of IE Script Error dialogs via window.onerror = function(){ return true; }
-    and WPF WebBrowser AxIWebBrowser2 Silent property.
+    Replaces inline SVG parser edge cases with pure HTML5/CSS3 styled icons to eliminate MSHTML/IE HTML parser syntax errors completely.
 #>
 
 # Enable IE11 Edge Mode Emulation for powershell.exe in Registry
@@ -45,16 +44,16 @@ public class WinPulseEngineBridge {
 
     $bridge = New-Object WinPulseEngineBridge
 
-    # --- UI/UX Pro Max HTML5/CSS3 Interface (Bulletproof ES5) ---
+    # --- UI/UX Pro Max HTML5/CSS3 Interface (100% MSHTML Safe) ---
     $htmlContent = @"
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="UTF-8" />
     <title>WinPulse PRO Gaming Suite</title>
     
-    <!-- Global Bulletproof IE Script Error Suppressor -->
+    <!-- Bulletproof IE Error Interceptor -->
     <script type="text/javascript">
         window.onerror = function (msg, url, lineNo, columnNo, error) {
             return true;
@@ -62,8 +61,6 @@ public class WinPulseEngineBridge {
     </script>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Orbitron:wght@600;800;900&display=swap');
-        
         * {
             box-sizing: border-box;
             margin: 0;
@@ -80,11 +77,11 @@ public class WinPulseEngineBridge {
             border: 1px solid rgba(124, 58, 237, 0.35);
             display: flex;
             flex-direction: column;
-            font-family: 'JetBrains Mono', 'Segoe UI', monospace;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             box-shadow: 0 0 40px rgba(124, 58, 237, 0.2);
         }
 
-        /* Ambient Cyber-Purple Background Effects */
+        /* Ambient Cyber Background Effects */
         .glow-sphere-1 {
             position: absolute;
             width: 450px;
@@ -112,7 +109,6 @@ public class WinPulseEngineBridge {
         .title-bar {
             height: 44px;
             background: rgba(15, 15, 35, 0.85);
-            backdrop-filter: blur(16px);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -123,8 +119,7 @@ public class WinPulseEngineBridge {
         .title-brand {
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-family: 'Orbitron', 'Segoe UI', sans-serif;
+            gap: 10px;
             font-weight: 900;
             font-size: 14px;
             color: #a78bfa;
@@ -172,7 +167,6 @@ public class WinPulseEngineBridge {
         /* Header Card */
         .header-card {
             background: rgba(27, 27, 47, 0.65);
-            backdrop-filter: blur(20px);
             border: 1px solid rgba(124, 58, 237, 0.3);
             border-radius: 12px;
             padding: 18px 24px;
@@ -182,12 +176,9 @@ public class WinPulseEngineBridge {
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
         }
         .header-info h1 {
-            font-family: 'Orbitron', 'Segoe UI', sans-serif;
             font-size: 22px;
             font-weight: 900;
-            background: linear-gradient(135deg, #a78bfa, #f43f5e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #a78bfa;
             letter-spacing: 1px;
         }
         .header-info p {
@@ -201,26 +192,22 @@ public class WinPulseEngineBridge {
             color: #34d399;
             padding: 6px 14px;
             border-radius: 20px;
-            font-family: 'Orbitron', 'Segoe UI', sans-serif;
             font-size: 11px;
             font-weight: 800;
             display: flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
         }
         .badge-dot {
             width: 8px;
             height: 8px;
             background: #34d399;
             border-radius: 50%;
-            box-shadow: 0 0 10px #34d399;
         }
 
         /* Preset Toolbar */
         .preset-toolbar {
             background: rgba(27, 27, 47, 0.5);
-            backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 10px;
             padding: 12px 18px;
@@ -229,7 +216,6 @@ public class WinPulseEngineBridge {
             gap: 12px;
         }
         .preset-label {
-            font-family: 'Orbitron', 'Segoe UI', sans-serif;
             font-size: 11px;
             font-weight: 800;
             color: #f59e0b;
@@ -285,7 +271,6 @@ public class WinPulseEngineBridge {
         }
         .card {
             background: rgba(27, 27, 47, 0.55);
-            backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 12px;
             padding: 18px;
@@ -294,7 +279,6 @@ public class WinPulseEngineBridge {
             gap: 14px;
         }
         .card-title {
-            font-family: 'Orbitron', 'Segoe UI', sans-serif;
             font-size: 12px;
             font-weight: 800;
             letter-spacing: 0.5px;
@@ -335,7 +319,6 @@ public class WinPulseEngineBridge {
             border: none;
             background: #7c3aed;
             color: #ffffff;
-            font-family: 'Orbitron', 'Segoe UI', sans-serif;
             font-size: 14px;
             font-weight: 900;
             letter-spacing: 1px;
@@ -374,20 +357,10 @@ public class WinPulseEngineBridge {
             padding: 12px;
             height: 130px;
             overflow-y: auto;
-            font-family: 'JetBrains Mono', 'Consolas', monospace;
+            font-family: 'Consolas', 'Courier New', monospace;
             font-size: 11px;
             color: #38bdf8;
             line-height: 1.6;
-        }
-
-        .icon {
-            width: 16px;
-            height: 16px;
-            fill: none;
-            stroke: currentColor;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
         }
     </style>
 </head>
@@ -398,8 +371,7 @@ public class WinPulseEngineBridge {
     <!-- Window Title Bar -->
     <div class="title-bar">
         <div class="title-brand">
-            <svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-            WINPULSE OPTIMIZER PRO
+            ⚡ WINPULSE OPTIMIZER PRO
         </div>
         <div class="title-controls">
             <button class="control-btn" onclick="window.external.MiniWin()">—</button>
@@ -416,7 +388,7 @@ public class WinPulseEngineBridge {
             </div>
             <div class="badge">
                 <div class="badge-dot"></div>
-                v2.5 BULLETPROOF
+                v2.5 PURE-HTML5 ACTIVE
             </div>
         </div>
 
@@ -440,8 +412,7 @@ public class WinPulseEngineBridge {
             <!-- Card 1 -->
             <div class="card card-1">
                 <div class="card-title">
-                    <svg class="icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
-                    Software &amp; UI Tweaks
+                    💻 Software &amp; UI Tweaks
                 </div>
                 <div class="option-item"><input type="checkbox" id="chkChrome" checked><label for="chkChrome">Google Chrome</label></div>
                 <div class="option-item"><input type="checkbox" id="chk7Zip" checked><label for="chk7Zip">7-Zip Archiver</label></div>
@@ -457,8 +428,7 @@ public class WinPulseEngineBridge {
             <!-- Card 2 -->
             <div class="card card-2">
                 <div class="card-title">
-                    <svg class="icon" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
-                    System &amp; Input Lag
+                    ⚡ System &amp; Input Lag
                 </div>
                 <div class="option-item"><input type="checkbox" id="chkInputLag" checked><label for="chkInputLag">Max Response (Win32Priority)</label></div>
                 <div class="option-item"><input type="checkbox" id="chkPower" checked><label for="chkPower">Ultimate Performance Plan</label></div>
@@ -473,8 +443,7 @@ public class WinPulseEngineBridge {
             <!-- Card 3 -->
             <div class="card card-3">
                 <div class="card-title">
-                    <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                    Network &amp; Low Ping
+                    🌐 Network &amp; Low Ping
                 </div>
                 <div class="option-item"><input type="checkbox" id="chkNetwork" checked><label for="chkNetwork">Optimize TCP/IP Stack</label></div>
                 <div class="option-item"><input type="checkbox" id="chkCloudflareDNS" checked><label for="chkCloudflareDNS">Cloudflare DNS (1.1.1.1)</label></div>
@@ -485,8 +454,7 @@ public class WinPulseEngineBridge {
 
         <!-- Launch Button -->
         <button class="launch-btn" id="btnLaunch" onclick="launchMasterPreset()">
-            <svg class="icon" viewBox="0 0 24 24" style="width: 20px; height: 20px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-            APPLY UNIFIED MASTER PRESET NOW
+            ⚡ APPLY UNIFIED MASTER PRESET NOW
         </button>
 
         <!-- Progress & Console Log -->
@@ -494,7 +462,7 @@ public class WinPulseEngineBridge {
         <div class="console-box" id="txtLog">[00:00:00] [SYSTEM] Real-Time Command Engine Initialized. Click 'APPLY UNIFIED MASTER PRESET NOW'.</div>
     </div>
 
-    <!-- 100% Strict ES5 Compatible JavaScript with Error Interception -->
+    <!-- 100% Strict Standard ES5 JavaScript -->
     <script type="text/javascript">
         var allCheckboxes = ['chkRestorePoint', 'chkChrome', 'chk7Zip', 'chkVSCode', 'chkGit', 'chkDiscord', 'chkShowExt', 'chkDarkMode', 'chkClassicMenu', 'chkInputLag', 'chkPower', 'chkMemory', 'chkRemoveOneDrive', 'chkDebloat', 'chkClean', 'chkWinUpdate', 'chkNetwork', 'chkCloudflareDNS', 'chkOptimalMTU', 'chkAdvancedTCPUDP'];
 
