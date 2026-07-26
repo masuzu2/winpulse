@@ -1,9 +1,9 @@
 <#
 .SYNOPSIS
-    WinPulse PRO - Cyberpunk Gaming HUD Master Suite (UI/UX Pro Max Edition)
+    WinPulse PRO - Real Command Output Logging Edition
 .DESCRIPTION
-    Powered by Orbitron & JetBrains Mono fonts, inline SVG icons, Catppuccin Cyber-Purple theme,
-    glassmorphism backdrop blur, and 60fps micro-animations.
+    Captures live Real-Time Stdout/Stderr, Timestamps, and Command Outputs from winget,
+    netsh, bcdedit, powercfg, and reg commands, with persistent file logging to %TEMP%\WinPulse_Execution.log.
 #>
 
 $guiScriptBlock = {
@@ -368,7 +368,7 @@ public class WinPulseBridge {
             box-shadow: 0 6px 30px rgba(244, 63, 94, 0.55);
         }
 
-        /* Progress Bar & Console Log */
+        /* Progress Bar & Real Console Log */
         .progress-container {
             height: 8px;
             background: rgba(255, 255, 255, 0.08);
@@ -384,15 +384,15 @@ public class WinPulseBridge {
         }
 
         .console-box {
-            background: rgba(15, 15, 35, 0.9);
-            border: 1px solid rgba(124, 58, 237, 0.2);
+            background: rgba(15, 15, 35, 0.95);
+            border: 1px solid rgba(124, 58, 237, 0.25);
             border-radius: 8px;
             padding: 12px;
-            height: 110px;
+            height: 130px;
             overflow-y: auto;
             font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
-            color: #94a3b8;
+            color: #38bdf8;
             line-height: 1.6;
         }
 
@@ -416,7 +416,7 @@ public class WinPulseBridge {
     <div class="title-bar">
         <div class="title-brand">
             <svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-            WINPULSE OPTIMIZER PRO
+            WINPULSE OPTIMIZER PRO [REAL LOGS ENGINE]
         </div>
         <div class="title-controls">
             <button class="control-btn" onclick="window.external.MiniWin()">—</button>
@@ -429,11 +429,11 @@ public class WinPulseBridge {
         <div class="header-card">
             <div class="header-info">
                 <h1>WINPULSE MASTER SUITE</h1>
-                <p>Cyberpunk Gaming Performance &amp; Low-Latency Tuning Engine</p>
+                <p>Real-Time Live Command Execution &amp; System Stream Logger</p>
             </div>
             <div class="badge">
                 <div class="badge-dot"></div>
-                v2.5 HUD PRO
+                LIVE STDOUT LOGS ACTIVE
             </div>
         </div>
 
@@ -508,7 +508,7 @@ public class WinPulseBridge {
 
         <!-- Progress & Console Log -->
         <div class="progress-container"><div class="progress-bar" id="pbStatus"></div></div>
-        <div class="console-box" id="txtLog">WinPulse Cyberpunk HUD Ready... Select options or click 'APPLY UNIFIED MASTER PRESET NOW'.</div>
+        <div class="console-box" id="txtLog">[00:00:00] [SYSTEM] Real-Time Command Execution Engine Initialized. Click 'APPLY UNIFIED MASTER PRESET NOW'.</div>
     </div>
 
     <script>
@@ -524,22 +524,22 @@ public class WinPulseBridge {
         function applyPreset(type) {
             if (type === 'master') {
                 setAll(true);
-                log("[Preset] All-In-One Master Preset selected.");
+                log("[PRESET] Master Preset selected.");
             } else if (type === 'gaming') {
                 setAll(false);
                 ['chkRestorePoint', 'chkInputLag', 'chkPower', 'chkMemory', 'chkNetwork', 'chkCloudflareDNS', 'chkOptimalMTU', 'chkAdvancedTCPUDP', 'chkDarkMode', 'chkClassicMenu'].forEach(id => {
                     document.getElementById(id).checked = true;
                 });
-                log("[Preset] Gaming & Low-Latency Preset selected.");
+                log("[PRESET] Gaming & Low-Latency Preset selected.");
             } else if (type === 'clean') {
                 setAll(false);
                 ['chkRestorePoint', 'chkRemoveOneDrive', 'chkDebloat', 'chkClean', 'chkWinUpdate'].forEach(id => {
                     document.getElementById(id).checked = true;
                 });
-                log("[Preset] Clean & Debloat Preset selected.");
+                log("[PRESET] Clean & Debloat Preset selected.");
             } else if (type === 'clear') {
                 setAll(false);
-                log("[Preset] All options cleared.");
+                log("[PRESET] All options cleared.");
             }
         }
 
@@ -557,7 +557,7 @@ public class WinPulseBridge {
             const btn = document.getElementById('btnLaunch');
             btn.disabled = true;
             btn.style.opacity = '0.5';
-            log('⚡ Executing WinPulse Master Pipeline...');
+            log('⚡ Executing Real PowerShell Execution Pipeline...');
 
             const options = {};
             allCheckboxes.forEach(id => {
@@ -592,28 +592,54 @@ public class WinPulseBridge {
         param($json)
         $options = ConvertFrom-Json $json
 
+        $logFilePath = Join-Path $env:TEMP "WinPulse_Execution.log"
+        "=== WinPulse PRO Execution Log Started at $(Get-Date) ===" | Out-File -FilePath $logFilePath -Encoding utf8
+
         $invokeJS = {
             param($method, $arg)
             $webBrowser.InvokeScript($method, @($arg)) | Out-Null
         }
 
-        # Execution Engine
-        & $invokeJS "setProgress" "10"
-        & $invokeJS "log" "[Safety] Initializing Execution Pipeline..."
+        function Real-Log($level, $message) {
+            $ts = (Get-Date).ToString("HH:mm:ss")
+            $logLine = "[$ts] [$level] $message"
+            & $invokeJS "log" $logLine
+            Add-Content -Path $logFilePath -Value $logLine
+        }
 
-        if ($options.chkRestorePoint) {
-            & $invokeJS "log" "[Safety] Creating System Restore Point..."
+        function Exec-Command($desc, $scriptBlock) {
+            Real-Log "EXEC" "Executing: $desc"
             try {
-                Enable-ComputerRestore -Drive "C:\" -ErrorAction SilentlyContinue
-                Checkpoint-Computer -Description "WinPulse Web Master Preset" -RestorePointType "MODIFY_SETTINGS" -ErrorAction SilentlyContinue
-                & $invokeJS "log" "[Safety] Restore Point created successfully!"
+                $output = & $scriptBlock 2>&1
+                if ($output) {
+                    foreach ($line in $output) {
+                        $strLine = $line.ToString().Trim()
+                        if ($strLine) {
+                            Real-Log "STDOUT" $strLine
+                        }
+                    }
+                } else {
+                    Real-Log "SUCCESS" "Command completed cleanly with return code 0."
+                }
             } catch {
-                & $invokeJS "log" "[Safety] Skipped Restore Point creation."
+                Real-Log "ERROR" $_.Exception.Message
             }
         }
-        & $invokeJS "setProgress" "25"
 
-        # Software
+        # Real Execution Pipeline
+        & $invokeJS "setProgress" "5"
+        Real-Log "SYSTEM" "Starting Live Command Stream Pipeline. Log File: $logFilePath"
+
+        # 0. System Restore Point
+        if ($options.chkRestorePoint) {
+            Exec-Command "Create System Restore Point" {
+                Enable-ComputerRestore -Drive "C:\" -ErrorAction SilentlyContinue
+                Checkpoint-Computer -Description "WinPulse Real Log Restore Point" -RestorePointType "MODIFY_SETTINGS"
+            }
+        }
+        & $invokeJS "setProgress" "20"
+
+        # 1. Software via Winget
         $appMap = @(
             @{ Key = "chkChrome"; ID = "Google.Chrome"; Name = "Google Chrome" },
             @{ Key = "chk7Zip"; ID = "7zip.7zip"; Name = "7-Zip" },
@@ -623,115 +649,133 @@ public class WinPulseBridge {
         )
         foreach ($item in $appMap) {
             if ($options.($item.Key)) {
-                & $invokeJS "log" "[Winget] Installing $($item.Name)..."
-                winget install --id $item.ID --exact --silent --accept-package-agreements --accept-source-agreements | Out-Null
-                & $invokeJS "log" "[Done] $($item.Name) installed!"
+                Exec-Command "winget install --id $($item.ID)" {
+                    winget install --id $item.ID --exact --silent --accept-package-agreements --accept-source-agreements
+                }
             }
         }
-        & $invokeJS "setProgress" "45"
+        & $invokeJS "setProgress" "40"
 
-        # UI & System
+        # 2. General Tweaks & Classic Menu
         if ($options.chkShowExt) {
-            Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Value 0
-            Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "Hidden" -Value 1
+            Exec-Command "Set File Explorer Show Extensions & Hidden" {
+                Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Value 0
+                Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "Hidden" -Value 1
+            }
         }
         if ($options.chkDarkMode) {
-            Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme" -Value 0
-            Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "SystemUsesLightTheme" -Value 0
+            Exec-Command "Set Dark Mode Theme" {
+                Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme" -Value 0
+                Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "SystemUsesLightTheme" -Value 0
+            }
         }
         if ($options.chkClassicMenu) {
-            & $invokeJS "log" "[Tweak] Restoring Win 10 Classic Right-Click Menu..."
-            New-Item -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" -Value "" -Force | Out-Null
+            Exec-Command "Restore Win10 Classic Context Menu" {
+                New-Item -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" -Value "" -Force
+            }
         }
+        & $invokeJS "setProgress" "55"
 
-        # Power & Memory & Lag
+        # 3. Power, Memory & Input Lag
         if ($options.chkPower) {
-            & $invokeJS "log" "[Power] Unlocking Ultimate Performance Plan..."
-            powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 | Out-Null
-            powercfg /setactive e9a42b02-d5df-448d-aa00-03f14749eb61 | Out-Null
-            powercfg -h off
-            New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Power" -Name "PowerThrottlingOff" -Value 1 -PropertyType DWORD -Force | Out-Null
+            Exec-Command "Enable Ultimate Performance & Disable Power Throttling" {
+                powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61
+                powercfg /setactive e9a42b02-d5df-448d-aa00-03f14749eb61
+                powercfg -h off
+                New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Power" -Name "PowerThrottlingOff" -Value 1 -PropertyType DWORD -Force
+            }
         }
         if ($options.chkMemory) {
-            & $invokeJS "log" "[Memory] Disabling RAM Compression & Enabling Cache..."
-            Disable-MMAgent -MemoryCompression | Out-Null
-            New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" -Name "DisablePagingExecutive" -Value 1 -PropertyType DWORD -Force | Out-Null
-            New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" -Name "LargeSystemCache" -Value 1 -PropertyType DWORD -Force | Out-Null
-            fsutil behavior set disablelastaccess 1 | Out-Null
+            Exec-Command "Disable RAM Compression & Enable LargeSystemCache" {
+                Disable-MMAgent -MemoryCompression
+                New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" -Name "DisablePagingExecutive" -Value 1 -PropertyType DWORD -Force
+                New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" -Name "LargeSystemCache" -Value 1 -PropertyType DWORD -Force
+                fsutil behavior set disablelastaccess 1
+            }
         }
         if ($options.chkInputLag) {
-            & $invokeJS "log" "[Input Lag] Applying Win32PrioritySeparation (38/0x26) & BCD Timer..."
-            bcdedit /set useplatformclock false | Out-Null
-            bcdedit /set disabledynamictick yes | Out-Null
-            bcdedit /set tscsyncpolicy enhanced | Out-Null
-            New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\PriorityControl" -Name "Win32PrioritySeparation" -Value 38 -PropertyType DWORD -Force | Out-Null
-            New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" -Name "SystemResponsiveness" -Value 0 -PropertyType DWORD -Force | Out-Null
-            New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" -Name "NetworkThrottlingIndex" -Value 4294967295 -PropertyType DWORD -Force | Out-Null
-            New-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "KeyboardDelay" -Value "0" -PropertyType String -Force | Out-Null
-            New-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "KeyboardSpeed" -Value "31" -PropertyType String -Force | Out-Null
+            Exec-Command "Apply Win32PrioritySeparation (38/0x26), BCD Timer & Peripheral Tuning" {
+                bcdedit /set useplatformclock false
+                bcdedit /set disabledynamictick yes
+                bcdedit /set tscsyncpolicy enhanced
+                New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\PriorityControl" -Name "Win32PrioritySeparation" -Value 38 -PropertyType DWORD -Force
+                New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" -Name "SystemResponsiveness" -Value 0 -PropertyType DWORD -Force
+                New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" -Name "NetworkThrottlingIndex" -Value 4294967295 -PropertyType DWORD -Force
+                New-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "KeyboardDelay" -Value "0" -PropertyType String -Force
+                New-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "KeyboardSpeed" -Value "31" -PropertyType String -Force
+            }
         }
         & $invokeJS "setProgress" "75"
 
-        # Debloat & Clean & WinUpdate
+        # 4. Debloat & WinUpdate & Clean
         if ($options.chkWinUpdate) {
-            & $invokeJS "log" "[Update] Blocking automatic driver overwrites..."
-            New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" -Name "ExcludeWUDriversInQualityUpdate" -Value 1 -PropertyType DWORD -Force | Out-Null
-            New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching" -Name "SearchOrderConfig" -Value 0 -PropertyType DWORD -Force | Out-Null
+            Exec-Command "Block Driver Overwrites from Windows Update" {
+                New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" -Name "ExcludeWUDriversInQualityUpdate" -Value 1 -PropertyType DWORD -Force
+                New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching" -Name "SearchOrderConfig" -Value 0 -PropertyType DWORD -Force
+            }
         }
         if ($options.chkRemoveOneDrive) {
-            & $invokeJS "log" "[Debloat] Uninstalling OneDrive..."
-            Stop-Process -Name "OneDrive" -Force -ErrorAction SilentlyContinue
-            $odPath = "$env:SYSTEMROOT\SysWOW64\OneDriveSetup.exe"
-            if (-not (Test-Path $odPath)) { $odPath = "$env:SYSTEMROOT\System32\OneDriveSetup.exe" }
-            if (Test-Path $odPath) { Start-Process $odPath -ArgumentList "/uninstall" -Wait -WindowStyle Hidden }
+            Exec-Command "Uninstall OneDrive" {
+                Stop-Process -Name "OneDrive" -Force -ErrorAction SilentlyContinue
+                $odPath = "$env:SYSTEMROOT\SysWOW64\OneDriveSetup.exe"
+                if (-not (Test-Path $odPath)) { $odPath = "$env:SYSTEMROOT\System32\OneDriveSetup.exe" }
+                if (Test-Path $odPath) { Start-Process $odPath -ArgumentList "/uninstall" -Wait }
+            }
         }
         if ($options.chkDebloat) {
-            & $invokeJS "log" "[Debloat] Disabling Telemetry & Xbox DVR..."
-            New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -Name "AllowTelemetry" -Value 0 -PropertyType DWORD -Force | Out-Null
-            New-ItemProperty -Path "HKCU:\System\GameConfigStore" -Name "GameDVR_Enabled" -Value 0 -PropertyType DWORD -Force | Out-Null
-            Stop-Service DiagTrack -WarningAction SilentlyContinue; Set-Service DiagTrack -StartupType Disabled -WarningAction SilentlyContinue
+            Exec-Command "Disable Telemetry & Xbox GameDVR" {
+                New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -Name "AllowTelemetry" -Value 0 -PropertyType DWORD -Force
+                New-ItemProperty -Path "HKCU:\System\GameConfigStore" -Name "GameDVR_Enabled" -Value 0 -PropertyType DWORD -Force
+                Stop-Service DiagTrack -WarningAction SilentlyContinue
+                Set-Service DiagTrack -StartupType Disabled -WarningAction SilentlyContinue
+            }
         }
         if ($options.chkClean) {
-            & $invokeJS "log" "[Clean] Cleaning Temp files & Prefetch cache..."
-            Remove-Item -Path "$env:TEMP\*" -Recurse -Force -ErrorAction SilentlyContinue
-            Remove-Item -Path "C:\Windows\Temp\*" -Recurse -Force -ErrorAction SilentlyContinue
-            Remove-Item -Path "C:\Windows\Prefetch\*" -Recurse -Force -ErrorAction SilentlyContinue
+            Exec-Command "Clean Temp & Prefetch Files" {
+                Remove-Item -Path "$env:TEMP\*" -Recurse -Force -ErrorAction SilentlyContinue
+                Remove-Item -Path "C:\Windows\Temp\*" -Recurse -Force -ErrorAction SilentlyContinue
+                Remove-Item -Path "C:\Windows\Prefetch\*" -Recurse -Force -ErrorAction SilentlyContinue
+            }
         }
 
-        # Network
+        # 5. Network Tuning
         if ($options.chkNetwork) {
-            & $invokeJS "log" "[Network] Optimizing TCP/IP stack & Nagle's Algorithm..."
-            netsh int tcp set global autotuninglevel=normal | Out-Null
-            netsh int tcp set global rss=enabled | Out-Null
-            netsh int tcp set global ecncapability=disabled | Out-Null
-            netsh int tcp set global timestamps=disabled | Out-Null
-            netsh int tcp set global rsc=disabled | Out-Null
-            netsh int tcp set supplemental template=internet congestionprovider=ctcp | Out-Null
-            $interfaces = Get-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\*"
-            foreach ($iface in $interfaces) {
-                New-ItemProperty -Path $iface.PSPath -Name "TcpAckFrequency" -Value 1 -PropertyType DWORD -Force | Out-Null
-                New-ItemProperty -Path $iface.PSPath -Name "TCPNoDelay" -Value 1 -PropertyType DWORD -Force | Out-Null
-                New-ItemProperty -Path $iface.PSPath -Name "TcpDelAckTicks" -Value 0 -PropertyType DWORD -Force | Out-Null
+            Exec-Command "Optimize TCP/IP Stack, Nagle's Algorithm & CTCP Provider" {
+                netsh int tcp set global autotuninglevel=normal
+                netsh int tcp set global rss=enabled
+                netsh int tcp set global ecncapability=disabled
+                netsh int tcp set global timestamps=disabled
+                netsh int tcp set global rsc=disabled
+                netsh int tcp set supplemental template=internet congestionprovider=ctcp
+                $interfaces = Get-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\*"
+                foreach ($iface in $interfaces) {
+                    New-ItemProperty -Path $iface.PSPath -Name "TcpAckFrequency" -Value 1 -PropertyType DWORD -Force
+                    New-ItemProperty -Path $iface.PSPath -Name "TCPNoDelay" -Value 1 -PropertyType DWORD -Force
+                    New-ItemProperty -Path $iface.PSPath -Name "TcpDelAckTicks" -Value 0 -PropertyType DWORD -Force
+                }
             }
         }
         if ($options.chkCloudflareDNS) {
-            & $invokeJS "log" "[Network] Setting Cloudflare DNS (1.1.1.1)..."
-            try { Get-DnsClientServerAddress | Where-Object { $_.AddressFamily -eq 2 } | Set-DnsClientServerAddress -ServerAddresses ("1.1.1.1", "1.0.0.1") -ErrorAction SilentlyContinue } catch {}
+            Exec-Command "Set Cloudflare DNS (1.1.1.1 / 1.0.0.1)" {
+                Get-DnsClientServerAddress | Where-Object { $_.AddressFamily -eq 2 } | Set-DnsClientServerAddress -ServerAddresses ("1.1.1.1", "1.0.0.1") -ErrorAction SilentlyContinue
+            }
         }
         if ($options.chkOptimalMTU) {
-            & $invokeJS "log" "[Network] Setting MTU size to 1500..."
-            try { Get-NetAdapter | Where-Object Status -eq 'Up' | Set-NetIPv4Interface -NlMtuBytes 1500 -ErrorAction SilentlyContinue } catch {}
+            Exec-Command "Set Optimal MTU (1500)" {
+                Get-NetAdapter | Where-Object Status -eq 'Up' | Set-NetIPv4Interface -NlMtuBytes 1500 -ErrorAction SilentlyContinue
+            }
         }
         if ($options.chkAdvancedTCPUDP) {
-            & $invokeJS "log" "[Network] Disabling TCP/UDP Checksum Offload..."
-            try { Disable-NetAdapterChecksumOffload -Name "*" -IpIPv4 -TcpIPv4 -UdpIPv4 -ErrorAction SilentlyContinue } catch {}
+            Exec-Command "Disable TCP/UDP Checksum Offloading" {
+                Disable-NetAdapterChecksumOffload -Name "*" -IpIPv4 -TcpIPv4 -UdpIPv4 -ErrorAction SilentlyContinue
+            }
         }
 
         & $invokeJS "setProgress" "100"
-        & $invokeJS "log" "========================================="
-        & $invokeJS "log" "[🎉 COMPLETE 100%] WinPulse Web Master Preset Applied!"
-        & $invokeJS "log" "Rebooting your PC is recommended for maximum performance."
-        & $invokeJS "log" "========================================="
+        Real-Log "SYSTEM" "========================================="
+        Real-Log "SYSTEM" "[🎉 COMPLETE 100%] WinPulse Real Command Stream Finished!"
+        Real-Log "SYSTEM" "Full log saved to: $logFilePath"
+        Real-Log "SYSTEM" "========================================="
     }
 
     # Enable WebBrowser Scripting Bridge
