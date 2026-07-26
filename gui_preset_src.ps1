@@ -1,8 +1,8 @@
 <#
 .SYNOPSIS
-    WinPulse PRO - Pure HTML5/CSS3 Web Suite (100% IE & Edge Parser Fix)
+    WinPulse PRO - Lucide Icons Cyberpunk Web Suite
 .DESCRIPTION
-    Replaces inline SVG parser edge cases with pure HTML5/CSS3 styled icons to eliminate MSHTML/IE HTML parser syntax errors completely.
+    Integrates clean, modern Lucide Icons (lucide.dev) with strict MSHTML/IE compatibility.
 #>
 
 # Enable IE11 Edge Mode Emulation for powershell.exe in Registry
@@ -44,7 +44,7 @@ public class WinPulseEngineBridge {
 
     $bridge = New-Object WinPulseEngineBridge
 
-    # --- UI/UX Pro Max HTML5/CSS3 Interface (100% MSHTML Safe) ---
+    # --- UI/UX Pro Max HTML5 Interface with Lucide Icons (lucide.dev) ---
     $htmlContent = @"
 <!DOCTYPE html>
 <html>
@@ -53,7 +53,7 @@ public class WinPulseEngineBridge {
     <meta charset="UTF-8" />
     <title>WinPulse PRO Gaming Suite</title>
     
-    <!-- Bulletproof IE Error Interceptor -->
+    <!-- Global Bulletproof IE Error Interceptor -->
     <script type="text/javascript">
         window.onerror = function (msg, url, lineNo, columnNo, error) {
             return true;
@@ -61,6 +61,8 @@ public class WinPulseEngineBridge {
     </script>
 
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Orbitron:wght@600;800;900&display=swap');
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -77,11 +79,11 @@ public class WinPulseEngineBridge {
             border: 1px solid rgba(124, 58, 237, 0.35);
             display: flex;
             flex-direction: column;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'JetBrains Mono', 'Segoe UI', monospace;
             box-shadow: 0 0 40px rgba(124, 58, 237, 0.2);
         }
 
-        /* Ambient Cyber Background Effects */
+        /* Ambient Cyber Background Glows */
         .glow-sphere-1 {
             position: absolute;
             width: 450px;
@@ -120,6 +122,7 @@ public class WinPulseEngineBridge {
             display: flex;
             align-items: center;
             gap: 10px;
+            font-family: 'Orbitron', 'Segoe UI', sans-serif;
             font-weight: 900;
             font-size: 14px;
             color: #a78bfa;
@@ -176,6 +179,7 @@ public class WinPulseEngineBridge {
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
         }
         .header-info h1 {
+            font-family: 'Orbitron', 'Segoe UI', sans-serif;
             font-size: 22px;
             font-weight: 900;
             color: #a78bfa;
@@ -192,6 +196,7 @@ public class WinPulseEngineBridge {
             color: #34d399;
             padding: 6px 14px;
             border-radius: 20px;
+            font-family: 'Orbitron', 'Segoe UI', sans-serif;
             font-size: 11px;
             font-weight: 800;
             display: flex;
@@ -216,6 +221,7 @@ public class WinPulseEngineBridge {
             gap: 12px;
         }
         .preset-label {
+            font-family: 'Orbitron', 'Segoe UI', sans-serif;
             font-size: 11px;
             font-weight: 800;
             color: #f59e0b;
@@ -279,6 +285,7 @@ public class WinPulseEngineBridge {
             gap: 14px;
         }
         .card-title {
+            font-family: 'Orbitron', 'Segoe UI', sans-serif;
             font-size: 12px;
             font-weight: 800;
             letter-spacing: 0.5px;
@@ -319,6 +326,7 @@ public class WinPulseEngineBridge {
             border: none;
             background: #7c3aed;
             color: #ffffff;
+            font-family: 'Orbitron', 'Segoe UI', sans-serif;
             font-size: 14px;
             font-weight: 900;
             letter-spacing: 1px;
@@ -357,10 +365,17 @@ public class WinPulseEngineBridge {
             padding: 12px;
             height: 130px;
             overflow-y: auto;
-            font-family: 'Consolas', 'Courier New', monospace;
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
             font-size: 11px;
             color: #38bdf8;
             line-height: 1.6;
+        }
+
+        /* Lucide SVG Icon Styling */
+        .lucide-icon {
+            width: 18px;
+            height: 18px;
+            vertical-align: middle;
         }
     </style>
 </head>
@@ -371,11 +386,19 @@ public class WinPulseEngineBridge {
     <!-- Window Title Bar -->
     <div class="title-bar">
         <div class="title-brand">
-            ⚡ WINPULSE OPTIMIZER PRO
+            <!-- Lucide Zap Icon -->
+            <svg class="lucide-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            WINPULSE OPTIMIZER PRO
         </div>
         <div class="title-controls">
-            <button class="control-btn" onclick="window.external.MiniWin()">—</button>
-            <button class="control-btn close" onclick="window.external.CloseWin()">✕</button>
+            <!-- Lucide Minus Icon -->
+            <button class="control-btn" onclick="window.external.MiniWin()">
+                <svg class="lucide-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path></svg>
+            </button>
+            <!-- Lucide X Icon -->
+            <button class="control-btn close" onclick="window.external.CloseWin()">
+                <svg class="lucide-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+            </button>
         </div>
     </div>
 
@@ -388,31 +411,53 @@ public class WinPulseEngineBridge {
             </div>
             <div class="badge">
                 <div class="badge-dot"></div>
-                v2.5 PURE-HTML5 ACTIVE
+                <!-- Lucide CheckCircle2 -->
+                <svg class="lucide-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
+                LUCIDE.DEV ACTIVE
             </div>
         </div>
 
-        <!-- Safety Option -->
+        <!-- Safety Option with Lucide ShieldCheck -->
         <div class="option-item" style="background: rgba(27,27,47,0.5); padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(16, 185, 129, 0.3);">
             <input type="checkbox" id="chkRestorePoint" checked>
-            <label for="chkRestorePoint" style="color: #34d399; font-weight: 700;">🛡️ Create System Restore Point before tweaking (100% Safety Guarantee)</label>
+            <label for="chkRestorePoint" style="color: #34d399; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+                <svg class="lucide-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                Create System Restore Point before tweaking (100% Safety Guarantee)
+            </label>
         </div>
 
         <!-- Preset Toolbar -->
         <div class="preset-toolbar">
             <span class="preset-label">QUICK PRESETS:</span>
-            <button class="btn-preset master" onclick="applyPreset('master')">⚡ ALL-IN-ONE MASTER PRESET</button>
-            <button class="btn-preset gaming" onclick="applyPreset('gaming')">🎮 GAMING &amp; LOW LATENCY</button>
-            <button class="btn-preset clean" onclick="applyPreset('clean')">🧹 CLEAN &amp; DEBLOAT</button>
-            <button class="btn-preset" onclick="applyPreset('clear')">❌ Clear All</button>
+            <!-- Lucide Sparkles -->
+            <button class="btn-preset master" onclick="applyPreset('master')">
+                <svg class="lucide-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path></svg>
+                ALL-IN-ONE MASTER PRESET
+            </button>
+            <!-- Lucide Gamepad2 -->
+            <button class="btn-preset gaming" onclick="applyPreset('gaming')">
+                <svg class="lucide-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="10" y1="12" y2="12"></line><line x1="8" x2="8" y1="10" y2="14"></line><line x1="15" x2="15.01" y1="13" y2="13"></line><line x1="18" x2="18.01" y1="11" y2="11"></line><rect width="20" height="12" x="2" y="6" rx="6"></rect></svg>
+                GAMING &amp; LOW LATENCY
+            </button>
+            <!-- Lucide Trash2 -->
+            <button class="btn-preset clean" onclick="applyPreset('clean')">
+                <svg class="lucide-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path></svg>
+                CLEAN &amp; DEBLOAT
+            </button>
+            <!-- Lucide XCircle -->
+            <button class="btn-preset" onclick="applyPreset('clear')">
+                <svg class="lucide-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m15 9-6 6"></path><path d="m9 9 6 6"></path></svg>
+                Clear All
+            </button>
         </div>
 
         <!-- Cards Grid -->
         <div class="cards-grid">
-            <!-- Card 1 -->
+            <!-- Card 1: Lucide Package -->
             <div class="card card-1">
                 <div class="card-title">
-                    💻 Software &amp; UI Tweaks
+                    <svg class="lucide-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"></path><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path><path d="m3.3 7 8.7 5 8.7-5"></path><path d="M12 22V12"></path></svg>
+                    Software &amp; UI Tweaks
                 </div>
                 <div class="option-item"><input type="checkbox" id="chkChrome" checked><label for="chkChrome">Google Chrome</label></div>
                 <div class="option-item"><input type="checkbox" id="chk7Zip" checked><label for="chk7Zip">7-Zip Archiver</label></div>
@@ -425,10 +470,11 @@ public class WinPulseEngineBridge {
                 <div class="option-item"><input type="checkbox" id="chkClassicMenu" checked><label for="chkClassicMenu">Restore Win 10 Classic Menu</label></div>
             </div>
 
-            <!-- Card 2 -->
+            <!-- Card 2: Lucide Cpu -->
             <div class="card card-2">
                 <div class="card-title">
-                    ⚡ System &amp; Input Lag
+                    <svg class="lucide-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#f43f5e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="16" x="4" y="4" rx="2"></rect><rect width="6" height="6" x="9" y="9" rx="1"></rect><path d="M15 2v2"></path><path d="M15 20v2"></path><path d="M2 15h2"></path><path d="M2 9h2"></path><path d="M20 15h2"></path><path d="M20 9h2"></path><path d="M9 2v2"></path><path d="M9 20v2"></path></svg>
+                    System &amp; Input Lag
                 </div>
                 <div class="option-item"><input type="checkbox" id="chkInputLag" checked><label for="chkInputLag">Max Response (Win32Priority)</label></div>
                 <div class="option-item"><input type="checkbox" id="chkPower" checked><label for="chkPower">Ultimate Performance Plan</label></div>
@@ -440,10 +486,11 @@ public class WinPulseEngineBridge {
                 <div class="option-item"><input type="checkbox" id="chkWinUpdate" checked><label for="chkWinUpdate">Block Driver Overwrites</label></div>
             </div>
 
-            <!-- Card 3 -->
+            <!-- Card 3: Lucide Wifi -->
             <div class="card card-3">
                 <div class="card-title">
-                    🌐 Network &amp; Low Ping
+                    <svg class="lucide-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h.01"></path><path d="M2 8.82a15 15 0 0 1 20 0"></path><path d="M5 12.85a10 10 0 0 1 14 0"></path><path d="M8.5 16.88a5 5 0 0 1 7 0"></path></svg>
+                    Network &amp; Low Ping
                 </div>
                 <div class="option-item"><input type="checkbox" id="chkNetwork" checked><label for="chkNetwork">Optimize TCP/IP Stack</label></div>
                 <div class="option-item"><input type="checkbox" id="chkCloudflareDNS" checked><label for="chkCloudflareDNS">Cloudflare DNS (1.1.1.1)</label></div>
@@ -452,9 +499,10 @@ public class WinPulseEngineBridge {
             </div>
         </div>
 
-        <!-- Launch Button -->
+        <!-- Launch Button with Lucide Zap -->
         <button class="launch-btn" id="btnLaunch" onclick="launchMasterPreset()">
-            ⚡ APPLY UNIFIED MASTER PRESET NOW
+            <svg class="lucide-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            APPLY UNIFIED MASTER PRESET NOW
         </button>
 
         <!-- Progress & Console Log -->
