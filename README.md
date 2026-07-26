@@ -1,23 +1,22 @@
-# Custom Windows GUI Preset
+# ⚡ WinPulse - Windows Setup & Optimizer PRO
 
-โปรเจคนี้คือชุดสคริปต์สำหรับติดตั้งโปรแกรม (ผ่าน `winget`) และปรับแต่ง Windows (Registry Tweaks) อัตโนมัติ โดยมีหน้าต่าง GUI สวยงาม (WPF) ให้ผู้ใช้สามารถเลือกติ๊กโปรแกรมที่ต้องการได้เอง 
-เหมือนกับเครื่องมืออย่าง `winutil` ของ Chris Titus Tech แต่เป็นเวอร์ชันที่เราสามารถปรับแต่งเองได้ 100%
+**WinPulse** คือชุดสคริปต์สไตล์ `winutil` สำหรับติดตั้งโปรแกรม (ผ่าน `winget`) ปรับแต่งระบบ (Registry Tweaks) ลดปิง เพิ่มความลื่นไหล และลบไฟล์ขยะอัตโนมัติ โดยมีหน้าต่าง GUI สวยงาม (WPF) 
 
-## ไฟล์ในโปรเจค
-- `gui_preset.ps1`: ไฟล์สคริปต์หลักที่บรรจุโค้ดหน้าต่าง GUI (XAML) และคำสั่งติดตั้ง
-- `run_local.bat`: ไฟล์สำหรับดับเบิ้ลคลิกเพื่อรันสคริปต์ทดสอบบนเครื่องตัวเอง (จะขอสิทธิ์ Admin อัตโนมัติ)
+## 🚀 ฟีเจอร์หลัก (Key Features)
+- **📦 Software Installer:** เลือกติดตั้ง Google Chrome, 7-Zip, VS Code, Git, Discord อัตโนมัติ
+- **🌐 Network & Internet:** ปรับแต่ง TCP/IP แบบ Low Latency, เปลี่ยน DNS เป็น Cloudflare (1.1.1.1), ตั้งค่า MTU 1500
+- **⚡ Reduce Input Lag:** ปรับ Win32Priority, ปิด Dynamic Tick เพื่อคีย์บอร์ดและเมาส์ที่ตอบสนองไวที่สุด
+- **🔋 Ultimate Performance:** ปลดล็อกพลังงานสูงสุดของ CPU/GPU และปิด Power Throttling
+- **🧠 Memory & Stutter Fix:** ปิดบีบอัดแรม (MMAgent) ลดอาการเกมสะดุด
+- **🖱️ Classic Menu:** นำเมนูคลิกขวาแบบเก่าบน Windows 11 กลับมา
+- **🛡️ Safety First:** มีระบบสร้าง System Restore Point อัตโนมัติก่อนเริ่มปรับแต่ง
 
-## วิธีนำไปใช้งานแบบออนไลน์ (irm <URL> | iex)
-เมื่อคุณปรับแต่ง `gui_preset.ps1` จนพอใจแล้ว:
-1. นำไฟล์ `gui_preset.ps1` ไปอัปโหลดขึ้น GitHub Repository ของคุณ (หรือ GitHub Gist)
-2. กดเข้าไปที่ไฟล์ใน GitHub แล้วคลิกปุ่ม **Raw** 
-3. คัดลอก URL นั้นมา (เช่น `https://raw.githubusercontent.com/username/repo/main/gui_preset.ps1`)
-4. นำไปรันใน PowerShell (Run as Administrator) ที่เครื่องไหนก็ได้ ด้วยคำสั่ง:
-   ```powershell
-   irm https://raw.githubusercontent.com/username/repo/main/gui_preset.ps1 | iex
-   ```
+## 💻 วิธีใช้งานแบบรวดเร็ว (Online Execution)
+เปิด **PowerShell (Run as Administrator)** แล้วพิมพ์คำสั่ง:
+```powershell
+irm https://raw.githubusercontent.com/<username>/winpulse/main/gui_preset.ps1 | iex
+```
+*(หรือใช้ลิงก์ย่อของคุณเอง เช่น `irm dub.sh/winpulse | iex`)*
 
-## วิธีเพิ่มโปรแกรมใหม่
-เปิดไฟล์ `gui_preset.ps1` แล้ว:
-1. เลื่อนไปที่ส่วน **XML/XAML** เพื่อเพิ่ม `<CheckBox>` ใหม่ในหมวดหมู่โปรแกรม
-2. เลื่อนลงมาที่ส่วน **$appMap** เพื่อเพิ่มข้อมูลเชื่อมโยงระหว่าง CheckBox กับ `winget ID`
+## 🛠️ วิธีรันบนเครื่องตัวเอง (Local Test)
+ดับเบิ้ลคลิกไฟล์ `run_local.bat` ในโฟลเดอร์โปรเจคได้เลยครับ

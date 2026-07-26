@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    Ultimate Custom Windows Setup & Optimizer Tool with WPF GUI
+    WinPulse - Ultimate Custom Windows Setup & Optimizer Tool with WPF GUI
 .DESCRIPTION
     Combines software installation, system tweaks, debloating, and network optimization.
     Version: PRO
@@ -13,7 +13,7 @@ Add-Type -AssemblyName System.Windows.Forms
 [xml]$xaml = @"
 <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Ultimate Windows Setup &amp; Optimizer PRO" Height="780" Width="1000"
+        Title="WinPulse - Ultimate Windows Setup &amp; Optimizer PRO" Height="780" Width="1000"
         WindowStartupLocation="CenterScreen" Background="#11111B" Foreground="#CDD6F4"
         FontFamily="Segoe UI" FontSize="14">
     <Grid Margin="20">
@@ -28,8 +28,8 @@ Add-Type -AssemblyName System.Windows.Forms
         <!-- Header -->
         <Border Grid.Row="0" Background="#1E1E2E" CornerRadius="8" Padding="15" Margin="0,0,0,15">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Text="🔥" FontSize="26" Margin="0,0,10,0"/>
-                <TextBlock Text="ULTIMATE WINDOWS SETUP &amp; OPTIMIZER PRO" FontSize="24" FontWeight="Black" Foreground="#89B4FA" VerticalAlignment="Center"/>
+                <TextBlock Text="⚡" FontSize="26" Margin="0,0,10,0"/>
+                <TextBlock Text="WINPULSE - WINDOWS OPTIMIZER PRO" FontSize="24" FontWeight="Black" Foreground="#89B4FA" VerticalAlignment="Center"/>
             </StackPanel>
         </Border>
 
@@ -116,7 +116,7 @@ Add-Type -AssemblyName System.Windows.Forms
         <!-- กล่อง Log แสดงสถานะ -->
         <Border Grid.Row="4" Background="#1E1E2E" CornerRadius="6" Padding="10">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
-                <TextBlock x:Name="txtLog" Text="พร้อมใช้งาน... (กรุณาเลือกหัวข้อที่ต้องการ)" Foreground="#A6ADC8" FontFamily="Consolas" FontSize="13" TextWrapping="Wrap"/>
+                <TextBlock x:Name="txtLog" Text="WinPulse Ready... (กรุณาเลือกหัวข้อที่ต้องการ)" Foreground="#A6ADC8" FontFamily="Consolas" FontSize="13" TextWrapping="Wrap"/>
             </ScrollViewer>
         </Border>
     </Grid>
@@ -161,7 +161,7 @@ function Set-Progress($value) {
 # --- 2. การทำงานของปุ่ม Install ---
 $btnInstall.Add_Click({
     $btnInstall.IsEnabled = $false
-    $txtLog.Text = "⚡ เริ่มกระบวนการปรับแต่งระบบ..."
+    $txtLog.Text = "⚡ WinPulse: เริ่มกระบวนการปรับแต่งระบบ..."
     Set-Progress 5
 
     # --- 0. System Restore Point ---
@@ -169,7 +169,7 @@ $btnInstall.Add_Click({
         Write-Log "[Safety] กำลังสร้าง System Restore Point (อาจใช้เวลาสักครู่)..."
         try {
             Enable-ComputerRestore -Drive "C:\" -ErrorAction SilentlyContinue
-            Checkpoint-Computer -Description "Custom Windows Tweak Preset" -RestorePointType "MODIFY_SETTINGS" -ErrorAction SilentlyContinue
+            Checkpoint-Computer -Description "WinPulse Restore Point" -RestorePointType "MODIFY_SETTINGS" -ErrorAction SilentlyContinue
             Write-Log "[Safety] สร้าง Restore Point สำเร็จ!"
         } catch {
             Write-Log "[Safety] ไม่สามารถสร้าง Restore Point ได้ (ข้าม)"
@@ -281,7 +281,7 @@ $btnInstall.Add_Click({
     Set-Progress 100
 
     Write-Log "========================================="
-    Write-Log "[🎉 เสร็จสมบูรณ์ 100%] ทำการตั้งค่าทั้งหมดเรียบร้อยแล้ว!"
+    Write-Log "[🎉 เสร็จสมบูรณ์ 100%] WinPulse ทำงานเรียบร้อยแล้ว!"
     Write-Log "แนะนำให้ รีสตาร์ทคอมพิวเตอร์ 1 ครั้ง เพื่อให้เห็นผล 100%"
     Write-Log "========================================="
     $btnInstall.IsEnabled = $true
