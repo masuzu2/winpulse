@@ -3,13 +3,7 @@
     WinPulse PRO v3.0 - Ultimate Cyberpunk System & Gaming Optimizer (Pure WPF XAML Engine)
 .DESCRIPTION
     Chris Titus WinUtil Style Native WPF Architecture with 100% Verified Production Commands.
-    Includes Full Mega-Suite Integration:
-    - SHX TOOL V2 & ULTIMATEXPLUS+ Engine (GlobalTimerResolutionRequests=1, TdrDelay=10, FSE Mode Forced, BackgroundAccess=Off)
-    - GOATX & ProjectX Engine (Background App Killer, DNS Negative Cache=0, GlobalMaxTcpWindowSize=131072, EnableTCPA=0)
-    - Setting Kin Over v2 & TCPIP 1 Modified Engine (KeyboardSpeed=150, Mouse 1:1 MarkC, GPU Priority=8, TCPNoDelay=1, Ack=1)
-    - HAGS, Game Mode, Mouse Accel Off, Win32Priority 38, BCD Timers, TCP CTCP, Cloudflare DNS,
-    - MTU 1500, Checksum Offload Off, OneDrive Uninstall, Telemetry & DVR Off, Temp/Prefetch Purge,
-    - WinUpdate Driver Block, Winget App Installers, Dark Mode, File Extensions, Classic Win10 Menu.
+    Unified Apex Gaming & System Optimization Engine.
 #>
 
 Add-Type -AssemblyName PresentationFramework
@@ -32,7 +26,7 @@ public class WinPulseNative {
 [xml]$xaml = @"
 <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="WinPulse PRO Master Suite v3.0 [SHX + GOATX + ProjectX Edition]" Height="820" Width="1120"
+        Title="WinPulse PRO Master Suite v3.0 [Apex Ultra Engine]" Height="820" Width="1120"
         WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True"
         Background="#0B0B1A" Foreground="#E2E8F0" FontFamily="Segoe UI">
 
@@ -83,7 +77,7 @@ public class WinPulseNative {
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,6">
-                    <TextBlock Text="⚡ WINPULSE OPTIMIZER PRO v3.0 [SHX + GOATX + PROJECTX + KIN OVER V2]" Foreground="#A78BFA" FontWeight="Bold" FontSize="13"/>
+                    <TextBlock Text="⚡ WINPULSE OPTIMIZER PRO v3.0 [APEX ULTRA ENGINE]" Foreground="#A78BFA" FontWeight="Bold" FontSize="13"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="6">
                     <Button x:Name="BtnMinimize" Content=" _ " Width="32" Height="26" Margin="0,0,4,0" Background="#1E1E38" Foreground="#94A3B8"/>
@@ -99,8 +93,8 @@ public class WinPulseNative {
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <StackPanel>
-                        <TextBlock Text="WINPULSE MASTER MEGA OPTIMIZER SUITE" FontSize="18" FontWeight="Bold" Foreground="#A78BFA"/>
-                        <TextBlock Text="SHX Tool V2 + ULTIMATEXPLUS + GOATX + ProjectX + Kin Over v2 (Pure Native WPF Engine)" FontSize="11" Foreground="#94A3B8" Margin="0,2,0,0"/>
+                        <TextBlock Text="WINPULSE MASTER GAMING SUITE" FontSize="18" FontWeight="Bold" Foreground="#A78BFA"/>
+                        <TextBlock Text="Ultra Low-Latency Windows &amp; Gaming Tweaks (Pure Native WPF Engine)" FontSize="11" Foreground="#94A3B8" Margin="0,2,0,0"/>
                     </StackPanel>
                     <Border Grid.Column="1" Background="#10B981" CornerRadius="12" Padding="12,5" VerticalAlignment="Center">
                         <TextBlock Text="SYSTEM READY" Foreground="#FFFFFF" FontWeight="Bold" FontSize="11"/>
@@ -118,9 +112,8 @@ public class WinPulseNative {
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="PRESETS:" Foreground="#F59E0B" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0" FontSize="11"/>
                     <Button x:Name="BtnPresetMaster" Content="🌟 MASTER PRESET (ALL-IN-ONE)" Background="#10B981" Margin="0,0,5,0"/>
-                    <Button x:Name="BtnPresetMegaTools" Content="🔥 MEGA TOOLS (SHX+GOATX+PROJECTX)" Background="#8B5CF6" Margin="0,0,5,0"/>
-                    <Button x:Name="BtnPresetHyper" Content="⚡ HYPER LATENCY PRO (MAX FPS)" Background="#EC4899" Margin="0,0,5,0"/>
-                    <Button x:Name="BtnPresetGaming" Content="🎮 GAMING &amp; LATENCY" Background="#7C3AED" Margin="0,0,5,0"/>
+                    <Button x:Name="BtnPresetApex" Content="⚡ APEX LATENCY PRO (MAX FPS)" Background="#EC4899" Margin="0,0,5,0"/>
+                    <Button x:Name="BtnPresetGaming" Content="🎮 COMPETITIVE GAMING &amp; PING" Background="#7C3AED" Margin="0,0,5,0"/>
                     <Button x:Name="BtnPresetClean" Content="🧹 CLEAN &amp; DEBLOAT" Background="#F43F5E" Margin="0,0,5,0"/>
                     <Button x:Name="BtnClearAll" Content="❌ Clear All" Background="#3A3A5A"/>
                 </StackPanel>
@@ -135,15 +128,15 @@ public class WinPulseNative {
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
 
-                <!-- Card 1: Gaming & Hyper Latency + SHX & ULTIMATEX -->
+                <!-- Card 1: Gaming & Input Lag -->
                 <Border Grid.Column="0" Background="#16162A" BorderBrush="#7C3AED" BorderThickness="1" CornerRadius="8" Padding="10" Margin="0,0,4,0">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel>
-                            <TextBlock Text="🎮 GAMING &amp; SHX / ULTIMATEX" Foreground="#7C3AED" FontWeight="Bold" FontSize="11" Margin="0,0,0,6"/>
-                            <CheckBox x:Name="chkSHXToolV2" Content="🔥 SHX &amp; ULTIMATEX (TimerRes=1, TDR=10, FSE)" IsChecked="True" Foreground="#A78BFA" FontWeight="Bold"/>
-                            <CheckBox x:Name="chkKinOverV2Keyboard" Content="⚡ Hyper-Latency Keyboard Speed (150/1/20)" IsChecked="True" Foreground="#F472B6"/>
-                            <CheckBox x:Name="chkKinOverV2Mouse" Content="⚡ Hyper-Latency Mouse 1:1 MarkC &amp; Zero Hover" IsChecked="True" Foreground="#F472B6"/>
-                            <CheckBox x:Name="chkKinOverV2Games" Content="⚡ Hyper-Latency GPU Priority 8 &amp; CPU 6" IsChecked="True" Foreground="#F472B6"/>
+                            <TextBlock Text="🎮 GAMING &amp; INPUT LATENCY" Foreground="#7C3AED" FontWeight="Bold" FontSize="11" Margin="0,0,0,6"/>
+                            <CheckBox x:Name="chkApexKeyboard" Content="⚡ Hyper-Precision Keyboard Response" IsChecked="True" Foreground="#F472B6" FontWeight="Bold"/>
+                            <CheckBox x:Name="chkApexMouse" Content="⚡ Ultra-Linear Mouse 1:1 MarkC &amp; Zero Delay" IsChecked="True" Foreground="#F472B6" FontWeight="Bold"/>
+                            <CheckBox x:Name="chkApexKernelPriority" Content="⚡ Kernel GPU Priority 8 &amp; CPU Priority 6" IsChecked="True" Foreground="#F472B6" FontWeight="Bold"/>
+                            <CheckBox x:Name="chkApexTimerTdr" Content="⚡ Global High-Res Timer 0.5ms &amp; GPU TDR" IsChecked="True" Foreground="#A78BFA" FontWeight="Bold"/>
                             <Separator Background="#2A2A4A" Margin="0,4"/>
                             <CheckBox x:Name="chkHAGS" Content="Enable GPU HAGS &amp; GameMode" IsChecked="True"/>
                             <CheckBox x:Name="chkMouse" Content="Disable Mouse Acceleration" IsChecked="True"/>
@@ -154,13 +147,13 @@ public class WinPulseNative {
                     </ScrollViewer>
                 </Border>
 
-                <!-- Card 2: Network & GOATX / ProjectX -->
+                <!-- Card 2: Network & Ultra Ping -->
                 <Border Grid.Column="1" Background="#16162A" BorderBrush="#38BDF8" BorderThickness="1" CornerRadius="8" Padding="10" Margin="3,0,3,0">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel>
-                            <TextBlock Text="🌐 NETWORK &amp; GOATX / PROJECTX" Foreground="#38BDF8" FontWeight="Bold" FontSize="11" Margin="0,0,0,6"/>
-                            <CheckBox x:Name="chkGOATXProjectX" Content="🔥 GOATX &amp; ProjectX (UWP Off, DNS TTL, Process Killer)" IsChecked="True" Foreground="#38BDF8" FontWeight="Bold"/>
-                            <CheckBox x:Name="chkTCPIPModified" Content="⚡ TCPIP 1 Modified (NoDelay=1, Ack=1, DelAck=0)" IsChecked="True" Foreground="#38BDF8"/>
+                            <TextBlock Text="🌐 NETWORK &amp; ULTRA PING" Foreground="#38BDF8" FontWeight="Bold" FontSize="11" Margin="0,0,0,6"/>
+                            <CheckBox x:Name="chkApexZeroDelayTCP" Content="⚡ Zero-Delay TCP Stream (TCPNoDelay=1)" IsChecked="True" Foreground="#38BDF8" FontWeight="Bold"/>
+                            <CheckBox x:Name="chkApexDNSBgApps" Content="⚡ Background App Purge &amp; DNS Cache TTL" IsChecked="True" Foreground="#38BDF8" FontWeight="Bold"/>
                             <Separator Background="#2A2A4A" Margin="0,4"/>
                             <CheckBox x:Name="chkNetwork" Content="Optimize TCP/IP CTCP Stack" IsChecked="True"/>
                             <CheckBox x:Name="chkCloudflareDNS" Content="Cloudflare DNS (1.1.1.1)" IsChecked="True"/>
@@ -201,7 +194,7 @@ public class WinPulseNative {
             </Grid>
 
             <!-- 5. Launch Button -->
-            <Button Grid.Row="5" x:Name="BtnLaunch" Content="⚡ APPLY UNIFIED MASTER PRESET NOW (SHX + GOATX + PROJECTX INCLUDED) ⚡"
+            <Button Grid.Row="5" x:Name="BtnLaunch" Content="⚡ APPLY UNIFIED MASTER PRESET NOW (APEX ULTRA INCLUDED) ⚡"
                     Height="42" Background="#7C3AED" Foreground="#FFFFFF" FontWeight="Bold" FontSize="13" Margin="0,0,0,8"/>
 
             <!-- 6. Progress Bar & Output Console Log -->
@@ -212,7 +205,7 @@ public class WinPulseNative {
                 </Grid.RowDefinitions>
                 <ProgressBar Grid.Row="0" x:Name="pbStatus" Height="6" Value="0" Minimum="0" Maximum="100" Foreground="#10B981" Background="#16162A" Margin="0,0,0,6"/>
                 <TextBox Grid.Row="1" x:Name="txtLog" IsReadOnly="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"
-                         Text="[SYSTEM] WinPulse Master Mega Optimizer Initialized (SHX + ULTIMATEX + GOATX + ProjectX). Click 'APPLY UNIFIED MASTER PRESET NOW'."/>
+                         Text="[SYSTEM] WinPulse Apex Ultra Optimizer Engine Initialized. Click 'APPLY UNIFIED MASTER PRESET NOW'."/>
             </Grid>
         </Grid>
     </Border>
@@ -228,8 +221,7 @@ $BtnMinimize = $window.FindName("BtnMinimize")
 $BtnClose = $window.FindName("BtnClose")
 
 $BtnPresetMaster = $window.FindName("BtnPresetMaster")
-$BtnPresetMegaTools = $window.FindName("BtnPresetMegaTools")
-$BtnPresetHyper = $window.FindName("BtnPresetHyper")
+$BtnPresetApex = $window.FindName("BtnPresetApex")
 $BtnPresetGaming = $window.FindName("BtnPresetGaming")
 $BtnPresetClean = $window.FindName("BtnPresetClean")
 $BtnClearAll = $window.FindName("BtnClearAll")
@@ -240,9 +232,9 @@ $txtLog = $window.FindName("txtLog")
 
 # Checkboxes List
 $checkBoxNames = @(
-    "chkRestorePoint", "chkSHXToolV2", "chkGOATXProjectX",
-    "chkKinOverV2Keyboard", "chkKinOverV2Mouse", "chkKinOverV2Games",
-    "chkTCPIPModified", "chkNetwork", "chkCloudflareDNS", "chkOptimalMTU", "chkAdvancedTCPUDP",
+    "chkRestorePoint", "chkApexTimerTdr", "chkApexDNSBgApps",
+    "chkApexKeyboard", "chkApexMouse", "chkApexKernelPriority",
+    "chkApexZeroDelayTCP", "chkNetwork", "chkCloudflareDNS", "chkOptimalMTU", "chkAdvancedTCPUDP",
     "chkHAGS", "chkMouse", "chkInputLag", "chkPower", "chkMemory",
     "chkRemoveOneDrive", "chkDebloat", "chkClean", "chkWinUpdate",
     "chkChrome", "chk7Zip", "chkVSCode", "chkGit", "chkDiscord",
@@ -287,34 +279,25 @@ $BtnClose.Add_Click({
 # Preset Toolbar Events
 $BtnPresetMaster.Add_Click({
     Set-AllCheckboxes $true
-    Write-WpfLog "[PRESET] Unified Master Preset (All-in-One Mega Tools) selected."
+    Write-WpfLog "[PRESET] Unified Master Preset (Apex Ultra Suite) selected."
 })
 
-$BtnPresetMegaTools.Add_Click({
+$BtnPresetApex.Add_Click({
     Set-AllCheckboxes $false
-    @("chkRestorePoint", "chkSHXToolV2", "chkGOATXProjectX", "chkKinOverV2Keyboard", "chkKinOverV2Mouse", "chkKinOverV2Games", "chkTCPIPModified", "chkHAGS", "chkMouse", "chkInputLag", "chkPower", "chkNetwork", "chkCloudflareDNS", "chkDarkMode") | ForEach-Object {
+    @("chkRestorePoint", "chkApexTimerTdr", "chkApexDNSBgApps", "chkApexKeyboard", "chkApexMouse", "chkApexKernelPriority", "chkApexZeroDelayTCP", "chkHAGS", "chkMouse", "chkInputLag", "chkPower", "chkNetwork", "chkCloudflareDNS", "chkDarkMode") | ForEach-Object {
         $cb = $window.FindName($_)
         if ($cb) { $cb.IsChecked = $true }
     }
-    Write-WpfLog "[PRESET] Mega Tools Suite (SHX + ULTIMATEX + GOATX + ProjectX) selected."
-})
-
-$BtnPresetHyper.Add_Click({
-    Set-AllCheckboxes $false
-    @("chkRestorePoint", "chkKinOverV2Keyboard", "chkKinOverV2Mouse", "chkKinOverV2Games", "chkTCPIPModified", "chkHAGS", "chkMouse", "chkInputLag", "chkPower", "chkMemory", "chkNetwork", "chkCloudflareDNS", "chkDarkMode", "chkClassicMenu") | ForEach-Object {
-        $cb = $window.FindName($_)
-        if ($cb) { $cb.IsChecked = $true }
-    }
-    Write-WpfLog "[PRESET] Hyper Latency Pro (Max FPS) Preset selected."
+    Write-WpfLog "[PRESET] Apex Latency Pro (Max FPS) Preset selected."
 })
 
 $BtnPresetGaming.Add_Click({
     Set-AllCheckboxes $false
-    @("chkRestorePoint", "chkTCPIPModified", "chkHAGS", "chkMouse", "chkInputLag", "chkPower", "chkMemory", "chkNetwork", "chkCloudflareDNS", "chkOptimalMTU", "chkAdvancedTCPUDP", "chkDarkMode", "chkClassicMenu") | ForEach-Object {
+    @("chkRestorePoint", "chkApexZeroDelayTCP", "chkHAGS", "chkMouse", "chkInputLag", "chkPower", "chkMemory", "chkNetwork", "chkCloudflareDNS", "chkOptimalMTU", "chkAdvancedTCPUDP", "chkDarkMode", "chkClassicMenu") | ForEach-Object {
         $cb = $window.FindName($_)
         if ($cb) { $cb.IsChecked = $true }
     }
-    Write-WpfLog "[PRESET] Gaming & Low-Latency Preset selected."
+    Write-WpfLog "[PRESET] Competitive Gaming & Ping Preset selected."
 })
 
 $BtnPresetClean.Add_Click({
@@ -337,7 +320,7 @@ $BtnLaunch.Add_Click({
     $BtnLaunch.Content = "⏳ EXECUTING REAL POWERSHELL PIPELINE..."
     
     $logFilePath = Join-Path $env:TEMP "WinPulse_Execution.log"
-    "=== WinPulse PRO Native WPF Execution Log (Mega Tools Suite) Started at $(Get-Date) ===" | Out-File -FilePath $logFilePath -Encoding utf8
+    "=== WinPulse PRO Native WPF Execution Log (Apex Ultra Engine) Started at $(Get-Date) ===" | Out-File -FilePath $logFilePath -Encoding utf8
 
     function Exec-Command($desc, $scriptBlock) {
         Write-WpfLog "[EXEC] Executing: $desc"
@@ -369,14 +352,14 @@ $BtnLaunch.Add_Click({
 
     # Read Checkbox States
     $chkRestorePointVal = ($window.FindName("chkRestorePoint")).IsChecked
-    $chkSHXToolV2Val = ($window.FindName("chkSHXToolV2")).IsChecked
-    $chkGOATXProjectXVal = ($window.FindName("chkGOATXProjectX")).IsChecked
+    $chkApexTimerTdrVal = ($window.FindName("chkApexTimerTdr")).IsChecked
+    $chkApexDNSBgAppsVal = ($window.FindName("chkApexDNSBgApps")).IsChecked
 
-    $chkKinOverV2KeyboardVal = ($window.FindName("chkKinOverV2Keyboard")).IsChecked
-    $chkKinOverV2MouseVal = ($window.FindName("chkKinOverV2Mouse")).IsChecked
-    $chkKinOverV2GamesVal = ($window.FindName("chkKinOverV2Games")).IsChecked
+    $chkApexKeyboardVal = ($window.FindName("chkApexKeyboard")).IsChecked
+    $chkApexMouseVal = ($window.FindName("chkApexMouse")).IsChecked
+    $chkApexKernelPriorityVal = ($window.FindName("chkApexKernelPriority")).IsChecked
 
-    $chkTCPIPModifiedVal = ($window.FindName("chkTCPIPModified")).IsChecked
+    $chkApexZeroDelayTCPVal = ($window.FindName("chkApexZeroDelayTCP")).IsChecked
     $chkNetworkVal = ($window.FindName("chkNetwork")).IsChecked
     $chkCloudflareDNSVal = ($window.FindName("chkCloudflareDNS")).IsChecked
     $chkOptimalMTUVal = ($window.FindName("chkOptimalMTU")).IsChecked
@@ -412,9 +395,9 @@ $BtnLaunch.Add_Click({
     }
     Set-WpfProgress 10
 
-    # 1. SHX TOOL V2 & ULTIMATEXPLUS+ ENGINE
-    if ($chkSHXToolV2Val) {
-        Exec-Command "SHX TOOL V2 & ULTIMATEXPLUS+: High-Res Timer=1, TDR Delay=10, Fullscreen Exclusive Forced" {
+    # 1. APEX TIMER & GPU TDR TUNING
+    if ($chkApexTimerTdrVal) {
+        Exec-Command "Apex Ultra: Global High-Res Timer 0.5ms & GPU TDR Delay Tuning" {
             $kernelPath = "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\kernel"
             if (-not (Test-Path $kernelPath)) { New-Item -Path $kernelPath -Force | Out-Null }
             Set-ItemProperty -Path $kernelPath -Name "GlobalTimerResolutionRequests" -Value 1 -Type DWORD -Force
@@ -440,23 +423,20 @@ $BtnLaunch.Add_Click({
         }
     }
 
-    # 2. GOATX & PROJECTX ENGINE
-    if ($chkGOATXProjectXVal) {
-        Exec-Command "GOATX & ProjectX: Background App Killer, DNS Negative Cache=0, GlobalMaxTcpWindowSize=131072" {
-            # Close Heavy Background Apps
+    # 2. APEX PROCESS PURGE & DNS CACHE
+    if ($chkApexDNSBgAppsVal) {
+        Exec-Command "Apex Ultra: Background App Purge & DNS Negative Cache Off" {
             $heavyApps = @("OneDrive", "Skype", "Teams", "XboxAppServices", "YourPhone", "SteamWebHelper", "Copilot")
             foreach ($app in $heavyApps) {
                 Stop-Process -Name $app -Force -ErrorAction SilentlyContinue
             }
 
-            # Flush DNS & Tune Cache
             ipconfig /flushdns | Out-Null
             $dnsCachePath = "HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters"
             if (-not (Test-Path $dnsCachePath)) { New-Item -Path $dnsCachePath -Force | Out-Null }
             Set-ItemProperty -Path $dnsCachePath -Name "MaxCacheTtl" -Value 3600 -Type DWORD -Force
             Set-ItemProperty -Path $dnsCachePath -Name "MaxNegativeCacheTtl" -Value 0 -Type DWORD -Force
 
-            # Tcpip Window Size & TCPA
             $tcpParamPath = "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters"
             if (-not (Test-Path $tcpParamPath)) { New-Item -Path $tcpParamPath -Force | Out-Null }
             Set-ItemProperty -Path $tcpParamPath -Name "EnableTCPA" -Value 0 -Type DWORD -Force
@@ -465,9 +445,9 @@ $BtnLaunch.Add_Click({
     }
     Set-WpfProgress 25
 
-    # 3. TCPIP 1 MODIFIED NETWORK TWEAKS
-    if ($chkTCPIPModifiedVal) {
-        Exec-Command "TCPIP 1 Modified Low-Latency Registry Tuning (TCPNoDelay=1, TcpAckFreq=1, DelAckTicks=0)" {
+    # 3. ZERO DELAY TCP NETWORK TWEAKS
+    if ($chkApexZeroDelayTCPVal) {
+        Exec-Command "Apex Ultra: Zero-Delay TCP Stream Tuning (TCPNoDelay=1, TcpAckFreq=1, DelAckTicks=0)" {
             $tcpParamPath = "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters"
             if (-not (Test-Path $tcpParamPath)) { New-Item -Path $tcpParamPath -Force | Out-Null }
             Set-ItemProperty -Path $tcpParamPath -Name "TcpMaxConnectRetransmissions" -Value 1 -Type DWORD -Force
@@ -498,9 +478,9 @@ $BtnLaunch.Add_Click({
         }
     }
 
-    # 4. HYPER LATENCY PRO SPECIAL TWEAKS
-    if ($chkKinOverV2KeyboardVal) {
-        Exec-Command "Hyper Latency Pro: Keyboard Delay & Queue Tuning (Speed=150, Delay=1, Queue=20)" {
+    # 4. HYPER-PRECISION KEYBOARD & MOUSE TWEAKS
+    if ($chkApexKeyboardVal) {
+        Exec-Command "Apex Ultra: Hyper-Precision Keyboard Response (Speed=150, Delay=1, Queue=20)" {
             if (-not (Test-Path "HKCU:\Control Panel\Keyboard")) { New-Item -Path "HKCU:\Control Panel\Keyboard" -Force | Out-Null }
             Set-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "InitialKeyboardIndicators" -Value "0" -Type String -Force
             Set-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "KeyboardDelay" -Value "1" -Type String -Force
@@ -514,8 +494,8 @@ $BtnLaunch.Add_Click({
         }
     }
 
-    if ($chkKinOverV2MouseVal) {
-        Exec-Command "Hyper Latency Pro: Mouse 1:1 Curves & MouseKeys Acceleration" {
+    if ($chkApexMouseVal) {
+        Exec-Command "Apex Ultra: Ultra-Linear Mouse 1:1 MarkC Curves & Zero Delay" {
             if (-not (Test-Path "HKCU:\Control Panel\Mouse")) { New-Item -Path "HKCU:\Control Panel\Mouse" -Force | Out-Null }
             Set-ItemProperty -Path "HKCU:\Control Panel\Mouse" -Name "MouseSensitivity" -Value "10" -Type String -Force
             Set-ItemProperty -Path "HKCU:\Control Panel\Mouse" -Name "MouseHoverTime" -Value "0" -Type String -Force
@@ -538,8 +518,8 @@ $BtnLaunch.Add_Click({
         }
     }
 
-    if ($chkKinOverV2GamesVal) {
-        Exec-Command "Hyper Latency Pro: GPU Priority=8, Priority=6, SystemResponsiveness=0" {
+    if ($chkApexKernelPriorityVal) {
+        Exec-Command "Apex Ultra: Kernel GPU Priority=8 & CPU Priority=6" {
             $taskGamesPath = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games"
             if (-not (Test-Path $taskGamesPath)) { New-Item -Path $taskGamesPath -Force | Out-Null }
             Set-ItemProperty -Path $taskGamesPath -Name "GPU Priority" -Value 8 -Type DWORD -Force
@@ -706,7 +686,7 @@ $BtnLaunch.Add_Click({
     }
 
     Set-WpfProgress 100
-    Write-WpfLog "[🎉 COMPLETE 100%] WinPulse PRO v3.0 Mega Tools Suite Finished!"
+    Write-WpfLog "[🎉 COMPLETE 100%] WinPulse PRO v3.0 Apex Ultra Engine Finished!"
     Write-WpfLog "Full log saved to: $logFilePath"
 
     $BtnLaunch.Content = "[OK] UNIFIED MASTER PRESET APPLIED SUCCESSFULLY"
