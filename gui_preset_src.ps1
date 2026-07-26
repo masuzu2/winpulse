@@ -2,14 +2,8 @@
 .SYNOPSIS
     WinPulse PRO v3.0 - Ultimate Cyberpunk System & Gaming Optimizer (Pure WPF XAML Engine)
 .DESCRIPTION
-    Chris Titus WinUtil Style Native WPF Architecture with 100% Verified Production Commands.
-    Includes Full Chris Titus Tech WinUtil + Apex Gaming Engine Feature Suite:
-    - Chris Titus WinUtil System Tweaks (Telemetry Off, Sticky Keys Off, Hibernation Off, Bing Search Off, Location Off, Services Manual/Disabled)
-    - WinUtil Windows Update Block Driver Overwrites & Delay Upgrades
-    - WinUtil UI Tweaks (Show File Ext, Dark Mode, Classic Context Menu, Widgets Off, Cortana Off)
-    - Apex Gaming Engine (GlobalTimerResolutionRequests=1, TdrDelay=10, FSE Mode Forced, BackgroundAccess=Off)
-    - Zero-Delay Network (TCPNoDelay=1, TcpAckFrequency=1, TcpDelAckTicks=0, CTCP Stack, Cloudflare DNS 1.1.1.1)
-    - Hyper-Precision Input Lag (KeyboardSpeed=150, Mouse 1:1 MarkC, GPU Priority=8, CPU Priority=6)
+    Native WPF Architecture with 100% Verified Production Commands.
+    Unified Apex Gaming & System Optimization Engine.
 #>
 
 Add-Type -AssemblyName PresentationFramework
@@ -32,7 +26,7 @@ public class WinPulseNative {
 [xml]$xaml = @"
 <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="WinPulse PRO Master Suite v3.0 [Chris Titus WinUtil + Apex Edition]" Height="840" Width="1140"
+        Title="WinPulse PRO Master Suite v3.0 [Apex Ultra Edition]" Height="840" Width="1140"
         WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True"
         Background="#0B0B1A" Foreground="#E2E8F0" FontFamily="Segoe UI">
 
@@ -83,7 +77,7 @@ public class WinPulseNative {
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,6">
-                    <TextBlock Text="⚡ WINPULSE OPTIMIZER PRO v3.0 [CHRIS TITUS WINUTIL + APEX SUITE]" Foreground="#A78BFA" FontWeight="Bold" FontSize="13"/>
+                    <TextBlock Text="⚡ WINPULSE OPTIMIZER PRO v3.0 [APEX ULTRA ENGINE]" Foreground="#A78BFA" FontWeight="Bold" FontSize="13"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="6">
                     <Button x:Name="BtnMinimize" Content=" _ " Width="32" Height="26" Margin="0,0,4,0" Background="#1E1E38" Foreground="#94A3B8"/>
@@ -100,7 +94,7 @@ public class WinPulseNative {
                     </Grid.ColumnDefinitions>
                     <StackPanel>
                         <TextBlock Text="WINPULSE MASTER GAMING SUITE" FontSize="18" FontWeight="Bold" Foreground="#A78BFA"/>
-                        <TextBlock Text="Chris Titus WinUtil Engine + Ultra Low-Latency Gaming Tweaks (Pure Native WPF Engine)" FontSize="11" Foreground="#94A3B8" Margin="0,2,0,0"/>
+                        <TextBlock Text="Ultra Low-Latency Windows &amp; Gaming Tweaks (Pure Native WPF Engine)" FontSize="11" Foreground="#94A3B8" Margin="0,2,0,0"/>
                     </StackPanel>
                     <Border Grid.Column="1" Background="#10B981" CornerRadius="12" Padding="12,5" VerticalAlignment="Center">
                         <TextBlock Text="SYSTEM READY" Foreground="#FFFFFF" FontWeight="Bold" FontSize="11"/>
@@ -120,7 +114,7 @@ public class WinPulseNative {
                     <Button x:Name="BtnPresetMaster" Content="🌟 MASTER PRESET (ALL-IN-ONE)" Background="#10B981" Margin="0,0,5,0"/>
                     <Button x:Name="BtnPresetApex" Content="⚡ APEX LATENCY PRO (MAX FPS)" Background="#EC4899" Margin="0,0,5,0"/>
                     <Button x:Name="BtnPresetGaming" Content="🎮 COMPETITIVE GAMING &amp; PING" Background="#7C3AED" Margin="0,0,5,0"/>
-                    <Button x:Name="BtnPresetWinUtil" Content="⚙️ CHRIS TITUS WINUTIL ESSENTIALS" Background="#0EA5E9" Margin="0,0,5,0"/>
+                    <Button x:Name="BtnPresetEssentials" Content="⚙️ SYSTEM ESSENTIALS &amp; DEBLOAT" Background="#0EA5E9" Margin="0,0,5,0"/>
                     <Button x:Name="BtnPresetClean" Content="🧹 CLEAN &amp; DEBLOAT" Background="#F43F5E" Margin="0,0,5,0"/>
                     <Button x:Name="BtnClearAll" Content="❌ Clear All" Background="#3A3A5A"/>
                 </StackPanel>
@@ -171,7 +165,7 @@ public class WinPulseNative {
                     </ScrollViewer>
                 </Border>
 
-                <!-- Card 3: Debloat & Purge (WinUtil Engine) -->
+                <!-- Card 3: Debloat & Purge -->
                 <Border Grid.Column="2" Background="#16162A" BorderBrush="#F43F5E" BorderThickness="1" CornerRadius="8" Padding="10" Margin="3,0,3,0">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel>
@@ -181,12 +175,12 @@ public class WinPulseNative {
                             <CheckBox x:Name="chkDisableHibernation" Content="Disable Hibernation (Free Disk Space)" IsChecked="True"/>
                             <CheckBox x:Name="chkDisableLocation" Content="Disable Location &amp; Maps Tracking" IsChecked="True"/>
                             <CheckBox x:Name="chkClean" Content="Purge Temp &amp; System Cache" IsChecked="True"/>
-                            <CheckBox x:Name="chkWinUpdate" Content="Block Driver Overwrites via WinUpdate" IsChecked="True"/>
+                            <CheckBox x:Name="chkWinUpdate" Content="Block Driver Overwrites via Windows Update" IsChecked="True"/>
                         </StackPanel>
                     </ScrollViewer>
                 </Border>
 
-                <!-- Card 4: Apps & UI Tweaks (WinUtil Engine) -->
+                <!-- Card 4: Apps & UI Tweaks -->
                 <Border Grid.Column="3" Background="#16162A" BorderBrush="#F59E0B" BorderThickness="1" CornerRadius="8" Padding="10" Margin="4,0,0,0">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel>
@@ -207,7 +201,7 @@ public class WinPulseNative {
             </Grid>
 
             <!-- 5. Launch Button -->
-            <Button Grid.Row="5" x:Name="BtnLaunch" Content="⚡ APPLY UNIFIED MASTER PRESET NOW (WINUTIL + APEX INCLUDED) ⚡"
+            <Button Grid.Row="5" x:Name="BtnLaunch" Content="⚡ APPLY UNIFIED MASTER PRESET NOW (APEX ULTRA ENGINE) ⚡"
                     Height="42" Background="#7C3AED" Foreground="#FFFFFF" FontWeight="Bold" FontSize="13" Margin="0,0,0,8"/>
 
             <!-- 6. Progress Bar & Output Console Log -->
@@ -218,7 +212,7 @@ public class WinPulseNative {
                 </Grid.RowDefinitions>
                 <ProgressBar Grid.Row="0" x:Name="pbStatus" Height="6" Value="0" Minimum="0" Maximum="100" Foreground="#10B981" Background="#16162A" Margin="0,0,0,6"/>
                 <TextBox Grid.Row="1" x:Name="txtLog" IsReadOnly="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"
-                         Text="[SYSTEM] WinPulse Chris Titus WinUtil + Apex Engine Initialized. Click 'APPLY UNIFIED MASTER PRESET NOW'."/>
+                         Text="[SYSTEM] WinPulse Apex Ultra Optimizer Engine Initialized. Click 'APPLY UNIFIED MASTER PRESET NOW'."/>
             </Grid>
         </Grid>
     </Border>
@@ -236,7 +230,7 @@ $BtnClose = $window.FindName("BtnClose")
 $BtnPresetMaster = $window.FindName("BtnPresetMaster")
 $BtnPresetApex = $window.FindName("BtnPresetApex")
 $BtnPresetGaming = $window.FindName("BtnPresetGaming")
-$BtnPresetWinUtil = $window.FindName("BtnPresetWinUtil")
+$BtnPresetEssentials = $window.FindName("BtnPresetEssentials")
 $BtnPresetClean = $window.FindName("BtnPresetClean")
 $BtnClearAll = $window.FindName("BtnClearAll")
 
@@ -293,7 +287,7 @@ $BtnClose.Add_Click({
 # Preset Toolbar Events
 $BtnPresetMaster.Add_Click({
     Set-AllCheckboxes $true
-    Write-WpfLog "[PRESET] Unified Master Preset (Chris Titus WinUtil + Apex Suite) selected."
+    Write-WpfLog "[PRESET] Unified Master Preset (Apex Ultra Suite) selected."
 })
 
 $BtnPresetApex.Add_Click({
@@ -314,13 +308,13 @@ $BtnPresetGaming.Add_Click({
     Write-WpfLog "[PRESET] Competitive Gaming & Ping Preset selected."
 })
 
-$BtnPresetWinUtil.Add_Click({
+$BtnPresetEssentials.Add_Click({
     Set-AllCheckboxes $false
     @("chkRestorePoint", "chkRemoveOneDrive", "chkDebloat", "chkDisableHibernation", "chkDisableLocation", "chkClean", "chkWinUpdate", "chkStickyKeys", "chkShowExt", "chkDarkMode", "chkClassicMenu", "chkDisableBingSearch") | ForEach-Object {
         $cb = $window.FindName($_)
         if ($cb) { $cb.IsChecked = $true }
     }
-    Write-WpfLog "[PRESET] Chris Titus WinUtil Essentials selected."
+    Write-WpfLog "[PRESET] System Essentials & Debloat selected."
 })
 
 $BtnPresetClean.Add_Click({
@@ -343,7 +337,7 @@ $BtnLaunch.Add_Click({
     $BtnLaunch.Content = "⏳ EXECUTING REAL POWERSHELL PIPELINE..."
     
     $logFilePath = Join-Path $env:TEMP "WinPulse_Execution.log"
-    "=== WinPulse PRO Native WPF Execution Log (Chris Titus WinUtil Engine) Started at $(Get-Date) ===" | Out-File -FilePath $logFilePath -Encoding utf8
+    "=== WinPulse PRO Native WPF Execution Log (Apex Ultra Engine) Started at $(Get-Date) ===" | Out-File -FilePath $logFilePath -Encoding utf8
 
     function Exec-Command($desc, $scriptBlock) {
         Write-WpfLog "[EXEC] Executing: $desc"
@@ -562,7 +556,7 @@ $BtnLaunch.Add_Click({
     }
     Set-WpfProgress 45
 
-    # 5. HAGS & Game Mode & Sticky Keys (WinUtil)
+    # 5. HAGS & Game Mode & Sticky Keys
     if ($chkHAGSVal) {
         Exec-Command "Enable GPU HAGS & Game Mode" {
             if (-not (Test-Path "HKLM:\SYSTEM\CurrentControlSet\Control\GraphicsDrivers")) { New-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" -Force | Out-Null }
@@ -581,7 +575,7 @@ $BtnLaunch.Add_Click({
         }
     }
     if ($chkStickyKeysVal) {
-        Exec-Command "WinUtil: Disable Sticky Keys Popups" {
+        Exec-Command "Disable Sticky Keys Popups" {
             if (-not (Test-Path "HKCU:\Control Panel\Accessibility\StickyKeys")) { New-Item -Path "HKCU:\Control Panel\Accessibility\StickyKeys" -Force | Out-Null }
             Set-ItemProperty -Path "HKCU:\Control Panel\Accessibility\StickyKeys" -Name "Flags" -Value "506" -Type String -Force
             if (-not (Test-Path "HKCU:\Control Panel\Accessibility\Keyboard Response")) { New-Item -Path "HKCU:\Control Panel\Accessibility\Keyboard Response" -Force | Out-Null }
@@ -645,7 +639,7 @@ $BtnLaunch.Add_Click({
     }
     Set-WpfProgress 75
 
-    # 7. Debloat & Purge (WinUtil Features)
+    # 7. Debloat & Purge
     if ($chkRemoveOneDriveVal) {
         Exec-Command "Uninstall OneDrive & Bloat" {
             Stop-Process -Name "OneDrive" -Force -ErrorAction SilentlyContinue
@@ -670,12 +664,12 @@ $BtnLaunch.Add_Click({
         }
     }
     if ($chkDisableHibernationVal) {
-        Exec-Command "WinUtil: Disable Hibernation (powercfg /h off)" {
+        Exec-Command "Disable Hibernation (powercfg /h off)" {
             powercfg /h off
         }
     }
     if ($chkDisableLocationVal) {
-        Exec-Command "WinUtil: Disable Geolocation & Maps Tracking" {
+        Exec-Command "Disable Geolocation & Maps Tracking" {
             Set-Service -Name "MapsBroker" -StartupType Disabled -ErrorAction SilentlyContinue
             Stop-Service -Name "MapsBroker" -Force -ErrorAction SilentlyContinue
             Set-Service -Name "lfsvc" -StartupType Disabled -ErrorAction SilentlyContinue
@@ -698,7 +692,7 @@ $BtnLaunch.Add_Click({
     }
     Set-WpfProgress 85
 
-    # 8. Software via Winget (WinUtil App Installer)
+    # 8. Software via Winget
     $apps = @(
         @{ Check = $chkChromeVal; ID = "Google.Chrome"; Name = "Google Chrome" },
         @{ Check = $chk7ZipVal; ID = "7zip.7zip"; Name = "7-Zip" },
@@ -714,7 +708,7 @@ $BtnLaunch.Add_Click({
         }
     }
 
-    # 9. UI Tweaks (WinUtil Customizations)
+    # 9. UI Tweaks
     if ($chkShowExtVal) {
         Exec-Command "Show File Extensions & Hidden Files" {
             Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Value 0 -Type DWORD -Force
@@ -735,7 +729,7 @@ $BtnLaunch.Add_Click({
         }
     }
     if ($chkDisableBingSearchVal) {
-        Exec-Command "WinUtil: Disable Bing Search in Start Menu & Cortana" {
+        Exec-Command "Disable Bing Search in Start Menu & Cortana" {
             if (-not (Test-Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search")) { New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search" -Force | Out-Null }
             Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search" -Name "BingSearchEnabled" -Value 0 -Type DWORD -Force
             if (-not (Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search")) { New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search" -Force | Out-Null }
@@ -745,7 +739,7 @@ $BtnLaunch.Add_Click({
     }
 
     Set-WpfProgress 100
-    Write-WpfLog "[🎉 COMPLETE 100%] WinPulse PRO v3.0 Chris Titus WinUtil Engine Finished!"
+    Write-WpfLog "[🎉 COMPLETE 100%] WinPulse PRO v3.0 Apex Ultra Engine Finished!"
     Write-WpfLog "Full log saved to: $logFilePath"
 
     $BtnLaunch.Content = "[OK] UNIFIED MASTER PRESET APPLIED SUCCESSFULLY"
