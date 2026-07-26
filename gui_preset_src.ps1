@@ -847,12 +847,18 @@ public class WinPulseEngineBridge {
     $window.ShowDialog() | Out-Null
 }
 
-# STA Apartment State guarantee for WPF Window
-if ([System.Threading.Thread]::CurrentThread.GetApartmentState() -ne 'STA') {
-    $staThread = New-Object System.Threading.Thread($guiScriptBlock)
-    $staThread.SetApartmentState([System.Threading.ApartmentState]::STA)
-    $staThread.Start()
-    $staThread.Join()
+# Ensure WPF assemblies are loaded in primary scope
+Add-Type -AssemblyName PresentationFramework -ErrorAction SilentlyContinue
+Add-Type -AssemblyName System.Windows.Forms -ErrorAction SilentlyContinue
+
+# Execute WPF GUI Block in STA Mode
+if ([System.Threading.Thread]::CurrentThread.GetApartmentState() -ne [System.Threading.ApartmentState]::STA) {
+    $powershell = [System.Management.Automation.PowerShell]::Create()
+    $powershell.Runspace.ApartmentState = [System.Threading.ApartmentState]::STA
+    $powershell.AddScript($guiScriptBlock) | Out-Null
+    $powershell.Invoke() | Out-Null
+    $powershell.Dispose()
 } else {
-    Invoke-Command -ScriptBlock $guiScriptBlock
+    & $guiScriptBlock
 }
+
