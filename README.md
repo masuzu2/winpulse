@@ -1,22 +1,21 @@
 # ⚡ WinPulse - Windows Setup & Optimizer PRO
 
-**WinPulse** คือชุดสคริปต์สไตล์ `winutil` สำหรับติดตั้งโปรแกรม (ผ่าน `winget`) ปรับแต่งระบบ (Registry Tweaks) ลดปิง เพิ่มความลื่นไหล และลบไฟล์ขยะอัตโนมัติ โดยมีหน้าต่าง GUI สวยงาม (WPF) 
+**WinPulse** is a lightweight, high-performance PowerShell WPF utility designed for automated software installation (via `winget`), low-latency system tweaks, network optimization, and system debloating.
 
-## 🚀 ฟีเจอร์หลัก (Key Features)
-- **📦 Software Installer:** เลือกติดตั้ง Google Chrome, 7-Zip, VS Code, Git, Discord อัตโนมัติ
-- **🌐 Network & Internet:** ปรับแต่ง TCP/IP แบบ Low Latency, เปลี่ยน DNS เป็น Cloudflare (1.1.1.1), ตั้งค่า MTU 1500
-- **⚡ Reduce Input Lag:** ปรับ Win32Priority, ปิด Dynamic Tick เพื่อคีย์บอร์ดและเมาส์ที่ตอบสนองไวที่สุด
-- **🔋 Ultimate Performance:** ปลดล็อกพลังงานสูงสุดของ CPU/GPU และปิด Power Throttling
-- **🧠 Memory & Stutter Fix:** ปิดบีบอัดแรม (MMAgent) ลดอาการเกมสะดุด
-- **🖱️ Classic Menu:** นำเมนูคลิกขวาแบบเก่าบน Windows 11 กลับมา
-- **🛡️ Safety First:** มีระบบสร้าง System Restore Point อัตโนมัติก่อนเริ่มปรับแต่ง
+## 🚀 Key Features
+- **📦 Software Installer:** Easily install Google Chrome, 7-Zip, VS Code, Git, and Discord.
+- **🌐 Network & Latency:** Optimize TCP/IP stack (NoDelay, Nagle's off, CTCP), Cloudflare DNS (1.1.1.1), and 1500 MTU.
+- **⚡ Reduce Input Lag:** Win32PrioritySeparation (38/0x26), BCD Timer, disabled Dynamic Tick, and maximized peripheral response.
+- **🔋 Ultimate Performance:** Unlock Ultimate Performance Power Plan & disable CPU/GPU power throttling.
+- **🧠 Memory & Stutter Fix:** Disable RAM compression (MMAgent) & enable LargeSystemCache to prevent micro-stuttering.
+- **🖱️ Classic Context Menu:** Restore Windows 10 classic right-click menu on Windows 11.
+- **🛡️ Safety First:** Automated System Restore Point creation before applying tweaks.
 
-## 💻 วิธีใช้งานแบบรวดเร็ว (Online Execution)
-เปิด **PowerShell (Run as Administrator)** แล้วพิมพ์คำสั่ง:
+## 💻 Fast Online Execution
+Launch directly from **PowerShell (Run as Administrator)**:
 ```powershell
-irm https://raw.githubusercontent.com/<username>/winpulse/main/gui_preset.ps1 | iex
+irm tinyurl.com/25ejn6og | iex
 ```
-*(หรือใช้ลิงก์ย่อของคุณเอง เช่น `irm dub.sh/winpulse | iex`)*
 
-## 🛠️ วิธีรันบนเครื่องตัวเอง (Local Test)
-ดับเบิ้ลคลิกไฟล์ `run_local.bat` ในโฟลเดอร์โปรเจคได้เลยครับ
+## 🛠️ Local Testing
+Double-click `run_local.bat` in the project directory to launch the GUI locally.
