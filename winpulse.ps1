@@ -1,23 +1,24 @@
+try { [Console]::OutputEncoding = [System.Text.Encoding]::UTF8 } catch {}
 Clear-Host
 $osName = (Get-CimInstance Win32_OperatingSystem -ErrorAction SilentlyContinue).Caption
 if (-not $osName) { $osName = "Windows Operating System" }
 $compName = $env:COMPUTERNAME
 
 Write-Host ""
-Write-Host "   โ–โ–โ•—  โ–โ–โ•—โ–โ–โ•—โ–โ–โ–โ•—   โ–โ–โ•—โ–โ–โ–โ–โ–โ–โ•— โ–โ–โ•—   โ–โ–โ•—โ–โ–โ•—     โ–โ–โ–โ–โ–โ–โ–โ•—โ–โ–โ–โ–โ–โ–โ–โ•—" -ForegroundColor Cyan
-Write-Host "   โ–โ–โ•‘  โ–โ–โ•‘โ–โ–โ•‘โ–โ–โ–โ–โ•—  โ–โ–โ•‘โ–โ–โ•”โ•โ•โ–โ–โ•—โ–โ–โ•‘   โ–โ–โ•‘โ–โ–โ•‘     โ–โ–โ•”โ•โ•โ•โ•โ•โ–โ–โ•”โ•โ•โ•โ•โ•" -ForegroundColor Cyan
-Write-Host "   โ–โ–โ–โ–โ–โ–โ–โ•‘โ–โ–โ•‘โ–โ–โ•”โ–โ–โ•— โ–โ–โ•‘โ–โ–โ–โ–โ–โ–โ•”โ•โ–โ–โ•‘   โ–โ–โ•‘โ–โ–โ•‘     โ–โ–โ–โ–โ–โ–โ–โ•—โ–โ–โ–โ–โ–โ•—  " -ForegroundColor Magenta
-Write-Host "   โ–โ–โ•”โ•โ•โ–โ–โ•‘โ–โ–โ•‘โ–โ–โ•‘โ•โ–โ–โ•—โ–โ–โ•‘โ–โ–โ•”โ•โ•โ•โ• โ–โ–โ•‘   โ–โ–โ•‘โ–โ–โ•‘     โ•โ•โ•โ•โ•โ–โ–โ•‘โ–โ–โ•”โ•โ•โ•  " -ForegroundColor Blue
-Write-Host "   โ–โ–โ•‘  โ–โ–โ•‘โ–โ–โ•‘โ–โ–โ•‘ โ•โ–โ–โ–โ–โ•‘โ–โ–โ•‘     โ•โ–โ–โ–โ–โ–โ–โ•”โ•โ–โ–โ–โ–โ–โ–โ–โ•—โ–โ–โ–โ–โ–โ–โ–โ•‘โ–โ–โ–โ–โ–โ–โ–โ•—" -ForegroundColor Blue
-Write-Host "   โ•โ•โ•  โ•โ•โ•โ•โ•โ•โ•โ•โ•  โ•โ•โ•โ•โ•โ•โ•โ•      โ•โ•โ•โ•โ•โ•โ• โ•โ•โ•โ•โ•โ•โ•โ•โ•โ•โ•โ•โ•โ•โ•โ•โ•โ•โ•โ•โ•โ•โ•โ•" -ForegroundColor DarkCyan
+Write-Host "   __      __.__          __________dWxzZQ==" -ForegroundColor Cyan
+Write-Host "  /  \    /  \__| ____    \______   \__ __|  ______ ____" -ForegroundColor Cyan
+Write-Host "  \   \/\/   /  |/    \    |     ___/  |  | /  ___// __ \" -ForegroundColor Magenta
+Write-Host "   \        /|  |   |  \   |    |   |  |  / \___ \\  ___/" -ForegroundColor Blue
+Write-Host "    \__/\  / |__|___|  /   |____|   |____/ /____  >\___  >" -ForegroundColor Blue
+Write-Host "         \/          \/                         \/     \/" -ForegroundColor DarkCyan
 Write-Host " ===================================================================" -ForegroundColor DarkGray
-Write-Host "   โก WINPULSE PRO v3.0 [OFFICIAL MASTER EDITION] โก" -ForegroundColor Yellow
+Write-Host "   WINPULSE PRO v3.0 [OFFICIAL MASTER EDITION]" -ForegroundColor Yellow
 Write-Host " ===================================================================" -ForegroundColor DarkGray
 Write-Host "   [+] Target Machine     : $compName ($osName)" -ForegroundColor Gray
-Write-Host "   [โ”] Privilege Status   : ADMINISTRATOR [GRANTED]" -ForegroundColor Green
-Write-Host "   [โ”] High-Res Timer     : UNLOCKED (0.5ms)" -ForegroundColor DarkYellow
-Write-Host "   [โ”] GPU HAGS and GameMode : ONLINE" -ForegroundColor Cyan
-Write-Host "   [โ”] Decrypting Cyberpunk Glassmorphism HUD..." -ForegroundColor Magenta
+Write-Host "   [OK] Privilege Status  : ADMINISTRATOR [GRANTED]" -ForegroundColor Green
+Write-Host "   [OK] High-Res Timer    : UNLOCKED (0.5ms)" -ForegroundColor DarkYellow
+Write-Host "   [OK] GPU HAGS & Game   : ONLINE" -ForegroundColor Cyan
+Write-Host "   [OK] Decrypting Cyberpunk Glassmorphism HUD..." -ForegroundColor Magenta
 Write-Host " ===================================================================" -ForegroundColor DarkGray
 Write-Host ""
 
