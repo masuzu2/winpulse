@@ -3,10 +3,10 @@
     WinPulse PRO v3.0 - Ultimate Cyberpunk System & Gaming Optimizer (Pure WPF XAML Engine)
 .DESCRIPTION
     Chris Titus WinUtil Style Native WPF Architecture with 100% Verified Production Commands.
-    Includes Full Setting Kin Over v2 Optimization Engine:
-    - Kin Over v2 Keyboard Speed (KeyboardSpeed=150, KeyboardDelay=1, KeyboardDataQueueSize=20)
-    - Kin Over v2 Mouse 1:1 MarkC Curve & Zero Hover Delay (MouseHoverTime=0)
-    - Kin Over v2 Games SystemProfile Tweaks (GPU Priority=8, Priority=6, SystemResponsiveness=0, NetworkThrottlingIndex=0xFFFFFFFF)
+    Includes Full Hyper Latency Pro Optimization Engine (Formerly Kin Over v2):
+    - Hyper Latency Keyboard Speed (KeyboardSpeed=150, KeyboardDelay=1, KeyboardDataQueueSize=20)
+    - Hyper Latency Mouse 1:1 MarkC Curve & Zero Hover Delay (MouseHoverTime=0)
+    - Hyper Latency Games SystemProfile Tweaks (GPU Priority=8, Priority=6, SystemResponsiveness=0, NetworkThrottlingIndex=0xFFFFFFFF)
     - HAGS, Game Mode, Mouse Accel Off, Win32Priority 38, BCD Timers, TCP CTCP, Cloudflare DNS,
     - MTU 1500, Checksum Offload Off, OneDrive Uninstall, Telemetry & DVR Off, Temp/Prefetch Purge,
     - WinUpdate Driver Block, Winget App Installers, Dark Mode, File Extensions, Classic Win10 Menu.
@@ -32,7 +32,7 @@ public class WinPulseNative {
 [xml]$xaml = @"
 <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="WinPulse PRO Master Suite v3.0 [Kin Over v2 Edition]" Height="800" Width="1100"
+        Title="WinPulse PRO Master Suite v3.0 [Hyper Latency Pro]" Height="800" Width="1100"
         WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True"
         Background="#0B0B1A" Foreground="#E2E8F0" FontFamily="Segoe UI">
 
@@ -83,7 +83,7 @@ public class WinPulseNative {
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,6">
-                    <TextBlock Text="⚡ WINPULSE OPTIMIZER PRO v3.0 [SETTING KIN OVER V2 ENGINE]" Foreground="#A78BFA" FontWeight="Bold" FontSize="13"/>
+                    <TextBlock Text="⚡ WINPULSE OPTIMIZER PRO v3.0 [HYPER LATENCY ENGINE]" Foreground="#A78BFA" FontWeight="Bold" FontSize="13"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="6">
                     <Button x:Name="BtnMinimize" Content=" _ " Width="32" Height="26" Margin="0,0,4,0" Background="#1E1E38" Foreground="#94A3B8"/>
@@ -99,8 +99,8 @@ public class WinPulseNative {
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <StackPanel>
-                        <TextBlock Text="WINPULSE MASTER GAMING SUITE + KIN OVER V2" FontSize="18" FontWeight="Bold" Foreground="#A78BFA"/>
-                        <TextBlock Text="Pro FPS Tweaks &amp; Low-Latency Keyboard/Mouse Tuning (Pure Native WPF Engine)" FontSize="11" Foreground="#94A3B8" Margin="0,2,0,0"/>
+                        <TextBlock Text="WINPULSE MASTER GAMING SUITE" FontSize="18" FontWeight="Bold" Foreground="#A78BFA"/>
+                        <TextBlock Text="Hyper-Latency Pro FPS Tweaks &amp; Low-Latency Keyboard/Mouse Tuning (Pure Native WPF Engine)" FontSize="11" Foreground="#94A3B8" Margin="0,2,0,0"/>
                     </StackPanel>
                     <Border Grid.Column="1" Background="#10B981" CornerRadius="12" Padding="12,5" VerticalAlignment="Center">
                         <TextBlock Text="SYSTEM READY" Foreground="#FFFFFF" FontWeight="Bold" FontSize="11"/>
@@ -118,7 +118,7 @@ public class WinPulseNative {
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="PRESETS:" Foreground="#F59E0B" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,10,0" FontSize="11"/>
                     <Button x:Name="BtnPresetMaster" Content="🌟 MASTER PRESET" Background="#10B981" Margin="0,0,6,0"/>
-                    <Button x:Name="BtnPresetKinOver" Content="⚡ KIN OVER V2 (PRO GAMER)" Background="#EC4899" Margin="0,0,6,0"/>
+                    <Button x:Name="BtnPresetHyper" Content="⚡ HYPER LATENCY PRO (MAX FPS)" Background="#EC4899" Margin="0,0,6,0"/>
                     <Button x:Name="BtnPresetGaming" Content="🎮 GAMING &amp; LATENCY" Background="#7C3AED" Margin="0,0,6,0"/>
                     <Button x:Name="BtnPresetClean" Content="🧹 CLEAN &amp; DEBLOAT" Background="#F43F5E" Margin="0,0,6,0"/>
                     <Button x:Name="BtnClearAll" Content="❌ Clear All" Background="#3A3A5A"/>
@@ -128,20 +128,20 @@ public class WinPulseNative {
             <!-- 4. 4-Card Multi-Grid Layout -->
             <Grid Grid.Row="4" Margin="0,0,0,10">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1.1*"/>
+                    <ColumnDefinition Width="1.15*"/>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
 
-                <!-- Card 1: Gaming & Input Lag + Setting Kin Over v2 -->
+                <!-- Card 1: Gaming & Hyper Latency -->
                 <Border Grid.Column="0" Background="#16162A" BorderBrush="#7C3AED" BorderThickness="1" CornerRadius="8" Padding="10" Margin="0,0,5,0">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel>
-                            <TextBlock Text="🎮 GAMING &amp; KIN OVER V2" Foreground="#7C3AED" FontWeight="Bold" FontSize="11" Margin="0,0,0,6"/>
-                            <CheckBox x:Name="chkKinOverV2Keyboard" Content="⚡ Kin Over v2 Keyboard Speed (150/1/20)" IsChecked="True" Foreground="#F472B6" FontWeight="Bold"/>
-                            <CheckBox x:Name="chkKinOverV2Mouse" Content="⚡ Kin Over v2 Mouse 1:1 MarkC &amp; Zero Hover" IsChecked="True" Foreground="#F472B6" FontWeight="Bold"/>
-                            <CheckBox x:Name="chkKinOverV2Games" Content="⚡ Kin Over v2 GPU Priority 8 &amp; CPU 6" IsChecked="True" Foreground="#F472B6" FontWeight="Bold"/>
+                            <TextBlock Text="🎮 GAMING &amp; HYPER LATENCY" Foreground="#7C3AED" FontWeight="Bold" FontSize="11" Margin="0,0,0,6"/>
+                            <CheckBox x:Name="chkKinOverV2Keyboard" Content="⚡ Hyper-Latency Keyboard Speed (150/1/20)" IsChecked="True" Foreground="#F472B6" FontWeight="Bold"/>
+                            <CheckBox x:Name="chkKinOverV2Mouse" Content="⚡ Hyper-Latency Mouse 1:1 MarkC &amp; Zero Hover" IsChecked="True" Foreground="#F472B6" FontWeight="Bold"/>
+                            <CheckBox x:Name="chkKinOverV2Games" Content="⚡ Hyper-Latency GPU Priority 8 &amp; CPU 6" IsChecked="True" Foreground="#F472B6" FontWeight="Bold"/>
                             <Separator Background="#2A2A4A" Margin="0,4"/>
                             <CheckBox x:Name="chkHAGS" Content="Enable GPU HAGS &amp; GameMode" IsChecked="True"/>
                             <CheckBox x:Name="chkMouse" Content="Disable Mouse Acceleration" IsChecked="True"/>
@@ -194,7 +194,7 @@ public class WinPulseNative {
             </Grid>
 
             <!-- 5. Launch Button -->
-            <Button Grid.Row="5" x:Name="BtnLaunch" Content="⚡ APPLY UNIFIED MASTER PRESET NOW (KIN OVER V2 INCLUDED) ⚡"
+            <Button Grid.Row="5" x:Name="BtnLaunch" Content="⚡ APPLY UNIFIED MASTER PRESET NOW (HYPER LATENCY PRO INCLUDED) ⚡"
                     Height="42" Background="#7C3AED" Foreground="#FFFFFF" FontWeight="Bold" FontSize="13" Margin="0,0,0,8"/>
 
             <!-- 6. Progress Bar & Output Console Log -->
@@ -205,7 +205,7 @@ public class WinPulseNative {
                 </Grid.RowDefinitions>
                 <ProgressBar Grid.Row="0" x:Name="pbStatus" Height="6" Value="0" Minimum="0" Maximum="100" Foreground="#10B981" Background="#16162A" Margin="0,0,0,6"/>
                 <TextBox Grid.Row="1" x:Name="txtLog" IsReadOnly="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"
-                         Text="[SYSTEM] WinPulse Native WPF Engine (Kin Over v2 Integrated). Click 'APPLY UNIFIED MASTER PRESET NOW'."/>
+                         Text="[SYSTEM] WinPulse Native WPF Engine (Hyper Latency Pro Integrated). Click 'APPLY UNIFIED MASTER PRESET NOW'."/>
             </Grid>
         </Grid>
     </Border>
@@ -221,7 +221,7 @@ $BtnMinimize = $window.FindName("BtnMinimize")
 $BtnClose = $window.FindName("BtnClose")
 
 $BtnPresetMaster = $window.FindName("BtnPresetMaster")
-$BtnPresetKinOver = $window.FindName("BtnPresetKinOver")
+$BtnPresetHyper = $window.FindName("BtnPresetHyper")
 $BtnPresetGaming = $window.FindName("BtnPresetGaming")
 $BtnPresetClean = $window.FindName("BtnPresetClean")
 $BtnClearAll = $window.FindName("BtnClearAll")
@@ -278,16 +278,16 @@ $BtnClose.Add_Click({
 # Preset Toolbar Events
 $BtnPresetMaster.Add_Click({
     Set-AllCheckboxes $true
-    Write-WpfLog "[PRESET] Unified Master Preset (All-in-One + Kin Over v2) selected."
+    Write-WpfLog "[PRESET] Unified Master Preset (All-in-One + Hyper Latency Pro) selected."
 })
 
-$BtnPresetKinOver.Add_Click({
+$BtnPresetHyper.Add_Click({
     Set-AllCheckboxes $false
     @("chkRestorePoint", "chkKinOverV2Keyboard", "chkKinOverV2Mouse", "chkKinOverV2Games", "chkHAGS", "chkMouse", "chkInputLag", "chkPower", "chkMemory", "chkNetwork", "chkCloudflareDNS", "chkDarkMode", "chkClassicMenu") | ForEach-Object {
         $cb = $window.FindName($_)
         if ($cb) { $cb.IsChecked = $true }
     }
-    Write-WpfLog "[PRESET] Setting Kin Over v2 Pro Gamer Preset selected."
+    Write-WpfLog "[PRESET] Hyper Latency Pro (Max FPS) Preset selected."
 })
 
 $BtnPresetGaming.Add_Click({
@@ -319,7 +319,7 @@ $BtnLaunch.Add_Click({
     $BtnLaunch.Content = "⏳ EXECUTING REAL POWERSHELL PIPELINE..."
     
     $logFilePath = Join-Path $env:TEMP "WinPulse_Execution.log"
-    "=== WinPulse PRO Native WPF Execution Log (Kin Over v2) Started at $(Get-Date) ===" | Out-File -FilePath $logFilePath -Encoding utf8
+    "=== WinPulse PRO Native WPF Execution Log (Hyper Latency Pro) Started at $(Get-Date) ===" | Out-File -FilePath $logFilePath -Encoding utf8
 
     function Exec-Command($desc, $scriptBlock) {
         Write-WpfLog "[EXEC] Executing: $desc"
@@ -390,9 +390,9 @@ $BtnLaunch.Add_Click({
     }
     Set-WpfProgress 15
 
-    # 1. SETTING KIN OVER V2 SPECIAL TWEAKS
+    # 1. HYPER LATENCY PRO SPECIAL TWEAKS
     if ($chkKinOverV2KeyboardVal) {
-        Exec-Command "Setting Kin Over v2: Keyboard Delay & Queue Tuning (Speed=150, Delay=1, Queue=20)" {
+        Exec-Command "Hyper Latency Pro: Keyboard Delay & Queue Tuning (Speed=150, Delay=1, Queue=20)" {
             if (-not (Test-Path "HKCU:\Control Panel\Keyboard")) { New-Item -Path "HKCU:\Control Panel\Keyboard" -Force | Out-Null }
             Set-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "InitialKeyboardIndicators" -Value "0" -Type String -Force
             Set-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "KeyboardDelay" -Value "1" -Type String -Force
@@ -407,7 +407,7 @@ $BtnLaunch.Add_Click({
     }
 
     if ($chkKinOverV2MouseVal) {
-        Exec-Command "Setting Kin Over v2: Mouse 1:1 Curves & MouseKeys Acceleration" {
+        Exec-Command "Hyper Latency Pro: Mouse 1:1 Curves & MouseKeys Acceleration" {
             if (-not (Test-Path "HKCU:\Control Panel\Mouse")) { New-Item -Path "HKCU:\Control Panel\Mouse" -Force | Out-Null }
             Set-ItemProperty -Path "HKCU:\Control Panel\Mouse" -Name "MouseSensitivity" -Value "10" -Type String -Force
             Set-ItemProperty -Path "HKCU:\Control Panel\Mouse" -Name "MouseHoverTime" -Value "0" -Type String -Force
@@ -431,7 +431,7 @@ $BtnLaunch.Add_Click({
     }
 
     if ($chkKinOverV2GamesVal) {
-        Exec-Command "Setting Kin Over v2: GPU Priority=8, Priority=6, SystemResponsiveness=0" {
+        Exec-Command "Hyper Latency Pro: GPU Priority=8, Priority=6, SystemResponsiveness=0" {
             $taskGamesPath = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games"
             if (-not (Test-Path $taskGamesPath)) { New-Item -Path $taskGamesPath -Force | Out-Null }
             Set-ItemProperty -Path $taskGamesPath -Name "GPU Priority" -Value 8 -Type DWORD -Force
