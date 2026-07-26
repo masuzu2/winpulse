@@ -6,13 +6,13 @@ $compName = $env:COMPUTERNAME
 
 Write-Host ""
 Write-Host "  ================================================================" -ForegroundColor Cyan
-Write-Host "  [ WINPULSE OPTIMIZER PRO v3.0 - OFFICIAL MASTER EDITION ]" -ForegroundColor Magenta
+Write-Host "  [ WINPULSE OPTIMIZER PRO v3.0 - APEX ULTRA EDITION ]" -ForegroundColor Magenta
 Write-Host "  ================================================================" -ForegroundColor Cyan
 Write-Host "   [+] Target Machine     : $compName ($osName)" -ForegroundColor Gray
 Write-Host "   [OK] Privilege Status  : ADMINISTRATOR [GRANTED]" -ForegroundColor Green
 Write-Host "   [OK] High-Res Timer    : UNLOCKED (0.5ms)" -ForegroundColor DarkYellow
 Write-Host "   [OK] GPU HAGS and Game : ONLINE" -ForegroundColor Cyan
-Write-Host "   [OK] Launching Glassmorphism HUD Interface..." -ForegroundColor Magenta
+Write-Host "   [OK] Launching Apex Ultra Glassmorphism HUD..." -ForegroundColor Magenta
 Write-Host "  ================================================================" -ForegroundColor Cyan
 Write-Host ""
 

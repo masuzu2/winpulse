@@ -13,13 +13,13 @@ if (-not `$osName) { `$osName = "Windows Operating System" }
 
 Write-Host ""
 Write-Host "  ================================================================" -ForegroundColor Cyan
-Write-Host "  [ WINPULSE OPTIMIZER PRO v3.0 - OFFICIAL MASTER EDITION ]" -ForegroundColor Magenta
+Write-Host "  [ WINPULSE OPTIMIZER PRO v3.0 - APEX ULTRA EDITION ]" -ForegroundColor Magenta
 Write-Host "  ================================================================" -ForegroundColor Cyan
 Write-Host "   [+] Target Machine     : `$compName (`$osName)" -ForegroundColor Gray
 Write-Host "   [OK] Privilege Status  : ADMINISTRATOR [GRANTED]" -ForegroundColor Green
 Write-Host "   [OK] High-Res Timer    : UNLOCKED (0.5ms)" -ForegroundColor DarkYellow
 Write-Host "   [OK] GPU HAGS and Game : ONLINE" -ForegroundColor Cyan
-Write-Host "   [OK] Launching Glassmorphism HUD Interface..." -ForegroundColor Magenta
+Write-Host "   [OK] Launching Apex Ultra Glassmorphism HUD..." -ForegroundColor Magenta
 Write-Host "  ================================================================" -ForegroundColor Cyan
 Write-Host ""
 
@@ -35,11 +35,12 @@ $targetFiles = @(
     "C:\Users\Administrator\Custom-Windows-GUI-Preset\winpulse.ps1",
     "C:\Users\Administrator\Custom-Windows-GUI-Preset\index.ps1",
     "C:\Users\Administrator\Custom-Windows-GUI-Preset\v3.ps1",
-    "C:\Users\Administrator\Custom-Windows-GUI-Preset\run.ps1"
+    "C:\Users\Administrator\Custom-Windows-GUI-Preset\run.ps1",
+    "C:\Users\Administrator\Custom-Windows-GUI-Preset\apex.ps1"
 )
 
 foreach ($file in $targetFiles) {
     [System.IO.File]::WriteAllText($file, $protectedContent, $utf8NoBOM)
 }
 
-Write-Host "Encoder complete (All 5 script entrypoints updated with clean payload)!"
+Write-Host "Encoder complete (All 6 script entrypoints updated with clean Apex Ultra payload)!"
