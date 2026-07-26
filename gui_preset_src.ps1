@@ -1,9 +1,9 @@
 <#
 .SYNOPSIS
-    WinPulse PRO - Glassmorphism Cyberpunk Web-Based Master Suite
+    WinPulse PRO - Cyberpunk Gaming HUD Master Suite (UI/UX Pro Max Edition)
 .DESCRIPTION
-    Next-Generation Web-Based Desktop Interface powered by HTML5/CSS3 Glassmorphism
-    and PowerShell Execution Engine.
+    Powered by Orbitron & JetBrains Mono fonts, inline SVG icons, Catppuccin Cyber-Purple theme,
+    glassmorphism backdrop blur, and 60fps micro-animations.
 #>
 
 $guiScriptBlock = {
@@ -38,92 +38,94 @@ public class WinPulseBridge {
 
     $bridge = New-Object WinPulseBridge
 
-    # --- HTML / CSS / JS UI Content ---
+    # --- UI/UX Pro Max HTML5/CSS3 Interface ---
     $htmlContent = @"
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>WinPulse PRO Master Suite</title>
+    <title>WinPulse PRO Gaming Suite</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Orbitron:wght@600;800;900&display=swap');
         
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             user-select: none;
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
         }
 
         body {
-            background: #0b0c10;
-            color: #cdd6f4;
+            background: #0f0f23;
+            color: #e2e8f0;
             height: 100vh;
             overflow: hidden;
-            border-radius: 12px;
-            border: 1px solid rgba(137, 180, 250, 0.25);
+            border-radius: 14px;
+            border: 1px solid rgba(124, 58, 237, 0.35);
             display: flex;
             flex-direction: column;
+            font-family: 'JetBrains Mono', monospace;
+            box-shadow: 0 0 40px rgba(124, 58, 237, 0.2);
         }
 
-        /* Ambient Glow Background Spheres */
-        .glow-bg {
+        /* Ambient Cyber-Purple Background Effects */
+        .glow-sphere-1 {
             position: absolute;
-            width: 350px;
-            height: 350px;
+            width: 450px;
+            height: 450px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(137, 180, 250, 0.15) 0%, rgba(0,0,0,0) 70%);
-            top: -100px;
-            left: -100px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.2) 0%, rgba(0,0,0,0) 70%);
+            top: -150px;
+            left: -150px;
             z-index: 0;
             pointer-events: none;
         }
-        .glow-bg-2 {
+        .glow-sphere-2 {
             position: absolute;
-            width: 400px;
-            height: 400px;
+            width: 500px;
+            height: 500px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(203, 166, 247, 0.12) 0%, rgba(0,0,0,0) 70%);
-            bottom: -150px;
-            right: -100px;
+            background: radial-gradient(circle, rgba(244, 63, 94, 0.15) 0%, rgba(0,0,0,0) 70%);
+            bottom: -200px;
+            right: -150px;
             z-index: 0;
             pointer-events: none;
         }
 
-        /* Custom Title Bar */
+        /* Window Title Bar */
         .title-bar {
-            height: 42px;
-            background: rgba(17, 17, 27, 0.85);
-            backdrop-filter: blur(12px);
+            height: 44px;
+            background: rgba(15, 15, 35, 0.85);
+            backdrop-filter: blur(16px);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 16px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 0 18px;
+            border-bottom: 1px solid rgba(124, 58, 237, 0.2);
             z-index: 10;
         }
         .title-brand {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-weight: 800;
+            gap: 12px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
             font-size: 14px;
-            color: #89b4fa;
-            letter-spacing: 0.5px;
+            color: #a78bfa;
+            letter-spacing: 1.5px;
         }
         .title-controls {
             display: flex;
             gap: 8px;
         }
         .control-btn {
-            width: 26px;
-            height: 26px;
-            border-radius: 6px;
-            border: none;
-            background: rgba(255, 255, 255, 0.05);
-            color: #a6adc8;
+            width: 28px;
+            height: 28px;
+            border-radius: 7px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.04);
+            color: #94a3b8;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -131,18 +133,20 @@ public class WinPulseBridge {
             transition: all 0.2s ease;
         }
         .control-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(124, 58, 237, 0.3);
             color: #fff;
+            border-color: #7c3aed;
         }
         .control-btn.close:hover {
-            background: #f38ba8;
-            color: #11111b;
+            background: #f43f5e;
+            color: #fff;
+            border-color: #f43f5e;
         }
 
-        /* Main Layout */
+        /* Main Container */
         .app-container {
             flex: 1;
-            padding: 20px;
+            padding: 22px;
             display: flex;
             flex-direction: column;
             gap: 16px;
@@ -152,135 +156,159 @@ public class WinPulseBridge {
 
         /* Header Card */
         .header-card {
-            background: rgba(24, 24, 37, 0.65);
+            background: rgba(27, 27, 47, 0.65);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(137, 180, 250, 0.2);
+            border: 1px solid rgba(124, 58, 237, 0.3);
             border-radius: 12px;
-            padding: 16px 20px;
+            padding: 18px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
         }
         .header-info h1 {
-            font-size: 20px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 22px;
             font-weight: 900;
-            background: linear-gradient(135deg, #89b4fa, #cba6f7);
+            background: linear-gradient(135deg, #a78bfa, #f43f5e);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
         }
         .header-info p {
             font-size: 12px;
-            color: #a6adc8;
-            margin-top: 2px;
+            color: #94a3b8;
+            margin-top: 4px;
         }
         .badge {
-            background: rgba(166, 227, 161, 0.15);
-            border: 1px solid rgba(166, 227, 161, 0.4);
-            color: #a6e3a1;
-            padding: 5px 12px;
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            color: #34d399;
+            padding: 6px 14px;
             border-radius: 20px;
+            font-family: 'Orbitron', sans-serif;
             font-size: 11px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .badge-dot {
-            width: 6px;
-            height: 6px;
-            background: #a6e3a1;
-            border-radius: 50%;
-            box-shadow: 0 0 8px #a6e3a1;
-        }
-
-        /* Toolbar Presets */
-        .preset-toolbar {
-            background: rgba(24, 24, 37, 0.5);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 10px;
-            padding: 10px 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .preset-label {
-            font-size: 12px;
-            font-weight: 700;
-            color: #f9e2af;
-            margin-right: 5px;
-        }
-        .btn-preset {
-            padding: 8px 14px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.04);
-            color: #cdd6f4;
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.25s ease;
-        }
-        .btn-preset:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-        .btn-preset.master {
-            background: linear-gradient(135deg, #a6e3a1, #94e2d5);
-            color: #11111b;
-            font-weight: 800;
-            border: none;
-            box-shadow: 0 0 15px rgba(166, 227, 161, 0.3);
-        }
-        .btn-preset.gaming {
-            background: linear-gradient(135deg, #cba6f7, #f5c2e7);
-            color: #11111b;
-            font-weight: 800;
-            border: none;
-        }
-        .btn-preset.clean {
-            background: linear-gradient(135deg, #fab387, #f9e2af);
-            color: #11111b;
-            font-weight: 800;
-            border: none;
-        }
-
-        /* Columns Grid */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr 1.2fr;
-            gap: 14px;
-            flex: 1;
-        }
-        .card {
-            background: rgba(24, 24, 37, 0.55);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        .card-title {
-            font-size: 13px;
             font-weight: 800;
             display: flex;
             align-items: center;
             gap: 8px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
         }
-        .card-1 .card-title { color: #f9e2af; }
-        .card-2 .card-title { color: #f38ba8; }
-        .card-3 .card-title { color: #89dceb; }
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            background: #34d399;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #34d399;
+            animation: pulse 2s infinite;
+        }
 
-        /* Option Items / Custom Checkbox */
-        .option-item {
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.4; }
+            100% { opacity: 1; }
+        }
+
+        /* Preset Toolbar */
+        .preset-toolbar {
+            background: rgba(27, 27, 47, 0.5);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .preset-label {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 11px;
+            font-weight: 800;
+            color: #f59e0b;
+            letter-spacing: 0.5px;
+            margin-right: 4px;
+        }
+        .btn-preset {
+            padding: 9px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.04);
+            color: #e2e8f0;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-preset:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+        .btn-preset.master {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: #ffffff;
+            font-weight: 800;
+            border: none;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.35);
+        }
+        .btn-preset.gaming {
+            background: linear-gradient(135deg, #7c3aed, #6d28d9);
+            color: #ffffff;
+            font-weight: 800;
+            border: none;
+            box-shadow: 0 0 15px rgba(124, 58, 237, 0.35);
+        }
+        .btn-preset.clean {
+            background: linear-gradient(135deg, #f43f5e, #e11d48);
+            color: #ffffff;
+            font-weight: 800;
+            border: none;
+            box-shadow: 0 0 15px rgba(244, 63, 94, 0.35);
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr 1.2fr;
+            gap: 16px;
+            flex: 1;
+        }
+        .card {
+            background: rgba(27, 27, 47, 0.55);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            transition: border-color 0.3s ease;
+        }
+        .card:hover {
+            border-color: rgba(124, 58, 237, 0.3);
+        }
+        .card-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
             display: flex;
             align-items: center;
             gap: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .card-1 .card-title { color: #f59e0b; }
+        .card-2 .card-title { color: #f43f5e; }
+        .card-3 .card-title { color: #38bdf8; }
+
+        /* Custom Checkbox Option Items */
+        .option-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             padding: 4px 0;
             cursor: pointer;
         }
@@ -290,20 +318,20 @@ public class WinPulseBridge {
             height: 18px;
             border-radius: 5px;
             border: 2px solid rgba(255, 255, 255, 0.2);
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.4);
             cursor: pointer;
             position: relative;
             transition: all 0.2s ease;
         }
         .option-item input[type="checkbox"]:checked {
-            background: #89b4fa;
-            border-color: #89b4fa;
-            box-shadow: 0 0 10px rgba(137, 180, 250, 0.5);
+            background: #7c3aed;
+            border-color: #7c3aed;
+            box-shadow: 0 0 12px rgba(124, 58, 237, 0.6);
         }
         .option-item input[type="checkbox"]:checked::after {
             content: '✓';
             position: absolute;
-            color: #11111b;
+            color: #ffffff;
             font-weight: 900;
             font-size: 12px;
             top: -2px;
@@ -311,28 +339,33 @@ public class WinPulseBridge {
         }
         .option-item label {
             font-size: 12px;
-            color: #cdd6f4;
+            color: #cbd5e1;
             cursor: pointer;
             font-weight: 500;
         }
 
         /* Action Launch Button */
         .launch-btn {
-            height: 48px;
+            height: 50px;
             border-radius: 10px;
             border: none;
-            background: linear-gradient(135deg, #89b4fa, #cba6f7);
-            color: #11111b;
-            font-size: 15px;
+            background: linear-gradient(135deg, #7c3aed, #f43f5e);
+            color: #ffffff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
             font-weight: 900;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(137, 180, 250, 0.35);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 25px rgba(124, 58, 237, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
         .launch-btn:hover {
             transform: scale(1.01);
-            box-shadow: 0 6px 25px rgba(137, 180, 250, 0.5);
+            box-shadow: 0 6px 30px rgba(244, 63, 94, 0.55);
         }
 
         /* Progress Bar & Console Log */
@@ -345,33 +378,45 @@ public class WinPulseBridge {
         .progress-bar {
             height: 100%;
             width: 0%;
-            background: linear-gradient(90deg, #a6e3a1, #94e2d5);
+            background: linear-gradient(90deg, #10b981, #38bdf8);
             transition: width 0.3s ease;
-            box-shadow: 0 0 10px #a6e3a1;
+            box-shadow: 0 0 10px #10b981;
         }
 
         .console-box {
-            background: rgba(17, 17, 27, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(15, 15, 35, 0.9);
+            border: 1px solid rgba(124, 58, 237, 0.2);
             border-radius: 8px;
-            padding: 10px;
-            height: 100px;
+            padding: 12px;
+            height: 110px;
             overflow-y: auto;
-            font-family: 'Consolas', monospace;
+            font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
-            color: #a6adc8;
-            line-height: 1.5;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        /* SVG Icons Inline */
+        .icon {
+            width: 16px;
+            height: 16px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
     </style>
 </head>
 <body>
-    <div class="glow-bg"></div>
-    <div class="glow-bg-2"></div>
+    <div class="glow-sphere-1"></div>
+    <div class="glow-sphere-2"></div>
 
-    <!-- Title Bar -->
+    <!-- Window Title Bar -->
     <div class="title-bar">
         <div class="title-brand">
-            <span>⚡</span> WINPULSE OPTIMIZER PRO
+            <svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            WINPULSE OPTIMIZER PRO
         </div>
         <div class="title-controls">
             <button class="control-btn" onclick="window.external.MiniWin()">—</button>
@@ -384,34 +429,37 @@ public class WinPulseBridge {
         <div class="header-card">
             <div class="header-info">
                 <h1>WINPULSE MASTER SUITE</h1>
-                <p>Next-Gen Cyberpunk Windows Optimization &amp; Low-Latency Engine</p>
+                <p>Cyberpunk Gaming Performance &amp; Low-Latency Tuning Engine</p>
             </div>
             <div class="badge">
                 <div class="badge-dot"></div>
-                v2.5 WEB-PRO ACTIVE
+                v2.5 HUD PRO
             </div>
         </div>
 
-        <!-- Safety Notice -->
-        <div class="option-item" style="background: rgba(24,24,37,0.5); padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(137, 180, 250, 0.2);">
+        <!-- Safety Option -->
+        <div class="option-item" style="background: rgba(27,27,47,0.5); padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(16, 185, 129, 0.3);">
             <input type="checkbox" id="chkRestorePoint" checked>
-            <label for="chkRestorePoint" style="color: #a6e3a1; font-weight: 700;">🛡️ Create System Restore Point before tweaking (Recommended for 100% Safety)</label>
+            <label for="chkRestorePoint" style="color: #34d399; font-weight: 700;">🛡️ Create System Restore Point before tweaking (100% Safety Guarantee)</label>
         </div>
 
-        <!-- Quick Presets -->
+        <!-- Preset Toolbar -->
         <div class="preset-toolbar">
-            <span class="preset-label">🔥 QUICK PRESETS:</span>
-            <button class="btn-preset master" onclick="applyPreset('master')">⚡ MASTER PRESET (ALL-IN-ONE)</button>
+            <span class="preset-label">QUICK PRESETS:</span>
+            <button class="btn-preset master" onclick="applyPreset('master')">⚡ ALL-IN-ONE MASTER PRESET</button>
             <button class="btn-preset gaming" onclick="applyPreset('gaming')">🎮 GAMING &amp; LOW LATENCY</button>
             <button class="btn-preset clean" onclick="applyPreset('clean')">🧹 CLEAN &amp; DEBLOAT</button>
             <button class="btn-preset" onclick="applyPreset('clear')">❌ Clear All</button>
         </div>
 
-        <!-- Main Cards Grid -->
+        <!-- Cards Grid -->
         <div class="cards-grid">
             <!-- Card 1 -->
             <div class="card card-1">
-                <div class="card-title">📦 Software &amp; UI Tweaks</div>
+                <div class="card-title">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                    Software &amp; UI Tweaks
+                </div>
                 <div class="option-item"><input type="checkbox" id="chkChrome" checked><label for="chkChrome">Google Chrome</label></div>
                 <div class="option-item"><input type="checkbox" id="chk7Zip" checked><label for="chk7Zip">7-Zip Archiver</label></div>
                 <div class="option-item"><input type="checkbox" id="chkVSCode" checked><label for="chkVSCode">VS Code</label></div>
@@ -420,38 +468,47 @@ public class WinPulseBridge {
                 <div style="height: 1px; background: rgba(255,255,255,0.06); margin: 4px 0;"></div>
                 <div class="option-item"><input type="checkbox" id="chkShowExt" checked><label for="chkShowExt">Show Extensions &amp; Hidden</label></div>
                 <div class="option-item"><input type="checkbox" id="chkDarkMode" checked><label for="chkDarkMode">Enable Dark Mode</label></div>
-                <div class="option-item"><input type="checkbox" id="chkClassicMenu" checked><label for="chkClassicMenu">🖱️ Win 10 Classic Menu</label></div>
+                <div class="option-item"><input type="checkbox" id="chkClassicMenu" checked><label for="chkClassicMenu">Restore Win 10 Classic Menu</label></div>
             </div>
 
             <!-- Card 2 -->
             <div class="card card-2">
-                <div class="card-title">⚡ System &amp; Input Lag</div>
-                <div class="option-item"><input type="checkbox" id="chkInputLag" checked><label for="chkInputLag">🎯 Max Response (Win32Priority)</label></div>
-                <div class="option-item"><input type="checkbox" id="chkPower" checked><label for="chkPower">🔋 Ultimate Performance Plan</label></div>
-                <div class="option-item"><input type="checkbox" id="chkMemory" checked><label for="chkMemory">🧠 Disable RAM Compression</label></div>
+                <div class="card-title">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                    System &amp; Input Lag
+                </div>
+                <div class="option-item"><input type="checkbox" id="chkInputLag" checked><label for="chkInputLag">Max Response (Win32Priority)</label></div>
+                <div class="option-item"><input type="checkbox" id="chkPower" checked><label for="chkPower">Ultimate Performance Plan</label></div>
+                <div class="option-item"><input type="checkbox" id="chkMemory" checked><label for="chkMemory">Disable RAM Compression</label></div>
                 <div style="height: 1px; background: rgba(255,255,255,0.06); margin: 4px 0;"></div>
                 <div class="option-item"><input type="checkbox" id="chkRemoveOneDrive" checked><label for="chkRemoveOneDrive">Uninstall OneDrive &amp; Bloat</label></div>
                 <div class="option-item"><input type="checkbox" id="chkDebloat" checked><label for="chkDebloat">Disable Telemetry &amp; Xbox DVR</label></div>
-                <div class="option-item"><input type="checkbox" id="chkClean" checked><label for="chkClean">🧹 Clean Temp &amp; Cache</label></div>
-                <div class="option-item"><input type="checkbox" id="chkWinUpdate" checked><label for="chkWinUpdate">🛑 Block Driver Overwrites</label></div>
+                <div class="option-item"><input type="checkbox" id="chkClean" checked><label for="chkClean">Clean Temp &amp; System Cache</label></div>
+                <div class="option-item"><input type="checkbox" id="chkWinUpdate" checked><label for="chkWinUpdate">Block Driver Overwrites</label></div>
             </div>
 
             <!-- Card 3 -->
             <div class="card card-3">
-                <div class="card-title">🌐 Network &amp; Low Ping</div>
-                <div class="option-item"><input type="checkbox" id="chkNetwork" checked><label for="chkNetwork">🌐 Optimize TCP/IP Stack</label></div>
-                <div class="option-item"><input type="checkbox" id="chkCloudflareDNS" checked><label for="chkCloudflareDNS">☁️ Cloudflare DNS (1.1.1.1)</label></div>
-                <div class="option-item"><input type="checkbox" id="chkOptimalMTU" checked><label for="chkOptimalMTU">📏 Set Optimal MTU (1500)</label></div>
-                <div class="option-item"><input type="checkbox" id="chkAdvancedTCPUDP" checked><label for="chkAdvancedTCPUDP">⚙️ Disable Checksum Offload</label></div>
+                <div class="card-title">
+                    <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    Network &amp; Low Ping
+                </div>
+                <div class="option-item"><input type="checkbox" id="chkNetwork" checked><label for="chkNetwork">Optimize TCP/IP Stack</label></div>
+                <div class="option-item"><input type="checkbox" id="chkCloudflareDNS" checked><label for="chkCloudflareDNS">Cloudflare DNS (1.1.1.1)</label></div>
+                <div class="option-item"><input type="checkbox" id="chkOptimalMTU" checked><label for="chkOptimalMTU">Set Optimal MTU (1500)</label></div>
+                <div class="option-item"><input type="checkbox" id="chkAdvancedTCPUDP" checked><label for="chkAdvancedTCPUDP">Disable Checksum Offload</label></div>
             </div>
         </div>
 
         <!-- Launch Button -->
-        <button class="launch-btn" id="btnLaunch" onclick="launchMasterPreset()">🚀 APPLY UNIFIED MASTER PRESET NOW</button>
+        <button class="launch-btn" id="btnLaunch" onclick="launchMasterPreset()">
+            <svg class="icon" viewBox="0 0 24 24" style="width: 20px; height: 20px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            APPLY UNIFIED MASTER PRESET NOW
+        </button>
 
-        <!-- Progress & Console -->
+        <!-- Progress & Console Log -->
         <div class="progress-container"><div class="progress-bar" id="pbStatus"></div></div>
-        <div class="console-box" id="txtLog">WinPulse Cyberpunk Master Suite Ready... Click 'APPLY UNIFIED MASTER PRESET NOW' to begin.</div>
+        <div class="console-box" id="txtLog">WinPulse Cyberpunk HUD Ready... Select options or click 'APPLY UNIFIED MASTER PRESET NOW'.</div>
     </div>
 
     <script>
@@ -467,7 +524,7 @@ public class WinPulseBridge {
         function applyPreset(type) {
             if (type === 'master') {
                 setAll(true);
-                log("[Preset] Master Preset selected (ALL Modules Enabled).");
+                log("[Preset] All-In-One Master Preset selected.");
             } else if (type === 'gaming') {
                 setAll(false);
                 ['chkRestorePoint', 'chkInputLag', 'chkPower', 'chkMemory', 'chkNetwork', 'chkCloudflareDNS', 'chkOptimalMTU', 'chkAdvancedTCPUDP', 'chkDarkMode', 'chkClassicMenu'].forEach(id => {
@@ -482,7 +539,7 @@ public class WinPulseBridge {
                 log("[Preset] Clean & Debloat Preset selected.");
             } else if (type === 'clear') {
                 setAll(false);
-                log("[Preset] All selections cleared.");
+                log("[Preset] All options cleared.");
             }
         }
 
@@ -500,7 +557,7 @@ public class WinPulseBridge {
             const btn = document.getElementById('btnLaunch');
             btn.disabled = true;
             btn.style.opacity = '0.5';
-            log('⚡ Starting WinPulse Master Pipeline...');
+            log('⚡ Executing WinPulse Master Pipeline...');
 
             const options = {};
             allCheckboxes.forEach(id => {
@@ -517,8 +574,8 @@ public class WinPulseBridge {
     # --- Create Transparent Borderless WPF Window containing WebBrowser ---
     $window = New-Object System.Windows.Window
     $window.Title = "WinPulse PRO Master Suite"
-    $window.Height = 840
-    $window.Width = 1050
+    $window.Height = 860
+    $window.Width = 1060
     $window.WindowStartupLocation = [System.Windows.WindowStartupLocation]::CenterScreen
     $window.WindowStyle = [System.Windows.WindowStyle]::None
     $window.AllowsTransparency = $true
