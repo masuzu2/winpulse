@@ -1,10 +1,18 @@
 <#
 .SYNOPSIS
-    WinPulse PRO - Real Command Output Logging Edition (Zero-Error Immutable Engine)
+    WinPulse PRO - Glassmorphism Cyberpunk Web Suite (ES5 IE-Edge Compatible Edition)
 .DESCRIPTION
-    Captures live Real-Time Stdout/Stderr, Timestamps, and Command Outputs from winget,
-    netsh, bcdedit, powercfg, and reg commands, with persistent file logging to %TEMP%\WinPulse_Execution.log.
+    Fixes IE Script Error dialog by suppressing script errors, applying IE11 Edge emulation registry,
+    and converting all JavaScript to ES5 standard syntax (var / function).
 #>
+
+# Enable IE11 Edge Mode Emulation for powershell.exe in Registry
+try {
+    $regPath = "HKCU:\Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION"
+    if (-not (Test-Path $regPath)) { New-Item -Path $regPath -Force | Out-Null }
+    Set-ItemProperty -Path $regPath -Name "powershell.exe" -Value 11001 -Type DWORD -ErrorAction SilentlyContinue
+    Set-ItemProperty -Path $regPath -Name "powershell_ise.exe" -Value 11001 -Type DWORD -ErrorAction SilentlyContinue
+} catch {}
 
 $guiScriptBlock = {
     Add-Type -AssemblyName PresentationFramework
@@ -37,7 +45,7 @@ public class WinPulseEngineBridge {
 
     $bridge = New-Object WinPulseEngineBridge
 
-    # --- UI/UX Pro Max HTML5/CSS3 Interface ---
+    # --- UI/UX Pro Max HTML5/CSS3 Interface (ES5 Compatible) ---
     $htmlContent = @"
 <!DOCTYPE html>
 <html lang="en">
@@ -64,7 +72,7 @@ public class WinPulseEngineBridge {
             border: 1px solid rgba(124, 58, 237, 0.35);
             display: flex;
             flex-direction: column;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'JetBrains Mono', 'Segoe UI', monospace;
             box-shadow: 0 0 40px rgba(124, 58, 237, 0.2);
         }
 
@@ -108,7 +116,7 @@ public class WinPulseEngineBridge {
             display: flex;
             align-items: center;
             gap: 12px;
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Orbitron', 'Segoe UI', sans-serif;
             font-weight: 900;
             font-size: 14px;
             color: #a78bfa;
@@ -166,7 +174,7 @@ public class WinPulseEngineBridge {
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
         }
         .header-info h1 {
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Orbitron', 'Segoe UI', sans-serif;
             font-size: 22px;
             font-weight: 900;
             background: linear-gradient(135deg, #a78bfa, #f43f5e);
@@ -185,7 +193,7 @@ public class WinPulseEngineBridge {
             color: #34d399;
             padding: 6px 14px;
             border-radius: 20px;
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Orbitron', 'Segoe UI', sans-serif;
             font-size: 11px;
             font-weight: 800;
             display: flex;
@@ -199,13 +207,6 @@ public class WinPulseEngineBridge {
             background: #34d399;
             border-radius: 50%;
             box-shadow: 0 0 10px #34d399;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.4; }
-            100% { opacity: 1; }
         }
 
         /* Preset Toolbar */
@@ -220,7 +221,7 @@ public class WinPulseEngineBridge {
             gap: 12px;
         }
         .preset-label {
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Orbitron', 'Segoe UI', sans-serif;
             font-size: 11px;
             font-weight: 800;
             color: #f59e0b;
@@ -236,7 +237,7 @@ public class WinPulseEngineBridge {
             font-size: 12px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.25s ease;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -246,21 +247,21 @@ public class WinPulseEngineBridge {
             box-shadow: 0 4px 15px rgba(0,0,0,0.4);
         }
         .btn-preset.master {
-            background: linear-gradient(135deg, #10b981, #059669);
+            background: #10b981;
             color: #ffffff;
             font-weight: 800;
             border: none;
             box-shadow: 0 0 15px rgba(16, 185, 129, 0.35);
         }
         .btn-preset.gaming {
-            background: linear-gradient(135deg, #7c3aed, #6d28d9);
+            background: #7c3aed;
             color: #ffffff;
             font-weight: 800;
             border: none;
             box-shadow: 0 0 15px rgba(124, 58, 237, 0.35);
         }
         .btn-preset.clean {
-            background: linear-gradient(135deg, #f43f5e, #e11d48);
+            background: #f43f5e;
             color: #ffffff;
             font-weight: 800;
             border: none;
@@ -283,13 +284,9 @@ public class WinPulseEngineBridge {
             display: flex;
             flex-direction: column;
             gap: 14px;
-            transition: border-color 0.3s ease;
-        }
-        .card:hover {
-            border-color: rgba(124, 58, 237, 0.3);
         }
         .card-title {
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Orbitron', 'Segoe UI', sans-serif;
             font-size: 12px;
             font-weight: 800;
             letter-spacing: 0.5px;
@@ -303,7 +300,7 @@ public class WinPulseEngineBridge {
         .card-2 .card-title { color: #f43f5e; }
         .card-3 .card-title { color: #38bdf8; }
 
-        /* Custom Checkbox Option Items */
+        /* Checkbox Option Items */
         .option-item {
             display: flex;
             align-items: center;
@@ -312,29 +309,9 @@ public class WinPulseEngineBridge {
             cursor: pointer;
         }
         .option-item input[type="checkbox"] {
-            appearance: none;
             width: 18px;
             height: 18px;
-            border-radius: 5px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            background: rgba(0, 0, 0, 0.4);
             cursor: pointer;
-            position: relative;
-            transition: all 0.2s ease;
-        }
-        .option-item input[type="checkbox"]:checked {
-            background: #7c3aed;
-            border-color: #7c3aed;
-            box-shadow: 0 0 12px rgba(124, 58, 237, 0.6);
-        }
-        .option-item input[type="checkbox"]:checked::after {
-            content: '✓';
-            position: absolute;
-            color: #ffffff;
-            font-weight: 900;
-            font-size: 12px;
-            top: -2px;
-            left: 3px;
         }
         .option-item label {
             font-size: 12px;
@@ -348,14 +325,14 @@ public class WinPulseEngineBridge {
             height: 50px;
             border-radius: 10px;
             border: none;
-            background: linear-gradient(135deg, #7c3aed, #f43f5e);
+            background: #7c3aed;
             color: #ffffff;
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Orbitron', 'Segoe UI', sans-serif;
             font-size: 14px;
             font-weight: 900;
             letter-spacing: 1px;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
             box-shadow: 0 4px 25px rgba(124, 58, 237, 0.4);
             display: flex;
             align-items: center;
@@ -363,11 +340,11 @@ public class WinPulseEngineBridge {
             gap: 10px;
         }
         .launch-btn:hover {
-            transform: scale(1.01);
+            background: #f43f5e;
             box-shadow: 0 6px 30px rgba(244, 63, 94, 0.55);
         }
 
-        /* Progress Bar & Real Console Log */
+        /* Progress Bar & Console Log */
         .progress-container {
             height: 8px;
             background: rgba(255, 255, 255, 0.08);
@@ -377,7 +354,7 @@ public class WinPulseEngineBridge {
         .progress-bar {
             height: 100%;
             width: 0%;
-            background: linear-gradient(90deg, #10b981, #38bdf8);
+            background: #10b981;
             transition: width 0.3s ease;
             box-shadow: 0 0 10px #10b981;
         }
@@ -389,13 +366,12 @@ public class WinPulseEngineBridge {
             padding: 12px;
             height: 130px;
             overflow-y: auto;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
             font-size: 11px;
             color: #38bdf8;
             line-height: 1.6;
         }
 
-        /* SVG Icons Inline */
         .icon {
             width: 16px;
             height: 16px;
@@ -428,11 +404,11 @@ public class WinPulseEngineBridge {
         <div class="header-card">
             <div class="header-info">
                 <h1>WINPULSE MASTER SUITE</h1>
-                <p>Real-Time Live Command Execution &amp; System Stream Logger</p>
+                <p>Real-Time Command Execution Engine</p>
             </div>
             <div class="badge">
                 <div class="badge-dot"></div>
-                LIVE STDOUT LOGS ACTIVE
+                v2.5 ES5 ACTIVE
             </div>
         </div>
 
@@ -507,17 +483,18 @@ public class WinPulseEngineBridge {
 
         <!-- Progress & Console Log -->
         <div class="progress-container"><div class="progress-bar" id="pbStatus"></div></div>
-        <div class="console-box" id="txtLog">[00:00:00] [SYSTEM] Real-Time Command Execution Engine Initialized. Click 'APPLY UNIFIED MASTER PRESET NOW'.</div>
+        <div class="console-box" id="txtLog">[00:00:00] [SYSTEM] Real-Time Command Engine Initialized. Click 'APPLY UNIFIED MASTER PRESET NOW'.</div>
     </div>
 
-    <script>
-        const allCheckboxes = ['chkRestorePoint', 'chkChrome', 'chk7Zip', 'chkVSCode', 'chkGit', 'chkDiscord', 'chkShowExt', 'chkDarkMode', 'chkClassicMenu', 'chkInputLag', 'chkPower', 'chkMemory', 'chkRemoveOneDrive', 'chkDebloat', 'chkClean', 'chkWinUpdate', 'chkNetwork', 'chkCloudflareDNS', 'chkOptimalMTU', 'chkAdvancedTCPUDP'];
+    <!-- 100% Strict ES5 Compatible JavaScript -->
+    <script type="text/javascript">
+        var allCheckboxes = ['chkRestorePoint', 'chkChrome', 'chk7Zip', 'chkVSCode', 'chkGit', 'chkDiscord', 'chkShowExt', 'chkDarkMode', 'chkClassicMenu', 'chkInputLag', 'chkPower', 'chkMemory', 'chkRemoveOneDrive', 'chkDebloat', 'chkClean', 'chkWinUpdate', 'chkNetwork', 'chkCloudflareDNS', 'chkOptimalMTU', 'chkAdvancedTCPUDP'];
 
         function setAll(val) {
-            allCheckboxes.forEach(id => {
-                const el = document.getElementById(id);
-                if (el) el.checked = val;
-            });
+            for (var i = 0; i < allCheckboxes.length; i++) {
+                var el = document.getElementById(allCheckboxes[i]);
+                if (el) { el.checked = val; }
+            }
         }
 
         function applyPreset(type) {
@@ -526,15 +503,19 @@ public class WinPulseEngineBridge {
                 log("[PRESET] Master Preset selected.");
             } else if (type === 'gaming') {
                 setAll(false);
-                ['chkRestorePoint', 'chkInputLag', 'chkPower', 'chkMemory', 'chkNetwork', 'chkCloudflareDNS', 'chkOptimalMTU', 'chkAdvancedTCPUDP', 'chkDarkMode', 'chkClassicMenu'].forEach(id => {
-                    document.getElementById(id).checked = true;
-                });
+                var gamingList = ['chkRestorePoint', 'chkInputLag', 'chkPower', 'chkMemory', 'chkNetwork', 'chkCloudflareDNS', 'chkOptimalMTU', 'chkAdvancedTCPUDP', 'chkDarkMode', 'chkClassicMenu'];
+                for (var j = 0; j < gamingList.length; j++) {
+                    var gEl = document.getElementById(gamingList[j]);
+                    if (gEl) { gEl.checked = true; }
+                }
                 log("[PRESET] Gaming & Low-Latency Preset selected.");
             } else if (type === 'clean') {
                 setAll(false);
-                ['chkRestorePoint', 'chkRemoveOneDrive', 'chkDebloat', 'chkClean', 'chkWinUpdate'].forEach(id => {
-                    document.getElementById(id).checked = true;
-                });
+                var cleanList = ['chkRestorePoint', 'chkRemoveOneDrive', 'chkDebloat', 'chkClean', 'chkWinUpdate'];
+                for (var k = 0; k < cleanList.length; k++) {
+                    var cEl = document.getElementById(cleanList[k]);
+                    if (cEl) { cEl.checked = true; }
+                }
                 log("[PRESET] Clean & Debloat Preset selected.");
             } else if (type === 'clear') {
                 setAll(false);
@@ -543,27 +524,42 @@ public class WinPulseEngineBridge {
         }
 
         function log(msg) {
-            const consoleBox = document.getElementById('txtLog');
-            consoleBox.innerHTML += '<br>' + msg;
-            consoleBox.scrollTop = consoleBox.scrollHeight;
+            var consoleBox = document.getElementById('txtLog');
+            if (consoleBox) {
+                consoleBox.innerHTML += '<br>' + msg;
+                consoleBox.scrollTop = consoleBox.scrollHeight;
+            }
         }
 
         function setProgress(pct) {
-            document.getElementById('pbStatus').style.width = pct + '%';
+            var pb = document.getElementById('pbStatus');
+            if (pb) { pb.style.width = pct + '%'; }
         }
 
         function launchMasterPreset() {
-            const btn = document.getElementById('btnLaunch');
-            btn.disabled = true;
-            btn.style.opacity = '0.5';
+            var btn = document.getElementById('btnLaunch');
+            if (btn) {
+                btn.disabled = true;
+                btn.style.opacity = '0.5';
+            }
             log('⚡ Executing Real PowerShell Execution Pipeline...');
 
-            const options = {};
-            allCheckboxes.forEach(id => {
-                options[id] = document.getElementById(id).checked;
-            });
+            var options = {};
+            for (var m = 0; m < allCheckboxes.length; m++) {
+                var idKey = allCheckboxes[m];
+                var chkBox = document.getElementById(idKey);
+                options[idKey] = chkBox ? chkBox.checked : false;
+            }
 
-            window.external.Run(JSON.stringify(options));
+            // Simple JSON stringifier for IE ES5 compatibility
+            var jsonStr = '{';
+            var keys = [];
+            for (var kName in options) {
+                keys.push('"' + kName + '":' + options[kName]);
+            }
+            jsonStr += keys.join(',') + '}';
+
+            window.external.Run(jsonStr);
         }
     </script>
 </body>
@@ -776,6 +772,17 @@ public class WinPulseEngineBridge {
         Real-Log "SYSTEM" "Full log saved to: $logFilePath"
         Real-Log "SYSTEM" "========================================="
     }
+
+    # Suppress Script Errors Dialog in WebBrowser COM Object
+    $webBrowser.Add_Navigated({
+        param($sender, $e)
+        try {
+            $axIWebBrowser = $webBrowser.GetType().GetProperty("AxIWebBrowser2", [System.Reflection.BindingFlags]::Instance -or [System.Reflection.BindingFlags]::NonPublic).GetValue($webBrowser, $null)
+            if ($axIWebBrowser) {
+                $axIWebBrowser.GetType().InvokeMember("Silent", [System.Reflection.BindingFlags]::SetProperty, $null, $axIWebBrowser, @($true)) | Out-Null
+            }
+        } catch {}
+    })
 
     # Enable WebBrowser Scripting Bridge
     $webBrowser.ObjectForScripting = $bridge
