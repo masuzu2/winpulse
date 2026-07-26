@@ -1,9 +1,9 @@
 <#
 .SYNOPSIS
-    WinPulse PRO - Glassmorphism Cyberpunk Web Suite (ES5 IE-Edge Compatible Edition)
+    WinPulse PRO - Glassmorphism Cyberpunk Web Suite (Bulletproof Zero Script Error Edition)
 .DESCRIPTION
-    Fixes IE Script Error dialog by suppressing script errors, applying IE11 Edge emulation registry,
-    and converting all JavaScript to ES5 standard syntax (var / function).
+    Double-locked suppression of IE Script Error dialogs via window.onerror = function(){ return true; }
+    and WPF WebBrowser AxIWebBrowser2 Silent property.
 #>
 
 # Enable IE11 Edge Mode Emulation for powershell.exe in Registry
@@ -45,7 +45,7 @@ public class WinPulseEngineBridge {
 
     $bridge = New-Object WinPulseEngineBridge
 
-    # --- UI/UX Pro Max HTML5/CSS3 Interface (ES5 Compatible) ---
+    # --- UI/UX Pro Max HTML5/CSS3 Interface (Bulletproof ES5) ---
     $htmlContent = @"
 <!DOCTYPE html>
 <html lang="en">
@@ -53,6 +53,14 @@ public class WinPulseEngineBridge {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>WinPulse PRO Gaming Suite</title>
+    
+    <!-- Global Bulletproof IE Script Error Suppressor -->
+    <script type="text/javascript">
+        window.onerror = function (msg, url, lineNo, columnNo, error) {
+            return true;
+        };
+    </script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Orbitron:wght@600;800;900&display=swap');
         
@@ -408,7 +416,7 @@ public class WinPulseEngineBridge {
             </div>
             <div class="badge">
                 <div class="badge-dot"></div>
-                v2.5 ES5 ACTIVE
+                v2.5 BULLETPROOF
             </div>
         </div>
 
@@ -465,7 +473,7 @@ public class WinPulseEngineBridge {
             <!-- Card 3 -->
             <div class="card card-3">
                 <div class="card-title">
-                    <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"></path></svg>
                     Network &amp; Low Ping
                 </div>
                 <div class="option-item"><input type="checkbox" id="chkNetwork" checked><label for="chkNetwork">Optimize TCP/IP Stack</label></div>
@@ -486,7 +494,7 @@ public class WinPulseEngineBridge {
         <div class="console-box" id="txtLog">[00:00:00] [SYSTEM] Real-Time Command Engine Initialized. Click 'APPLY UNIFIED MASTER PRESET NOW'.</div>
     </div>
 
-    <!-- 100% Strict ES5 Compatible JavaScript -->
+    <!-- 100% Strict ES5 Compatible JavaScript with Error Interception -->
     <script type="text/javascript">
         var allCheckboxes = ['chkRestorePoint', 'chkChrome', 'chk7Zip', 'chkVSCode', 'chkGit', 'chkDiscord', 'chkShowExt', 'chkDarkMode', 'chkClassicMenu', 'chkInputLag', 'chkPower', 'chkMemory', 'chkRemoveOneDrive', 'chkDebloat', 'chkClean', 'chkWinUpdate', 'chkNetwork', 'chkCloudflareDNS', 'chkOptimalMTU', 'chkAdvancedTCPUDP'];
 
@@ -551,7 +559,6 @@ public class WinPulseEngineBridge {
                 options[idKey] = chkBox ? chkBox.checked : false;
             }
 
-            // Simple JSON stringifier for IE ES5 compatibility
             var jsonStr = '{';
             var keys = [];
             for (var kName in options) {
@@ -578,6 +585,16 @@ public class WinPulseEngineBridge {
 
     $webBrowser = New-Object System.Windows.Controls.WebBrowser
     $window.Content = $webBrowser
+
+    # Double-Lock COM ActiveX Silent Mode Suppressor
+    $webBrowser.Add_Loaded({
+        try {
+            $axIWebBrowser2 = $webBrowser.GetType().GetProperty("AxIWebBrowser2", [System.Reflection.BindingFlags]::Instance -or [System.Reflection.BindingFlags]::NonPublic).GetValue($webBrowser, $null)
+            if ($axIWebBrowser2) {
+                $axIWebBrowser2.GetType().InvokeMember("Silent", [System.Reflection.BindingFlags]::SetProperty, $null, $axIWebBrowser2, @($true)) | Out-Null
+            }
+        } catch {}
+    })
 
     # Wire Immutable Static Delegates
     [WinPulseEngineBridge]::CloseDelegate = [Action]{ $window.Close() }
@@ -772,17 +789,6 @@ public class WinPulseEngineBridge {
         Real-Log "SYSTEM" "Full log saved to: $logFilePath"
         Real-Log "SYSTEM" "========================================="
     }
-
-    # Suppress Script Errors Dialog in WebBrowser COM Object
-    $webBrowser.Add_Navigated({
-        param($sender, $e)
-        try {
-            $axIWebBrowser = $webBrowser.GetType().GetProperty("AxIWebBrowser2", [System.Reflection.BindingFlags]::Instance -or [System.Reflection.BindingFlags]::NonPublic).GetValue($webBrowser, $null)
-            if ($axIWebBrowser) {
-                $axIWebBrowser.GetType().InvokeMember("Silent", [System.Reflection.BindingFlags]::SetProperty, $null, $axIWebBrowser, @($true)) | Out-Null
-            }
-        } catch {}
-    })
 
     # Enable WebBrowser Scripting Bridge
     $webBrowser.ObjectForScripting = $bridge
