@@ -1,9 +1,9 @@
 <#
 .SYNOPSIS
-    WinPulse PRO v3.0 - Ultimate Cyberpunk System & Gaming Optimizer (Pure WPF XAML Engine)
+    WinPulse PRO v3.0 - Premium Cyberpunk Gaming HUD & System Optimizer
 .DESCRIPTION
-    Native WPF Architecture with 100% Verified Production Commands.
-    Unified Apex Gaming & System Optimization Engine.
+    100% Native WPF XAML Architecture with Cyberpunk Neon Visual Systems.
+    Ultra Low-Latency Windows & Competitive Gaming Optimizer Suite.
 #>
 
 Add-Type -AssemblyName PresentationFramework
@@ -26,102 +26,120 @@ public class WinPulseNative {
 [xml]$xaml = @"
 <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="WinPulse PRO Master Suite v3.0 [Apex Ultra Edition]" Height="840" Width="1140"
+        Title="WinPulse PRO Master Suite v3.0 [Apex Cyberpunk Edition]" Height="850" Width="1160"
         WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True"
-        Background="#0B0B1A" Foreground="#E2E8F0" FontFamily="Segoe UI">
+        Background="#080816" Foreground="#E2E8F0" FontFamily="Segoe UI">
 
     <Window.Resources>
+        <LinearGradientBrush x:Key="TitleGradient" StartPoint="0,0" EndPoint="1,0">
+            <GradientStop Color="#7C3AED" Offset="0.0"/>
+            <GradientStop Color="#EC4899" Offset="0.5"/>
+            <GradientStop Color="#38BDF8" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="BtnLaunchGradient" StartPoint="0,0" EndPoint="1,0">
+            <GradientStop Color="#6D28D9" Offset="0.0"/>
+            <GradientStop Color="#D946EF" Offset="0.5"/>
+            <GradientStop Color="#2563EB" Offset="1.0"/>
+        </LinearGradientBrush>
+
         <Style TargetType="TextBox">
-            <Setter Property="Background" Value="#0A0A18"/>
+            <Setter Property="Background" Value="#050510"/>
             <Setter Property="Foreground" Value="#38BDF8"/>
-            <Setter Property="BorderBrush" Value="#3A2D64"/>
+            <Setter Property="BorderBrush" Value="#2A2A4A"/>
             <Setter Property="FontFamily" Value="Consolas"/>
             <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Padding" Value="6"/>
         </Style>
 
         <Style TargetType="Button">
-            <Setter Property="Background" Value="#1E1E38"/>
+            <Setter Property="Background" Value="#16162A"/>
             <Setter Property="Foreground" Value="#FFFFFF"/>
             <Setter Property="BorderBrush" Value="#3A2D64"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="FontSize" Value="11"/>
             <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Padding" Value="7,4"/>
+            <Setter Property="Padding" Value="10,6"/>
             <Setter Property="Cursor" Value="Hand"/>
         </Style>
 
         <Style TargetType="CheckBox">
             <Setter Property="Foreground" Value="#CBD5E1"/>
             <Setter Property="FontSize" Value="11"/>
-            <Setter Property="Margin" Value="0,3"/>
+            <Setter Property="Margin" Value="0,4"/>
             <Setter Property="Cursor" Value="Hand"/>
         </Style>
     </Window.Resources>
 
-    <Border BorderBrush="#7C3AED" BorderThickness="1" CornerRadius="12" Background="#0B0B1A">
-        <Grid Margin="16">
+    <Border BorderBrush="#7C3AED" BorderThickness="1.5" CornerRadius="14" Background="#080816">
+        <Grid Margin="18">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/> <!-- Title Bar -->
                 <RowDefinition Height="Auto"/> <!-- Header HUD -->
-                <RowDefinition Height="Auto"/> <!-- Restore Point Safety -->
-                <RowDefinition Height="Auto"/> <!-- Quick Presets -->
-                <RowDefinition Height="*"/>    <!-- 4 Cards Grid -->
-                <RowDefinition Height="Auto"/> <!-- Launch Button -->
-                <RowDefinition Height="Auto"/> <!-- Progress & Log -->
+                <RowDefinition Height="Auto"/> <!-- Safety Bar -->
+                <RowDefinition Height="Auto"/> <!-- Quick Presets Toolbar -->
+                <RowDefinition Height="*"/>    <!-- 4 Cyber Cards Grid -->
+                <RowDefinition Height="Auto"/> <!-- Master Launch Button -->
+                <RowDefinition Height="Auto"/> <!-- Progress & Console -->
             </Grid.RowDefinitions>
 
             <!-- 0. Title Bar -->
-            <Grid Grid.Row="0" Margin="0,0,0,10" x:Name="TitleBar" Background="#121224">
+            <Grid Grid.Row="0" Margin="0,0,0,12" x:Name="TitleBar" Background="#0E0E20">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,6">
-                    <TextBlock Text="⚡ WINPULSE OPTIMIZER PRO v3.0 [APEX ULTRA ENGINE]" Foreground="#A78BFA" FontWeight="Bold" FontSize="13"/>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="12,8">
+                    <TextBlock Text="⚡ WINPULSE OPTIMIZER PRO v3.0" Foreground="#A78BFA" FontWeight="ExtraBold" FontSize="14"/>
+                    <TextBlock Text=" | " Foreground="#475569" FontSize="14" Margin="6,0"/>
+                    <TextBlock Text="APEX ULTRA GAMING ENGINE" Foreground="#F472B6" FontWeight="SemiBold" FontSize="12"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="6">
-                    <Button x:Name="BtnMinimize" Content=" _ " Width="32" Height="26" Margin="0,0,4,0" Background="#1E1E38" Foreground="#94A3B8"/>
-                    <Button x:Name="BtnClose" Content=" ✕ " Width="32" Height="26" Background="#F43F5E" Foreground="#FFFFFF"/>
+                    <Button x:Name="BtnMinimize" Content=" _ " Width="34" Height="28" Margin="0,0,6,0" Background="#16162A" Foreground="#94A3B8" BorderBrush="#2A2A4A"/>
+                    <Button x:Name="BtnClose" Content=" ✕ " Width="34" Height="28" Background="#F43F5E" Foreground="#FFFFFF" BorderBrush="#E11D48"/>
                 </StackPanel>
             </Grid>
 
-            <!-- 1. Header HUD -->
-            <Border Grid.Row="1" Background="#16162A" BorderBrush="#3A2D64" BorderThickness="1" CornerRadius="8" Padding="14,10" Margin="0,0,0,10">
+            <!-- 1. Cyber HUD Header -->
+            <Border Grid.Row="1" Background="#121226" BorderBrush="#3A2D64" BorderThickness="1" CornerRadius="10" Padding="16,12" Margin="0,0,0,12">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <StackPanel>
-                        <TextBlock Text="WINPULSE MASTER GAMING SUITE" FontSize="18" FontWeight="Bold" Foreground="#A78BFA"/>
-                        <TextBlock Text="Ultra Low-Latency Windows &amp; Gaming Tweaks (Pure Native WPF Engine)" FontSize="11" Foreground="#94A3B8" Margin="0,2,0,0"/>
+                        <TextBlock Text="WINPULSE APEX MASTER GAMING SUITE" FontSize="20" FontWeight="ExtraBold" Foreground="{StaticResource TitleGradient}"/>
+                        <TextBlock Text="Cyberpunk High-Performance HUD • Pure Native WPF Architecture • Zero Lag System Tuning" FontSize="11" Foreground="#94A3B8" Margin="0,3,0,0"/>
                     </StackPanel>
-                    <Border Grid.Column="1" Background="#10B981" CornerRadius="12" Padding="12,5" VerticalAlignment="Center">
-                        <TextBlock Text="SYSTEM READY" Foreground="#FFFFFF" FontWeight="Bold" FontSize="11"/>
+                    <Border Grid.Column="1" Background="#10B981" CornerRadius="14" Padding="14,6" VerticalAlignment="Center">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="● " Foreground="#A7F3D0" FontSize="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="APEX ENGINE READY" Foreground="#FFFFFF" FontWeight="Bold" FontSize="11"/>
+                        </StackPanel>
                     </Border>
                 </Grid>
             </Border>
 
-            <!-- 2. Restore Point Safety -->
-            <Border Grid.Row="2" Background="#16162A" BorderBrush="#10B981" BorderThickness="1" CornerRadius="6" Padding="12,7" Margin="0,0,0,10">
-                <CheckBox x:Name="chkRestorePoint" Content="🛡️ Create System Restore Point before tweaking (100% Safety Guarantee)" IsChecked="True" Foreground="#34D399" FontWeight="Bold"/>
+            <!-- 2. Safety Restore Point -->
+            <Border Grid.Row="2" Background="#121226" BorderBrush="#10B981" BorderThickness="1" CornerRadius="8" Padding="14,8" Margin="0,0,0,12">
+                <CheckBox x:Name="chkRestorePoint" Content="🛡️ Create System Restore Point before tweaking (100% Safety Protection Enabled)" IsChecked="True" Foreground="#34D399" FontWeight="Bold"/>
             </Border>
 
             <!-- 3. Quick Presets Toolbar -->
-            <Border Grid.Row="3" Background="#16162A" BorderBrush="#2A2A4A" BorderThickness="1" CornerRadius="6" Padding="8,5" Margin="0,0,0,10">
+            <Border Grid.Row="3" Background="#121226" BorderBrush="#2A2A4A" BorderThickness="1" CornerRadius="8" Padding="10,6" Margin="0,0,0,12">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="PRESETS:" Foreground="#F59E0B" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0" FontSize="11"/>
-                    <Button x:Name="BtnPresetMaster" Content="🌟 MASTER PRESET (ALL-IN-ONE)" Background="#10B981" Margin="0,0,5,0"/>
-                    <Button x:Name="BtnPresetApex" Content="⚡ APEX LATENCY PRO (MAX FPS)" Background="#EC4899" Margin="0,0,5,0"/>
-                    <Button x:Name="BtnPresetGaming" Content="🎮 COMPETITIVE GAMING &amp; PING" Background="#7C3AED" Margin="0,0,5,0"/>
-                    <Button x:Name="BtnPresetEssentials" Content="⚙️ SYSTEM ESSENTIALS &amp; DEBLOAT" Background="#0EA5E9" Margin="0,0,5,0"/>
-                    <Button x:Name="BtnPresetClean" Content="🧹 CLEAN &amp; DEBLOAT" Background="#F43F5E" Margin="0,0,5,0"/>
-                    <Button x:Name="BtnClearAll" Content="❌ Clear All" Background="#3A3A5A"/>
+                    <TextBlock Text="PRESETS:" Foreground="#F59E0B" FontWeight="ExtraBold" VerticalAlignment="Center" Margin="0,0,10,0" FontSize="11"/>
+                    <Button x:Name="BtnPresetMaster" Content="🌟 MASTER PRESET (ALL-IN-ONE)" Background="#10B981" Margin="0,0,6,0" BorderBrush="#059669"/>
+                    <Button x:Name="BtnPresetApex" Content="⚡ APEX LATENCY PRO (MAX FPS)" Background="#EC4899" Margin="0,0,6,0" BorderBrush="#DB2777"/>
+                    <Button x:Name="BtnPresetGaming" Content="🎮 COMPETITIVE GAMING &amp; PING" Background="#7C3AED" Margin="0,0,6,0" BorderBrush="#6D28D9"/>
+                    <Button x:Name="BtnPresetEssentials" Content="⚙️ SYSTEM ESSENTIALS &amp; DEBLOAT" Background="#0EA5E9" Margin="0,0,6,0" BorderBrush="#0284C7"/>
+                    <Button x:Name="BtnPresetClean" Content="🧹 CLEAN &amp; PURGE" Background="#F43F5E" Margin="0,0,6,0" BorderBrush="#E11D48"/>
+                    <Button x:Name="BtnClearAll" Content="❌ Clear All" Background="#2A2A4A" BorderBrush="#475569"/>
                 </StackPanel>
             </Border>
 
             <!-- 4. 4-Card Multi-Grid Layout -->
-            <Grid Grid.Row="4" Margin="0,0,0,10">
+            <Grid Grid.Row="4" Margin="0,0,0,12">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1.2*"/>
                     <ColumnDefinition Width="1.15*"/>
@@ -130,15 +148,15 @@ public class WinPulseNative {
                 </Grid.ColumnDefinitions>
 
                 <!-- Card 1: Gaming & Input Lag -->
-                <Border Grid.Column="0" Background="#16162A" BorderBrush="#7C3AED" BorderThickness="1" CornerRadius="8" Padding="10" Margin="0,0,4,0">
+                <Border Grid.Column="0" Background="#121226" BorderBrush="#7C3AED" BorderThickness="1" CornerRadius="10" Padding="12" Margin="0,0,5,0">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel>
-                            <TextBlock Text="🎮 GAMING &amp; INPUT LATENCY" Foreground="#7C3AED" FontWeight="Bold" FontSize="11" Margin="0,0,0,6"/>
+                            <TextBlock Text="🎮 GAMING &amp; INPUT LATENCY" Foreground="#A78BFA" FontWeight="ExtraBold" FontSize="12" Margin="0,0,0,8"/>
                             <CheckBox x:Name="chkApexKeyboard" Content="⚡ Hyper-Precision Keyboard Response" IsChecked="True" Foreground="#F472B6" FontWeight="Bold"/>
                             <CheckBox x:Name="chkApexMouse" Content="⚡ Ultra-Linear Mouse 1:1 MarkC &amp; Zero Delay" IsChecked="True" Foreground="#F472B6" FontWeight="Bold"/>
                             <CheckBox x:Name="chkApexKernelPriority" Content="⚡ Kernel GPU Priority 8 &amp; CPU Priority 6" IsChecked="True" Foreground="#F472B6" FontWeight="Bold"/>
-                            <CheckBox x:Name="chkApexTimerTdr" Content="⚡ Global High-Res Timer 0.5ms &amp; GPU TDR" IsChecked="True" Foreground="#A78BFA" FontWeight="Bold"/>
-                            <Separator Background="#2A2A4A" Margin="0,4"/>
+                            <CheckBox x:Name="chkApexTimerTdr" Content="⚡ Global High-Res Timer 0.5ms &amp; GPU TDR" IsChecked="True" Foreground="#C084FC" FontWeight="Bold"/>
+                            <Separator Background="#2A2A4A" Margin="0,6"/>
                             <CheckBox x:Name="chkHAGS" Content="Enable GPU HAGS &amp; GameMode" IsChecked="True"/>
                             <CheckBox x:Name="chkMouse" Content="Disable Mouse Acceleration" IsChecked="True"/>
                             <CheckBox x:Name="chkStickyKeys" Content="Disable Sticky Keys Popups" IsChecked="True"/>
@@ -150,13 +168,13 @@ public class WinPulseNative {
                 </Border>
 
                 <!-- Card 2: Network & Ultra Ping -->
-                <Border Grid.Column="1" Background="#16162A" BorderBrush="#38BDF8" BorderThickness="1" CornerRadius="8" Padding="10" Margin="3,0,3,0">
+                <Border Grid.Column="1" Background="#121226" BorderBrush="#38BDF8" BorderThickness="1" CornerRadius="10" Padding="12" Margin="4,0,4,0">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel>
-                            <TextBlock Text="🌐 NETWORK &amp; ULTRA PING" Foreground="#38BDF8" FontWeight="Bold" FontSize="11" Margin="0,0,0,6"/>
+                            <TextBlock Text="🌐 NETWORK &amp; ULTRA PING" Foreground="#38BDF8" FontWeight="ExtraBold" FontSize="12" Margin="0,0,0,8"/>
                             <CheckBox x:Name="chkApexZeroDelayTCP" Content="⚡ Zero-Delay TCP Stream (TCPNoDelay=1)" IsChecked="True" Foreground="#38BDF8" FontWeight="Bold"/>
                             <CheckBox x:Name="chkApexDNSBgApps" Content="⚡ Background App Purge &amp; DNS Cache TTL" IsChecked="True" Foreground="#38BDF8" FontWeight="Bold"/>
-                            <Separator Background="#2A2A4A" Margin="0,4"/>
+                            <Separator Background="#2A2A4A" Margin="0,6"/>
                             <CheckBox x:Name="chkNetwork" Content="Optimize TCP/IP CTCP Stack" IsChecked="True"/>
                             <CheckBox x:Name="chkCloudflareDNS" Content="Cloudflare DNS (1.1.1.1)" IsChecked="True"/>
                             <CheckBox x:Name="chkOptimalMTU" Content="Set Optimal MTU (1500)" IsChecked="True"/>
@@ -166,31 +184,31 @@ public class WinPulseNative {
                 </Border>
 
                 <!-- Card 3: Debloat & Purge -->
-                <Border Grid.Column="2" Background="#16162A" BorderBrush="#F43F5E" BorderThickness="1" CornerRadius="8" Padding="10" Margin="3,0,3,0">
+                <Border Grid.Column="2" Background="#121226" BorderBrush="#F43F5E" BorderThickness="1" CornerRadius="10" Padding="12" Margin="4,0,4,0">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel>
-                            <TextBlock Text="🧹 DEBLOAT &amp; PURGE" Foreground="#F43F5E" FontWeight="Bold" FontSize="11" Margin="0,0,0,6"/>
+                            <TextBlock Text="🧹 DEBLOAT &amp; PURGE" Foreground="#F43F5E" FontWeight="ExtraBold" FontSize="12" Margin="0,0,0,8"/>
                             <CheckBox x:Name="chkRemoveOneDrive" Content="Uninstall OneDrive &amp; Bloat" IsChecked="True"/>
                             <CheckBox x:Name="chkDebloat" Content="Disable Telemetry &amp; DVR" IsChecked="True"/>
-                            <CheckBox x:Name="chkDisableHibernation" Content="Disable Hibernation (Free Disk Space)" IsChecked="True"/>
-                            <CheckBox x:Name="chkDisableLocation" Content="Disable Location &amp; Maps Tracking" IsChecked="True"/>
+                            <CheckBox x:Name="chkDisableHibernation" Content="Disable Hibernation (Free Disk)" IsChecked="True"/>
+                            <CheckBox x:Name="chkDisableLocation" Content="Disable Geolocation &amp; Maps" IsChecked="True"/>
                             <CheckBox x:Name="chkClean" Content="Purge Temp &amp; System Cache" IsChecked="True"/>
-                            <CheckBox x:Name="chkWinUpdate" Content="Block Driver Overwrites via Windows Update" IsChecked="True"/>
+                            <CheckBox x:Name="chkWinUpdate" Content="Block Driver Overwrites via Update" IsChecked="True"/>
                         </StackPanel>
                     </ScrollViewer>
                 </Border>
 
                 <!-- Card 4: Apps & UI Tweaks -->
-                <Border Grid.Column="3" Background="#16162A" BorderBrush="#F59E0B" BorderThickness="1" CornerRadius="8" Padding="10" Margin="4,0,0,0">
+                <Border Grid.Column="3" Background="#121226" BorderBrush="#F59E0B" BorderThickness="1" CornerRadius="10" Padding="12" Margin="5,0,0,0">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel>
-                            <TextBlock Text="💻 SOFTWARE &amp; UI TWEAKS" Foreground="#F59E0B" FontWeight="Bold" FontSize="11" Margin="0,0,0,6"/>
+                            <TextBlock Text="💻 SOFTWARE &amp; UI TWEAKS" Foreground="#F59E0B" FontWeight="ExtraBold" FontSize="12" Margin="0,0,0,8"/>
                             <CheckBox x:Name="chkChrome" Content="Google Chrome" IsChecked="True"/>
                             <CheckBox x:Name="chk7Zip" Content="7-Zip Archiver" IsChecked="True"/>
                             <CheckBox x:Name="chkVSCode" Content="VS Code" IsChecked="True"/>
                             <CheckBox x:Name="chkGit" Content="Git for Windows" IsChecked="True"/>
                             <CheckBox x:Name="chkDiscord" Content="Discord" IsChecked="True"/>
-                            <Separator Background="#2A2A4A" Margin="0,4"/>
+                            <Separator Background="#2A2A4A" Margin="0,6"/>
                             <CheckBox x:Name="chkShowExt" Content="Show Extensions &amp; Hidden" IsChecked="True"/>
                             <CheckBox x:Name="chkDarkMode" Content="Enable Dark Mode Theme" IsChecked="True"/>
                             <CheckBox x:Name="chkClassicMenu" Content="Restore Win 10 Classic Menu" IsChecked="True"/>
@@ -200,19 +218,19 @@ public class WinPulseNative {
                 </Border>
             </Grid>
 
-            <!-- 5. Launch Button -->
-            <Button Grid.Row="5" x:Name="BtnLaunch" Content="⚡ APPLY UNIFIED MASTER PRESET NOW (APEX ULTRA ENGINE) ⚡"
-                    Height="42" Background="#7C3AED" Foreground="#FFFFFF" FontWeight="Bold" FontSize="13" Margin="0,0,0,8"/>
+            <!-- 5. Master Launch Button -->
+            <Button Grid.Row="5" x:Name="BtnLaunch" Content="⚡ APPLY WINPULSE MASTER APEX PRESET NOW ⚡"
+                    Height="46" Background="{StaticResource BtnLaunchGradient}" Foreground="#FFFFFF" FontWeight="ExtraBold" FontSize="14" Margin="0,0,0,10"/>
 
             <!-- 6. Progress Bar & Output Console Log -->
             <Grid Grid.Row="6">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="120"/>
+                    <RowDefinition Height="125"/>
                 </Grid.RowDefinitions>
-                <ProgressBar Grid.Row="0" x:Name="pbStatus" Height="6" Value="0" Minimum="0" Maximum="100" Foreground="#10B981" Background="#16162A" Margin="0,0,0,6"/>
+                <ProgressBar Grid.Row="0" x:Name="pbStatus" Height="7" Value="0" Minimum="0" Maximum="100" Foreground="#10B981" Background="#121226" Margin="0,0,0,8"/>
                 <TextBox Grid.Row="1" x:Name="txtLog" IsReadOnly="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"
-                         Text="[SYSTEM] WinPulse Apex Ultra Optimizer Engine Initialized. Click 'APPLY UNIFIED MASTER PRESET NOW'."/>
+                         Text="[SYSTEM] WinPulse PRO Apex Ultra Cyberpunk Engine Initialized. Click 'APPLY WINPULSE MASTER APEX PRESET NOW'."/>
             </Grid>
         </Grid>
     </Border>
