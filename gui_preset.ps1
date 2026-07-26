@@ -16,7 +16,7 @@ Write-Host " ===================================================================
 Write-Host "   [+] Target Machine     : $compName ($osName)" -ForegroundColor Gray
 Write-Host "   [โ”] Privilege Status   : ADMINISTRATOR [GRANTED]" -ForegroundColor Green
 Write-Host "   [โ”] High-Res Timer     : UNLOCKED (0.5ms)" -ForegroundColor DarkYellow
-Write-Host "   [โ”] GPU HAGS & GameMode : ONLINE" -ForegroundColor Cyan
+Write-Host "   [โ”] GPU HAGS and GameMode : ONLINE" -ForegroundColor Cyan
 Write-Host "   [โ”] Decrypting Cyberpunk Glassmorphism HUD..." -ForegroundColor Magenta
 Write-Host " ===================================================================" -ForegroundColor DarkGray
 Write-Host ""

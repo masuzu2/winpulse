@@ -27,7 +27,7 @@ Write-Host " ===================================================================
 Write-Host "   [+] Target Machine     : `$compName (`$osName)" -ForegroundColor Gray
 Write-Host "   [✔] Privilege Status   : ADMINISTRATOR [GRANTED]" -ForegroundColor Green
 Write-Host "   [✔] High-Res Timer     : UNLOCKED (0.5ms)" -ForegroundColor DarkYellow
-Write-Host "   [✔] GPU HAGS & GameMode : ONLINE" -ForegroundColor Cyan
+Write-Host "   [✔] GPU HAGS and GameMode : ONLINE" -ForegroundColor Cyan
 Write-Host "   [✔] Decrypting Cyberpunk Glassmorphism HUD..." -ForegroundColor Magenta
 Write-Host " ===================================================================" -ForegroundColor DarkGray
 Write-Host ""
@@ -43,4 +43,4 @@ $utf8NoBOM = New-Object System.Text.UTF8Encoding($false)
 [System.IO.File]::WriteAllText($winpulsePath, $protectedContent, $utf8NoBOM)
 [System.IO.File]::WriteAllText($indexPath, $protectedContent, $utf8NoBOM)
 
-Write-Host "Encoder complete (Official Master Edition v3.0)!"
+Write-Host "Encoder complete (Clean Master Ampersand-Free Edition v3.0)!"
