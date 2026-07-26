@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    WinPulse PRO - Real Command Output Logging Edition (Zero-Error Edition)
+    WinPulse PRO - Real Command Output Logging Edition (Zero-Error Immutable Engine)
 .DESCRIPTION
     Captures live Real-Time Stdout/Stderr, Timestamps, and Command Outputs from winget,
     netsh, bcdedit, powercfg, and reg commands, with persistent file logging to %TEMP%\WinPulse_Execution.log.
@@ -11,31 +11,31 @@ $guiScriptBlock = {
     Add-Type -AssemblyName System.Windows.Forms
 
     # --- COM Interop Bridge for HTML -> PowerShell Communication ---
-    if (-not ([System.Management.Automation.PSTypeName]'WinPulseBridge').Type) {
+    if (-not ([System.Management.Automation.PSTypeName]'WinPulseEngineBridge').Type) {
         Add-Type -TypeDefinition @"
 using System;
 using System.Runtime.InteropServices;
 
 [ComVisible(true)]
-public class WinPulseBridge {
-    public Action<string> OnRunAction { get; set; }
-    public Action OnCloseAction { get; set; }
-    public Action OnMinimizeAction { get; set; }
+public class WinPulseEngineBridge {
+    public static Action<string> RunDelegate;
+    public static Action CloseDelegate;
+    public static Action MiniDelegate;
 
     public void Run(string json) {
-        if (OnRunAction != null) OnRunAction(json);
+        if (RunDelegate != null) RunDelegate(json);
     }
     public void CloseWin() {
-        if (OnCloseAction != null) OnCloseAction();
+        if (CloseDelegate != null) CloseDelegate();
     }
     public void MiniWin() {
-        if (OnMinimizeAction != null) OnMinimizeAction();
+        if (MiniDelegate != null) MiniDelegate();
     }
 }
 "@
     }
 
-    $bridge = New-Object WinPulseBridge
+    $bridge = New-Object WinPulseEngineBridge
 
     # --- UI/UX Pro Max HTML5/CSS3 Interface ---
     $htmlContent = @"
@@ -415,7 +415,7 @@ public class WinPulseBridge {
     <div class="title-bar">
         <div class="title-brand">
             <svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-            WINPULSE OPTIMIZER PRO [ZERO-ERROR REAL ENGINE]
+            WINPULSE OPTIMIZER PRO
         </div>
         <div class="title-controls">
             <button class="control-btn" onclick="window.external.MiniWin()">—</button>
@@ -583,11 +583,11 @@ public class WinPulseBridge {
     $webBrowser = New-Object System.Windows.Controls.WebBrowser
     $window.Content = $webBrowser
 
-    # Wire Bridge Actions cleanly
-    $bridge.OnCloseAction = [Action]{ $window.Close() }
-    $bridge.OnMinimizeAction = [Action]{ $window.WindowState = [System.Windows.WindowState]::Minimized }
+    # Wire Immutable Static Delegates
+    [WinPulseEngineBridge]::CloseDelegate = [Action]{ $window.Close() }
+    [WinPulseEngineBridge]::MiniDelegate = [Action]{ $window.WindowState = [System.Windows.WindowState]::Minimized }
 
-    $bridge.OnRunAction = [Action[string]]{
+    [WinPulseEngineBridge]::RunDelegate = [Action[string]]{
         param($json)
         $options = ConvertFrom-Json $json
 
