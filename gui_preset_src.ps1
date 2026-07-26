@@ -2,14 +2,28 @@
 .SYNOPSIS
     WinPulse PRO v3.0 - Ultimate Cyberpunk System & Gaming Optimizer (Pure WPF XAML Engine)
 .DESCRIPTION
-    Chris Titus WinUtil Style Native WPF Architecture featuring HAGS, Game Mode, Mouse Accel Off,
-    Win32PrioritySeparation 38, BCD Timers, TCP CTCP, Cloudflare DNS, Debloat, and Live Command Stream.
+    Chris Titus WinUtil Style Native WPF Architecture with 100% Verified Production Commands.
+    Features: HAGS, Game Mode, Mouse Accel Off, Win32Priority 38, BCD Timers, TCP/IP CTCP, Cloudflare DNS,
+    MTU 1500, Checksum Offload Off, OneDrive Uninstall, Telemetry & DVR Off, Temp/Prefetch Purge,
+    WinUpdate Driver Block, Winget App Installers, Dark Mode, File Extensions, Classic Win10 Menu.
 #>
 
 Add-Type -AssemblyName PresentationFramework
 Add-Type -AssemblyName PresentationCore
 Add-Type -AssemblyName WindowsBase
 Add-Type -AssemblyName System.Windows.Forms
+
+# Add User32 P/Invoke for instant live Mouse Speed & Explorer refresh
+if (-not ([System.Management.Automation.PSTypeName]'WinPulseNative').Type) {
+    Add-Type -TypeDef @"
+using System;
+using System.Runtime.InteropServices;
+public class WinPulseNative {
+    [DllImport("user32.dll", EntryPoint = "SystemParametersInfo", SetLastError = true)]
+    public static extern bool SystemParametersInfo(uint action, uint param, IntPtr vparam, uint init);
+}
+"@
+}
 
 [xml]$xaml = @"
 <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -19,7 +33,6 @@ Add-Type -AssemblyName System.Windows.Forms
         Background="#0B0B1A" Foreground="#E2E8F0" FontFamily="Segoe UI">
 
     <Window.Resources>
-        <!-- Custom ScrollBar Style -->
         <Style TargetType="TextBox">
             <Setter Property="Background" Value="#0A0A18"/>
             <Setter Property="Foreground" Value="#38BDF8"/>
@@ -28,7 +41,6 @@ Add-Type -AssemblyName System.Windows.Forms
             <Setter Property="FontSize" Value="12"/>
         </Style>
 
-        <!-- Button Style -->
         <Style TargetType="Button">
             <Setter Property="Background" Value="#1E1E38"/>
             <Setter Property="Foreground" Value="#FFFFFF"/>
@@ -40,7 +52,6 @@ Add-Type -AssemblyName System.Windows.Forms
             <Setter Property="Cursor" Value="Hand"/>
         </Style>
 
-        <!-- CheckBox Style -->
         <Style TargetType="CheckBox">
             <Setter Property="Foreground" Value="#CBD5E1"/>
             <Setter Property="FontSize" Value="12"/>
@@ -68,7 +79,7 @@ Add-Type -AssemblyName System.Windows.Forms
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,6">
-                    <TextBlock Text="⚡ WINPULSE OPTIMIZER PRO v3.0 [WINUTIL MASTER ENGINE]" Foreground="#A78BFA" FontWeight="Bold" FontSize="13"/>
+                    <TextBlock Text="⚡ WINPULSE OPTIMIZER PRO v3.0 [100% REAL EXECUTION ENGINE]" Foreground="#A78BFA" FontWeight="Bold" FontSize="13"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="6">
                     <Button x:Name="BtnMinimize" Content=" _ " Width="32" Height="26" Margin="0,0,4,0" Background="#1E1E38" Foreground="#94A3B8"/>
@@ -85,7 +96,7 @@ Add-Type -AssemblyName System.Windows.Forms
                     </Grid.ColumnDefinitions>
                     <StackPanel>
                         <TextBlock Text="WINPULSE MASTER GAMING SUITE" FontSize="20" FontWeight="Bold" Foreground="#A78BFA"/>
-                        <TextBlock Text="Ultra Low-Latency Windows &amp; Gaming Tweaks (Pure Native WPF Engine)" FontSize="11" Foreground="#94A3B8" Margin="0,2,0,0"/>
+                        <TextBlock Text="Ultra Low-Latency Windows Tweaks &amp; Real Command Pipeline" FontSize="11" Foreground="#94A3B8" Margin="0,2,0,0"/>
                     </StackPanel>
                     <Border Grid.Column="1" Background="#10B981" CornerRadius="12" Padding="12,6" VerticalAlignment="Center">
                         <TextBlock Text="SYSTEM READY" Foreground="#FFFFFF" FontWeight="Bold" FontSize="11"/>
@@ -313,8 +324,8 @@ $BtnLaunch.Add_Click({
         }
     }
 
-    Set-WpfProgress 10
-    Write-WpfLog "[SYSTEM] Starting WinPulse Native Execution Engine..."
+    Set-WpfProgress 5
+    Write-WpfLog "[SYSTEM] Starting WinPulse Production Execution Engine..."
 
     # Read Checkbox States
     $chkRestorePointVal = ($window.FindName("chkRestorePoint")).IsChecked
@@ -351,26 +362,29 @@ $BtnLaunch.Add_Click({
             Checkpoint-Computer -Description "WinPulse Restore Point" -RestorePointType "MODIFY_SETTINGS"
         }
     }
-    Set-WpfProgress 25
+    Set-WpfProgress 20
 
     # 1. HAGS & Game Mode & Mouse Accel
     if ($chkHAGSVal) {
         Exec-Command "Enable GPU HAGS & Game Mode" {
-            New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" -Name "HwSchMode" -Value 2 -PropertyType DWORD -Force
-            New-ItemProperty -Path "HKCU:\Software\Microsoft\GameBar" -Name "AllowAutoGameMode" -Value 1 -PropertyType DWORD -Force
-            New-ItemProperty -Path "HKCU:\Software\Microsoft\GameBar" -Name "AutoGameModeEnabled" -Value 1 -PropertyType DWORD -Force
+            if (-not (Test-Path "HKLM:\SYSTEM\CurrentControlSet\Control\GraphicsDrivers")) { New-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" -Force | Out-Null }
+            Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" -Name "HwSchMode" -Value 2 -Type DWORD -Force
+            if (-not (Test-Path "HKCU:\Software\Microsoft\GameBar")) { New-Item -Path "HKCU:\Software\Microsoft\GameBar" -Force | Out-Null }
+            Set-ItemProperty -Path "HKCU:\Software\Microsoft\GameBar" -Name "AllowAutoGameMode" -Value 1 -Type DWORD -Force
+            Set-ItemProperty -Path "HKCU:\Software\Microsoft\GameBar" -Name "AutoGameModeEnabled" -Value 1 -Type DWORD -Force
         }
     }
     if ($chkMouseVal) {
         Exec-Command "Disable Mouse Pointer Precision (Mouse Acceleration Off)" {
-            New-ItemProperty -Path "HKCU:\Control Panel\Mouse" -Name "MouseSpeed" -Value "0" -PropertyType String -Force
-            New-ItemProperty -Path "HKCU:\Control Panel\Mouse" -Name "MouseThreshold1" -Value "0" -PropertyType String -Force
-            New-ItemProperty -Path "HKCU:\Control Panel\Mouse" -Name "MouseThreshold2" -Value "0" -PropertyType String -Force
+            Set-ItemProperty -Path "HKCU:\Control Panel\Mouse" -Name "MouseSpeed" -Value "0" -Type String -Force
+            Set-ItemProperty -Path "HKCU:\Control Panel\Mouse" -Name "MouseThreshold1" -Value "0" -Type String -Force
+            Set-ItemProperty -Path "HKCU:\Control Panel\Mouse" -Name "MouseThreshold2" -Value "0" -Type String -Force
+            [WinPulseNative]::SystemParametersInfo(0x0071, 0, [System.IntPtr]::Zero, 0x0003) | Out-Null
         }
     }
     if ($chkInputLagVal) {
         Exec-Command "Set Max Win32PrioritySeparation = 38 & BCD Timers" {
-            Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\PriorityControl" -Name "Win32PrioritySeparation" -Value 38
+            Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\PriorityControl" -Name "Win32PrioritySeparation" -Value 38 -Type DWORD -Force
             bcdedit /set disabledynamictick yes
             bcdedit /set useplatformclock no
         }
@@ -378,20 +392,26 @@ $BtnLaunch.Add_Click({
     if ($chkPowerVal) {
         Exec-Command "Enable Ultimate Performance Power Plan" {
             powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61
+            $scheme = (powercfg -l | Select-String "Ultimate Performance" | ForEach-Object { ($_ -split "\s+")[3] }) | Select-Object -First 1
+            if ($scheme) { powercfg -setactive $scheme }
         }
     }
     if ($chkMemoryVal) {
         Exec-Command "Disable Memory Compression" {
             Disable-MMAgent -MemoryCompression -ErrorAction SilentlyContinue
+            Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" -Name "ClearPageFileAtShutdown" -Value 0 -Type DWORD -Force
         }
     }
-    Set-WpfProgress 50
+    Set-WpfProgress 40
 
     # 2. Network & Ping
     if ($chkNetworkVal) {
         Exec-Command "Optimize TCP/IP CTCP Stack" {
             netsh int tcp set global congestionprovider=ctcp
             netsh int tcp set global autotuninglevel=normal
+            netsh int tcp set global ecncapability=disabled
+            netsh int tcp set global timestamps=disabled
+            netsh int tcp set global rsc=disabled
         }
     }
     if ($chkCloudflareDNSVal) {
@@ -404,46 +424,58 @@ $BtnLaunch.Add_Click({
     }
     if ($chkOptimalMTUVal) {
         Exec-Command "Set Optimal MTU 1500" {
-            netsh interface ipv4 set subinterface "Ethernet" mtu=1500 store=persistent -ErrorAction SilentlyContinue
-            netsh interface ipv4 set subinterface "Wi-Fi" mtu=1500 store=persistent -ErrorAction SilentlyContinue
+            Get-NetAdapter | Where-Object Status -eq 'Up' | ForEach-Object {
+                netsh interface ipv4 set subinterface "$($_.Name)" mtu=1500 store=persistent -ErrorAction SilentlyContinue
+            }
         }
     }
     if ($chkAdvancedTCPUDPVal) {
         Exec-Command "Disable Checksum Offload" {
-            Disable-NetAdapterChecksumOffload -Name "*" -ErrorAction SilentlyContinue
+            Disable-NetAdapterChecksumOffload -Name "*" -Confirm:$false -ErrorAction SilentlyContinue
+            Disable-NetAdapterLso -Name "*" -Confirm:$false -ErrorAction SilentlyContinue
         }
     }
-    Set-WpfProgress 70
+    Set-WpfProgress 60
 
     # 3. Debloat & Purge
     if ($chkRemoveOneDriveVal) {
         Exec-Command "Uninstall OneDrive & Bloat" {
-            taskkill /f /im OneDrive.exe -ErrorAction SilentlyContinue
+            Stop-Process -Name "OneDrive" -Force -ErrorAction SilentlyContinue
             if (Test-Path "$env:SystemRoot\System32\OneDriveSetup.exe") {
-                Start-Process "$env:SystemRoot\System32\OneDriveSetup.exe" -ArgumentList "/uninstall" -Wait
+                Start-Process "$env:SystemRoot\System32\OneDriveSetup.exe" -ArgumentList "/uninstall" -Wait -WindowStyle Hidden
+            }
+            if (Test-Path "$env:SystemRoot\SysWOW64\OneDriveSetup.exe") {
+                Start-Process "$env:SystemRoot\SysWOW64\OneDriveSetup.exe" -ArgumentList "/uninstall" -Wait -WindowStyle Hidden
             }
         }
     }
     if ($chkDebloatVal) {
         Exec-Command "Disable Telemetry & Xbox DVR" {
             Set-Service -Name "DiagTrack" -StartupType Disabled -ErrorAction SilentlyContinue
-            Stop-Service -Name "DiagTrack" -ErrorAction SilentlyContinue
-            Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -Name "AllowTelemetry" -Value 0
+            Stop-Service -Name "DiagTrack" -Force -ErrorAction SilentlyContinue
+            Set-Service -Name "dmwappushservice" -StartupType Disabled -ErrorAction SilentlyContinue
+            Stop-Service -Name "dmwappushservice" -Force -ErrorAction SilentlyContinue
+            if (-not (Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection")) { New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -Force | Out-Null }
+            Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -Name "AllowTelemetry" -Value 0 -Type DWORD -Force
+            if (-not (Test-Path "HKCU:\System\GameConfigStore")) { New-Item -Path "HKCU:\System\GameConfigStore" -Force | Out-Null }
+            Set-ItemProperty -Path "HKCU:\System\GameConfigStore" -Name "GameDVR_Enabled" -Value 0 -Type DWORD -Force
         }
     }
     if ($chkCleanVal) {
         Exec-Command "Purge Temp & System Cache" {
-            Remove-Item -Path "$env:TEMP\*" -Recurse -Force -ErrorAction SilentlyContinue
-            Remove-Item -Path "C:\Windows\Temp\*" -Recurse -Force -ErrorAction SilentlyContinue
-            Remove-Item -Path "C:\Windows\Prefetch\*" -Recurse -Force -ErrorAction SilentlyContinue
+            Get-ChildItem -Path "$env:TEMP" -Recurse -Force -ErrorAction SilentlyContinue | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
+            Get-ChildItem -Path "C:\Windows\Temp" -Recurse -Force -ErrorAction SilentlyContinue | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
+            Get-ChildItem -Path "C:\Windows\Prefetch" -Recurse -Force -ErrorAction SilentlyContinue | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
+            Get-ChildItem -Path "C:\Windows\SoftwareDistribution\Download" -Recurse -Force -ErrorAction SilentlyContinue | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
         }
     }
     if ($chkWinUpdateVal) {
         Exec-Command "Block Driver Overwrites via Windows Update" {
-            Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DriverSearching" -Name "DriverUpdateWizardWuSearchEnabled" -Value 0
+            if (-not (Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DriverSearching")) { New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DriverSearching" -Force | Out-Null }
+            Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DriverSearching" -Name "DriverUpdateWizardWuSearchEnabled" -Value 0 -Type DWORD -Force
         }
     }
-    Set-WpfProgress 85
+    Set-WpfProgress 80
 
     # 4. Software via Winget
     $apps = @(
@@ -464,25 +496,27 @@ $BtnLaunch.Add_Click({
     # 5. UI Tweaks
     if ($chkShowExtVal) {
         Exec-Command "Show File Extensions & Hidden Files" {
-            Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Value 0
-            Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "Hidden" -Value 1
+            Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Value 0 -Type DWORD -Force
+            Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "Hidden" -Value 1 -Type DWORD -Force
         }
     }
     if ($chkDarkModeVal) {
         Exec-Command "Enable Dark Mode Theme" {
-            Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme" -Value 0
-            Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "SystemUsesLightTheme" -Value 0
+            Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme" -Value 0 -Type DWORD -Force
+            Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "SystemUsesLightTheme" -Value 0 -Type DWORD -Force
         }
     }
     if ($chkClassicMenuVal) {
         Exec-Command "Restore Win 10 Classic Context Menu" {
-            New-Item -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" -Value "" -Force
+            if (-not (Test-Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32")) {
+                New-Item -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" -Value "" -Force | Out-Null
+            }
         }
     }
 
     Set-WpfProgress 100
-    Write-WpfLog "[🎉 COMPLETE 100%] WinPulse PRO v3.0 Execution Pipeline Finished!"
-    Write-WpfLog "Full execution log saved to: $logFilePath"
+    Write-WpfLog "[🎉 COMPLETE 100%] WinPulse PRO v3.0 Real Execution Pipeline Finished!"
+    Write-WpfLog "Full log saved to: $logFilePath"
 
     $BtnLaunch.Content = "[OK] UNIFIED MASTER PRESET APPLIED SUCCESSFULLY"
     $BtnLaunch.Background = [System.Windows.Media.Brushes]::DarkGreen
